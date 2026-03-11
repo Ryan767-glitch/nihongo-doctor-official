@@ -8,7 +8,7 @@ export function Disclaimer() {
 
     return (
         <section className="bg-slate-50 py-8 border-t border-slate-200">
-            <div className="container mx-auto px-4 max-w-4xl">
+            <div className="container mx-auto px-4 max-w-7xl">
                 <div className="flex gap-4 items-start">
                     <AlertTriangle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
                     <div className="space-y-2">

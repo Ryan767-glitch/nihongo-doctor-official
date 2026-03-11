@@ -12,7 +12,7 @@ export function Header() {
     return (
         <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 flex flex-col">
             <div className="border-b border-border/40">
-                <div className="container flex h-16 items-center px-4">
+                <div className="container mx-auto max-w-7xl flex h-16 items-center px-4">
                     <Link href="/" className="mr-6 flex items-center space-x-2">
                         <span className="font-bold text-xl tracking-tight text-foreground">
                             にほんごドクター<span className="text-primary">.com</span>
@@ -74,7 +74,7 @@ export function Header() {
 
             {/* Secondary Region Navigation */}
             <div className="border-b border-border/20 bg-muted/20 overflow-x-auto scrollbar-hide">
-                <div className="container px-4 flex items-center justify-center lg:justify-start h-10 gap-6 text-sm font-medium text-muted-foreground whitespace-nowrap">
+                <div className="container mx-auto max-w-7xl px-4 flex items-center justify-start h-10 gap-6 text-sm font-medium text-muted-foreground whitespace-nowrap">
                     <Link href="/asia" className="hover:text-primary transition-colors">アジア</Link>
                     <Link href="/north-america" className="hover:text-primary transition-colors">北米</Link>
                     <Link href="/latin-america" className="hover:text-primary transition-colors">中南米</Link>
