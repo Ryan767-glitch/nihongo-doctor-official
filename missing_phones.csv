@@ -1,0 +1,52 @@
+id,nameJa,nameEn,country,city,specialties
+1,"Bangkok Hospital（バンコク病院）","Bangkok Hospital（バンコク病院）","タイ","バンコク","総合診療/内科/外科/産婦人科/小児科/眼科/歯科 等"
+68,"Navales Dental Clinic","Navales Dental Clinic","フィリピン","マニラ","歯科専門"
+78,"DYM香港クリニック","DYM香港クリニック","中国（香港）","香港","内科/小児科（一般診療）"
+83,"Raffles Medical Cambodia","Raffles Medical Cambodia","カンボジア","プノンペン","総合診療/専門医/救急/旅行医学/予防接種/健康診断"
+94,"アル・シェファ・クリニック","Al Shefaa Clinic（アル・シェファ・クリニック）","エジプト","カイロ","30科（内科/小児科/歯科/整形外科等）"
+96,"クレオパトラ病院","Cleopatra Hospital（クレオパトラ病院）","エジプト","カイロ","総合（内科/外科/産婦人科/骨髄移植等）"
+97,"アル・サラム国際病院","Al Salam International Hospital（アル・サラム国際病院）","エジプト","カイロ","総合30科（内科/外科/産婦人科/小児科/歯科等）"
+98,"タビビ・クリニック","Tabibi Clinic（タビビ・クリニック）","エジプト","カイロ","内科/小児科/各種ワクチン"
+99,"フォレストジャパン医療センター","Forest Japan Medical Centre（フォレストジャパンメディカルセンター）","ケニア","ナイロビ","医療検査/CT/内視鏡/総合内科"
+106,"モーニングサイド病院","Mediclinic Morningside（メディクリニック・モーニングサイド）","南アフリカ","ヨハネスブルグ","総合（全科）"
+109,"ノルディック医療センター","Nordic Medical Centre（ノルデイック・メデイカルセンター）","エチオピア","アディスアベバ","総合内科/専門科"
+110,"ISTクリニック","IST Clinic（ISTクリニック）","タンザニア","ダルエスサラーム","内科/産婦人科/小児科"
+111,"レディントン病院","Reddington Hospital（レディントン病院）","ナイジェリア","ラゴス","総合（全科）/24時間救急"
+112,"エバーケア病院","Evercare Hospital Lekki（エバーケア病院レッキ）","ナイジェリア","ラゴス","総合（全科）/特に心血管疾患"
+122,"日本メディカルクリニック","Nippon Medical Clinic","United States","ロサンゼルス","内科/家庭医学/婦人科/メンズヘルス/小児科/心療内科/皮膚科/性感染症/予防接種/健康診断"
+129,"こばやしクリニック","Kobayashi Medical Clinic","United States","サンフランシスコ/ベイエリア","内科/一般診療"
+141,"慶応ノースウエスタン・クリニック","Keio-Northwestern Clinic","United States","シカゴ/中西部","総合内科/小児科"
+142,"松木隆志医師（精神科・心療内科）","Matsuki MD - Chicago Office","United States","シカゴ/中西部","精神科/心療内科"
+143,"聖ルカクリニック アラモアナ","St. Luke's Clinic - Ala Moana","United States","ハワイ（ホノルル）","内科/小児科/婦人科/皮膚科/耳鼻科/整形外科/眼科等（総合）"
+144,"聖ルカクリニック ワイキキ支店","St. Luke's Clinic - Waikiki Branch","United States","ハワイ（ホノルル）","内科/一般診療"
+145,"ドクターズ・オン・コール","Doctors On Call","United States","ハワイ（ホノルル）","内科/小児科/皮膚科/婦人科/消化器/眼科/耳鼻科/外傷/予防接種等（総合）"
+146,"バプティスト・ヘルス・サウスフロリダ","Baptist Health South Florida","United States","マイアミ/フロリダ","総合病院（全科）"
+154,"武内歯科医院","Takeuchi Dental Office","Canada","バンクーバー（BC州）","歯科（一般/予防/矯正/インプラント）"
+178,"太田博昭医師","太田博昭医師","フランス","パリ 15区","精神科"
+192,"日本メディカルセンター
+（人間ドック）","Japan Medical Center (NMC)
+人間ドック","ドイツ","デュッセルドルフ","健康診断/人間ドック"
+195,"エックハート・ナイマン
+総合ホームクリニック","Eckhart Neumann Hausarzt
+(Frankfurt Sachsenhausen)","ドイツ","フランクフルト","一般内科/婦人科/循環器科"
+198,"めじろそらクリニック
+（心療内科・精神科）","Mejiro-sora Klinik","ドイツ","ミュンヘン","心療内科/精神科"
+199,"山内耳鼻咽喉科
+（ベルリン・ミッテ）","Yamauchi ENT Clinic (Berlin-Mitte)","ドイツ","ベルリン（ミッテ）","耳鼻咽喉科"
+200,"山内耳鼻咽喉科
+（ベルリン・シュテークリッツ）","Yamauchi ENT Clinic (Berlin-Steglitz)","ドイツ","ベルリン（シュテークリッツ）","耳鼻咽喉科"
+201,"JECジャパンクリニック","JEC Japan Expat Clinic","オランダ","アムステルフェーン","一般内科/健康診断/各科"
+203,"在蘭日本人健康診断","在蘭日本人健康診断
+(Kenkosindan.eu)","オランダ","アムステルダム","健康診断/人間ドック（企業健診）"
+209,"ACクリニック・バルセロナ","AC Clinic Barcelona","スペイン","バルセロナ","一般内科/急性疾患"
+210,"下山由紀子 医療通訳
+サービス","Medical Interpretation Service
+(Yukiko Shimoyama)","スペイン","バルセロナ（通訳）","医療通訳（全科）"
+219,"Centro Médico Liberdade / Hospital Nipo-Brasileiro ENKYO
+（援協リベルダージ医療センター）","Centro Médico Liberdade / Hospital Nipo-Brasileiro ENKYO
+（援協リベルダージ医療センター）","ブラジル","サンパウロ","内科/外科/小児科/産婦人科/歯科/消化器科/皮膚科/眼科等"
+251,"さくらファミリークリニック","Sakura Family Clinic","オーストラリア","QLD","内科/小児科/婦人科/皮膚科/心療内科/性感染症/健診（総合GP）"
+252,"スカイアーチメディカルクリニック","SkyArch Medical Clinic","オーストラリア","QLD","内科/小児科/皮膚科/婦人科/心療内科/トランスジェンダー/HIV/STI（総合GP）"
+253,"CBD 7 DAYメディカルセンター（日本語医療担当）","CBD 7 DAY Medical Centre (Japanese Staff)","オーストラリア","QLD","内科/一般診療（総合GP/7日診療）"
+254,"ホーソーンクリニック（高尾康瑞医師）","Hawthorne Clinic","オーストラリア","QLD","内科/小児科/一般診療（GP）"
+265,"ヘルスポイント（日本語GP検索）","Health Point Japanese GP Search","ニュージーランド","Auckland Region","各種GP（家庭医）"
