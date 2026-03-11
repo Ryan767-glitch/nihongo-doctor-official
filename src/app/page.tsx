@@ -5,14 +5,13 @@ export default function Home() {
     <div className="flex flex-col">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-b from-primary/5 to-background pt-20 pb-32">
-        <div className="container px-4 text-center">
+        <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-foreground mb-6">
             世界中で、<span className="text-primary">日本語の通じる</span>ドクターを。
-            <br />
-            <span className="text-xl sm:text-2xl md:text-3xl font-medium opacity-60 mt-4 block text-muted-foreground">
-              Help is always close by.
-            </span>
           </h1>
+          <p className="text-xl sm:text-2xl font-medium opacity-80 mt-4 mb-10 text-muted-foreground">
+            35カ国以上・264件強の日本語対応医療機関を掲載
+          </p>
           <div className="mx-auto max-w-3xl mb-4">
             <GlobalSearch variant="hero" />
           </div>
@@ -23,14 +22,14 @@ export default function Home() {
       </section>
 
       {/* Continent Selection (Grid) */}
-      <section className="container px-4 -mt-20 relative z-10 mb-20">
+      <section className="container mx-auto px-4 -mt-20 relative z-10 mb-20">
         <div className="bg-card rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-6 md:p-10 border border-border/50 bg-white/50 backdrop-blur-sm">
           <div className="text-center mb-10">
             <h2 className="text-2xl font-bold mb-2 flex items-center justify-center gap-2">
-              地域から探す <span className="text-muted-foreground font-normal text-lg">/ Select Region</span>
+              地域から探す
             </h2>
-            <p className="text-muted-foreground">
-              世界<span className="font-bold text-foreground">50</span>カ国・<span className="font-bold text-foreground">290</span>件以上の日本語対応クリニックを掲載
+            <p className="text-muted-foreground text-sm mt-2">
+              世界35カ国・264件以上の日本語対応クリニックを掲載
             </p>
           </div>
 
@@ -39,10 +38,9 @@ export default function Home() {
               <div className="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
                 <Map className="w-24 h-24 text-indigo-500" />
               </div>
-              <h3 className="text-lg font-bold text-indigo-900">アジア</h3>
-              <p className="text-sm text-indigo-600/80 mb-2">Asia</p>
+              <h3 className="text-lg font-bold text-indigo-900 mb-2">アジア</h3>
               <span className="inline-block bg-white/80 text-indigo-700 text-xs px-2 py-1 rounded-full font-medium shadow-sm backdrop-blur-sm">
-                10カ国・90件+
+                10カ国・93件
               </span>
             </Link>
 
@@ -50,10 +48,9 @@ export default function Home() {
               <div className="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
                 <Building2 className="w-24 h-24 text-blue-500" />
               </div>
-              <h3 className="text-lg font-bold text-blue-900">北米</h3>
-              <p className="text-sm text-blue-600/80 mb-2">North America</p>
+              <h3 className="text-lg font-bold text-blue-900 mb-2">北米</h3>
               <span className="inline-block bg-white/80 text-blue-700 text-xs px-2 py-1 rounded-full font-medium shadow-sm backdrop-blur-sm">
-                2カ国・50件+
+                2カ国・52件
               </span>
             </Link>
 
@@ -61,10 +58,9 @@ export default function Home() {
               <div className="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
                 <Landmark className="w-24 h-24 text-emerald-500" />
               </div>
-              <h3 className="text-lg font-bold text-emerald-900">ヨーロッパ</h3>
-              <p className="text-sm text-emerald-600/80 mb-2">Europe</p>
+              <h3 className="text-lg font-bold text-emerald-900 mb-2">ヨーロッパ</h3>
               <span className="inline-block bg-white/80 text-emerald-700 text-xs px-2 py-1 rounded-full font-medium shadow-sm backdrop-blur-sm">
-                9カ国・50件+
+                9カ国・5件
               </span>
             </Link>
 
@@ -72,10 +68,9 @@ export default function Home() {
               <div className="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
                 <TreePalm className="w-24 h-24 text-cyan-500" />
               </div>
-              <h3 className="text-lg font-bold text-cyan-900">オセアニア</h3>
-              <p className="text-sm text-cyan-600/80 mb-2">Oceania</p>
+              <h3 className="text-lg font-bold text-cyan-900 mb-2">オセアニア</h3>
               <span className="inline-block bg-white/80 text-cyan-700 text-xs px-2 py-1 rounded-full font-medium shadow-sm backdrop-blur-sm">
-                2カ国・30件+
+                2カ国・29件
               </span>
             </Link>
 
@@ -83,10 +78,9 @@ export default function Home() {
               <div className="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
                 <Sun className="w-24 h-24 text-orange-500" />
               </div>
-              <h3 className="text-lg font-bold text-orange-900">中南米</h3>
-              <p className="text-sm text-orange-600/80 mb-2">Latin America</p>
+              <h3 className="text-lg font-bold text-orange-900 mb-2">中南米</h3>
               <span className="inline-block bg-white/80 text-orange-700 text-xs px-2 py-1 rounded-full font-medium shadow-sm backdrop-blur-sm">
-                5カ国・15件+
+                5カ国・15件
               </span>
             </Link>
 
@@ -94,10 +88,9 @@ export default function Home() {
               <div className="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
                 <Tent className="w-24 h-24 text-amber-500" />
               </div>
-              <h3 className="text-lg font-bold text-amber-900">アフリカ・中東</h3>
-              <p className="text-sm text-amber-600/80 mb-2">Africa & ME</p>
+              <h3 className="text-lg font-bold text-amber-900 mb-2">アフリカ・中東</h3>
               <span className="inline-block bg-white/80 text-amber-700 text-xs px-2 py-1 rounded-full font-medium shadow-sm backdrop-blur-sm">
-                24カ国・45件+
+                7カ国・20件
               </span>
             </Link>
           </div>
