@@ -6,7 +6,7 @@ import { ClinicCard } from '@/components/features/ClinicCard';
 import { Building, CreditCard, Ambulance, Info, Clock, AlertTriangle } from 'lucide-react';
 import { checkIsOpen, stringToColor } from '@/lib/utils';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { COUNTRY_MAP } from '@/lib/constants';
+import { COUNTRY_MAP, COUNTRY_JA_MAP } from '@/lib/constants';
 import { CountrySelector } from './CountrySelector';
 import { useSearchParams } from 'next/navigation';
 
@@ -21,7 +21,9 @@ export function ClinicList({ clinics, embassies }: ClinicListProps) {
     const highlightId = searchParams.get('highlight');
 
     const translateCountry = (c: string) => {
-        if (language === 'ja') return c;
+        if (language === 'ja') {
+            return COUNTRY_JA_MAP[c] || c;
+        }
         return COUNTRY_MAP[c] || c;
     };
     const [filterEmergency, setFilterEmergency] = useState(false);
