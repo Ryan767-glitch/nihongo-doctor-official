@@ -4,7 +4,7 @@ import { Clinic } from '@/types';
 import { MapPin, Phone, Clock, CreditCard, Stethoscope, AlertCircle, Calendar, ExternalLink, Ambulance, Info, Map, Globe } from 'lucide-react';
 import { checkIsOpen } from '@/lib/utils';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { COUNTRY_MAP, SPECIALTY_MAP, CITY_MAP } from '@/lib/constants';
+import { COUNTRY_MAP, COUNTRY_JA_MAP, SPECIALTY_MAP, CITY_MAP } from '@/lib/constants';
 
 interface ClinicCardProps {
     clinic: Clinic;
@@ -16,7 +16,9 @@ export function ClinicCard({ clinic, colorTheme, isHighlighted }: ClinicCardProp
     const { t, language } = useLanguage();
 
     const translateCountry = (c: string) => {
-        if (language === 'ja') return c;
+        if (language === 'ja') {
+            return COUNTRY_JA_MAP[c] || c;
+        }
         return COUNTRY_MAP[c] || c;
     };
 

@@ -2,6 +2,7 @@
 
 import { useLanguage } from "@/contexts/LanguageContext";
 import { stringToColor } from "@/lib/utils";
+import { COUNTRY_JA_MAP } from "@/lib/constants";
 
 interface CountrySelectorProps {
     countries: { name: string; count: number }[];
@@ -10,7 +11,14 @@ interface CountrySelectorProps {
 }
 
 export function CountrySelector({ countries, onSelect, activeCountry }: CountrySelectorProps) {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
+
+    const translateCountry = (c: string) => {
+        if (language === 'ja') {
+            return COUNTRY_JA_MAP[c] || c;
+        }
+        return c;
+    };
 
     return (
         <div className="w-full pb-4">
@@ -27,7 +35,7 @@ export function CountrySelector({ countries, onSelect, activeCountry }: CountryS
                             }
             `}
                     >
-                        {c.name}
+                        {translateCountry(c.name)}
                         <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${activeCountry === c.name ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-500'}`}>
                             {c.count}
                         </span>
