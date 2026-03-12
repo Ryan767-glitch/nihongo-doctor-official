@@ -1,4 +1,5 @@
 import { Disclaimer } from "@/components/layout/Disclaimer";
+import Link from "next/link";
 
 export function Footer() {
     return (
@@ -10,8 +11,8 @@ export function Footer() {
                         © 2026 NihongoDoctor.com. All rights reserved.
                     </p>
                     <div className="flex gap-4">
-                        {/* <a href="#" className="hover:underline">Privacy Policy</a>
-                        <a href="#" className="hover:underline">Terms of Service</a> */}
+                        <Link href="/privacy" className="hover:underline">プライバシーポリシー</Link>
+                        <Link href="/disclaimer" className="hover:underline">免責事項</Link>
                     </div>
                 </div>
             </div>

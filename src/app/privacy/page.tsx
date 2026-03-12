@@ -15,7 +15,8 @@ export default function PrivacyPage() {
                 </h1>
 
                 <div className="prose prose-gray max-w-none prose-headings:text-gray-800 prose-p:text-gray-600 prose-li:text-gray-600">
-                    <p className="font-bold text-gray-800 mb-8">にほんごドクター.com プライバシーポリシー</p>
+                    <p className="font-bold text-gray-800 mb-2">にほんごドクター.com プライバシーポリシー</p>
+                    <p className="text-sm text-gray-600 mb-8">運営者: にほんごドクター.com 運営事務局</p>
 
                     <h2 className="text-xl font-bold mt-8 mb-4">1. 収集する情報</h2>
                     <ul className="list-none pl-0 space-y-2">

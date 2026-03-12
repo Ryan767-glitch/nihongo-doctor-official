@@ -1,6 +1,24 @@
-import { ContinentSelector } from "@/components/features/ContinentSelector";
+import Link from "next/link";
+import { Building2, Map, Landmark, TreePalm, Sun, Tent } from "lucide-react";
+import { GlobalSearch } from "@/components/features/GlobalSearch";
+import clinicsData from "@/data/clinics.json";
+
+function getContinentStats(continentName: string) {
+  const filtered = clinicsData.filter((c) => c.continent === continentName);
+  const countries = new Set(filtered.map((c) => c.country));
+  return { count: filtered.length, countryCount: countries.size };
+}
 
 export default function Home() {
+  const asia = getContinentStats("Asia");
+  const northAmerica = getContinentStats("North America");
+  const europe = getContinentStats("Europe");
+  const oceania = getContinentStats("Oceania");
+  const latinAmerica = getContinentStats("Latin America");
+  const africaMiddleEast = getContinentStats("Africa & Middle East");
+  const totalCount = clinicsData.length;
+  const totalCountries = new Set(clinicsData.map((c) => c.country)).size;
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -10,7 +28,7 @@ export default function Home() {
             世界中で、<span className="text-primary">日本語の通じる</span>ドクターを。
           </h1>
           <p className="text-xl sm:text-2xl font-medium opacity-80 mt-4 mb-10 text-muted-foreground">
-            35カ国以上・264件強の日本語対応医療機関を掲載
+            {totalCountries}カ国以上・{totalCount}件強の日本語対応医療機関を掲載
           </p>
           <div className="mx-auto max-w-3xl mb-4">
             <GlobalSearch variant="hero" />
@@ -29,7 +47,7 @@ export default function Home() {
               地域から探す
             </h2>
             <p className="text-muted-foreground text-sm mt-2">
-              世界35カ国・264件以上の日本語対応クリニックを掲載
+              世界{totalCountries}カ国・{totalCount}件以上の日本語対応クリニックを掲載
             </p>
           </div>
 
@@ -40,7 +58,7 @@ export default function Home() {
               </div>
               <h3 className="text-lg font-bold text-indigo-900 mb-2">アジア</h3>
               <span className="inline-block bg-white/80 text-indigo-700 text-xs px-2 py-1 rounded-full font-medium shadow-sm backdrop-blur-sm">
-                10カ国・93件
+                {asia.countryCount}カ国・{asia.count}件
               </span>
             </Link>
 
@@ -50,7 +68,7 @@ export default function Home() {
               </div>
               <h3 className="text-lg font-bold text-blue-900 mb-2">北米</h3>
               <span className="inline-block bg-white/80 text-blue-700 text-xs px-2 py-1 rounded-full font-medium shadow-sm backdrop-blur-sm">
-                2カ国・52件
+                {northAmerica.countryCount}カ国・{northAmerica.count}件
               </span>
             </Link>
 
@@ -60,7 +78,7 @@ export default function Home() {
               </div>
               <h3 className="text-lg font-bold text-emerald-900 mb-2">ヨーロッパ</h3>
               <span className="inline-block bg-white/80 text-emerald-700 text-xs px-2 py-1 rounded-full font-medium shadow-sm backdrop-blur-sm">
-                9カ国・5件
+                {europe.countryCount}カ国・{europe.count}件
               </span>
             </Link>
 
@@ -70,7 +88,7 @@ export default function Home() {
               </div>
               <h3 className="text-lg font-bold text-cyan-900 mb-2">オセアニア</h3>
               <span className="inline-block bg-white/80 text-cyan-700 text-xs px-2 py-1 rounded-full font-medium shadow-sm backdrop-blur-sm">
-                2カ国・29件
+                {oceania.countryCount}カ国・{oceania.count}件
               </span>
             </Link>
 
@@ -80,7 +98,7 @@ export default function Home() {
               </div>
               <h3 className="text-lg font-bold text-orange-900 mb-2">中南米</h3>
               <span className="inline-block bg-white/80 text-orange-700 text-xs px-2 py-1 rounded-full font-medium shadow-sm backdrop-blur-sm">
-                5カ国・15件
+                {latinAmerica.countryCount}カ国・{latinAmerica.count}件
               </span>
             </Link>
 
@@ -90,7 +108,7 @@ export default function Home() {
               </div>
               <h3 className="text-lg font-bold text-amber-900 mb-2">アフリカ・中東</h3>
               <span className="inline-block bg-white/80 text-amber-700 text-xs px-2 py-1 rounded-full font-medium shadow-sm backdrop-blur-sm">
-                7カ国・20件
+                {africaMiddleEast.countryCount}カ国・{africaMiddleEast.count}件
               </span>
             </Link>
           </div>
@@ -99,7 +117,3 @@ export default function Home() {
     </div>
   );
 }
-
-import Link from "next/link";
-import { Building2, Map, Landmark, TreePalm, Sun, Tent } from "lucide-react";
-import { GlobalSearch } from "@/components/features/GlobalSearch";

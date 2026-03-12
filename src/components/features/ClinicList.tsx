@@ -128,7 +128,7 @@ export function ClinicList({ clinics, embassies }: ClinicListProps) {
                         }`}
                 >
                     <Clock className="w-4 h-4" />
-                    {t('診療中', 'Open Now')}
+                    {t('今診療中', 'Open Now')}
                 </button>
 
                 <button
@@ -225,7 +225,7 @@ export function ClinicList({ clinics, embassies }: ClinicListProps) {
                                                         <span className="opacity-70 text-xs">Tel:</span> {embassy.phone}
                                                     </a>
                                                     {embassy.website && (
-                                                        <a href={embassy.website} target="_blank" rel="noopener noreferrer" className="hover:text-amber-700 transition-colors">{t('ウェブサイト', 'Website')}</a>
+                                                        <a href={embassy.website} target="_blank" rel="noopener noreferrer" className="hover:text-amber-700 transition-colors">{t('公式サイト', 'Website')}</a>
                                                     )}
                                                     {embassy.alertFeedUrl && (
                                                         <a href={embassy.alertFeedUrl} target="_blank" rel="noopener noreferrer" className="hover:text-amber-700 flex items-center gap-1 transition-colors">

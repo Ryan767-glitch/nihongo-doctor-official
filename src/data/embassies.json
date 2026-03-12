@@ -1,6 +1,6 @@
 [
     {
-        "country": "Thailand",
+        "country": "タイ",
         "region": "Asia",
         "name": "在タイ日本国大使館",
         "address": "177 Witthayu Road, Lumphini, Pathum Wan, Bangkok 10330",
@@ -9,16 +9,97 @@
         "alertFeedUrl": "https://www.th.emb-japan.go.jp/itpr_ja/news_list.html"
     },
     {
-        "country": "UK",
-        "region": "Europe",
-        "name": "在英国日本国大使館",
-        "address": "101-104 Piccadilly, London W1J 7JT",
-        "phone": "+44-20-7465-6500",
-        "website": "https://www.uk.emb-japan.go.jp/itprtop_ja/index.html",
-        "alertFeedUrl": "https://www.uk.emb-japan.go.jp/itpr_ja/news_list.html"
+        "country": "インドネシア",
+        "region": "Asia",
+        "name": "在インドネシア日本国大使館",
+        "address": "Jl. M.H. Thamrin No.24, Jakarta Pusat 10350",
+        "phone": "+62-21-3192-4308",
+        "website": "https://www.id.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.id.emb-japan.go.jp/itpr_ja/news_list.html"
     },
     {
-        "country": "USA",
+        "country": "カンボジア",
+        "region": "Asia",
+        "name": "在カンボジア日本国大使館",
+        "address": "No.194 Moha Vithei Preah Norodom, Sangkat Tonle Bassac, Khan Chamkar Mon, Phnom Penh",
+        "phone": "+855-23-217-161",
+        "website": "https://www.kh.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.kh.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "フィリピン",
+        "region": "Asia",
+        "name": "在フィリピン日本国大使館",
+        "address": "2627 Roxas Boulevard, Pasay City, Metro Manila, 1300",
+        "phone": "+63-2-8551-5710",
+        "website": "https://www.ph.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.ph.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "ベトナム",
+        "region": "Asia",
+        "name": "在ベトナム日本国大使館",
+        "address": "27 Lieu Giai, Ba Dinh District, Hanoi",
+        "phone": "+84-24-3846-3000",
+        "website": "https://www.vn.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.vn.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "マレーシア",
+        "region": "Asia",
+        "name": "在マレーシア日本国大使館",
+        "address": "11, Persiaran Stonor, Kuala Lumpur, 50450",
+        "phone": "+60-3-2177-2600",
+        "website": "https://www.my.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.my.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "ミャンマー",
+        "region": "Asia",
+        "name": "在ミャンマー日本国大使館",
+        "address": "No. 100, Natmauk Road, Bahan Township, Yangon",
+        "phone": "+95-1-549644",
+        "website": "https://www.mm.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.mm.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "ラオス",
+        "region": "Asia",
+        "name": "在ラオス日本国大使館",
+        "address": "Sisangvone Road, Saysettha District, Vientiane Capital",
+        "phone": "+856-21-414-400",
+        "website": "https://www.la.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.la.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "中国",
+        "region": "Asia",
+        "name": "在中国日本国大使館",
+        "address": "北京市朝陽区亮馬橋東街1号",
+        "phone": "+86-10-8531-9800",
+        "website": "https://www.cn.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.cn.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "中国（香港）",
+        "region": "Asia",
+        "name": "在香港日本国総領事館",
+        "address": "46th & 47th Floors, One Exchange Square, 8 Connaught Place, Central, Hong Kong",
+        "phone": "+852-2522-1184",
+        "website": "https://www.hk.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.hk.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "United States",
+        "region": "North America",
+        "name": "在アメリカ合衆国日本国大使館",
+        "address": "2520 Massachusetts Avenue, N.W., Washington D.C., 20008",
+        "phone": "+1-202-238-6700",
+        "website": "https://www.us.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.us.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "United States",
         "region": "North America",
         "name": "在ニューヨーク日本国総領事館",
         "address": "299 Park Ave, New York, NY 10171",
@@ -27,12 +108,228 @@
         "alertFeedUrl": "https://www.ny.us.emb-japan.go.jp/itpr_ja/news_list.html"
     },
     {
-        "country": "USA",
+        "country": "United States",
         "region": "North America",
         "name": "在ホノルル日本国総領事館",
         "address": "1742 Nuuanu Ave, Honolulu, HI 96817",
         "phone": "+1-808-543-3111",
         "website": "https://www.honolulu.us.emb-japan.go.jp/itprtop_ja/index.html",
         "alertFeedUrl": "https://www.honolulu.us.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "Canada",
+        "region": "North America",
+        "name": "在カナダ日本国大使館",
+        "address": "255 Sussex Drive, Ottawa, Ontario K1N 9E6",
+        "phone": "+1-613-241-8541",
+        "website": "https://www.ca.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.ca.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "英国",
+        "region": "Europe",
+        "name": "在英国日本国大使館",
+        "address": "101-104 Piccadilly, London W1J 7JT",
+        "phone": "+44-20-7465-6500",
+        "website": "https://www.uk.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.uk.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "フランス",
+        "region": "Europe",
+        "name": "在フランス日本国大使館",
+        "address": "7 Avenue Hoche, 75008 Paris",
+        "phone": "+33-1-48-88-62-00",
+        "website": "https://www.fr.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.fr.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "ドイツ",
+        "region": "Europe",
+        "name": "在ドイツ日本国大使館",
+        "address": "Hiroshimastrasse 6, 10785 Berlin",
+        "phone": "+49-30-210-94-0",
+        "website": "https://www.de.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.de.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "オランダ",
+        "region": "Europe",
+        "name": "在オランダ日本国大使館",
+        "address": "Tobias Asserlaan 5, 2517 KC The Hague",
+        "phone": "+31-70-3469544",
+        "website": "https://www.nl.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.nl.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "スイス",
+        "region": "Europe",
+        "name": "在スイス日本国大使館",
+        "address": "Engestrasse 53, 3012 Bern",
+        "phone": "+41-31-300-22-22",
+        "website": "https://www.ch.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.ch.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "スペイン",
+        "region": "Europe",
+        "name": "在スペイン日本国大使館",
+        "address": "Calle Serrano, 109, 28006 Madrid",
+        "phone": "+34-91-590-7600",
+        "website": "https://www.es.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.es.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "イタリア",
+        "region": "Europe",
+        "name": "在イタリア日本国大使館",
+        "address": "Via Quintino Sella, 60, 00187 Roma",
+        "phone": "+39-06-487-991",
+        "website": "https://www.it.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.it.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "オーストリア",
+        "region": "Europe",
+        "name": "在オーストリア日本国大使館",
+        "address": "Hessgasse 6, 1010 Wien",
+        "phone": "+43-1-531920",
+        "website": "https://www.at.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.at.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "ベルギー",
+        "region": "Europe",
+        "name": "在ベルギー日本国大使館",
+        "address": "Square de Meeus 5-6, 1000 Bruxelles",
+        "phone": "+32-2-513-2340",
+        "website": "https://www.be.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.be.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "オーストラリア",
+        "region": "Oceania",
+        "name": "在オーストラリア日本国大使館",
+        "address": "112 Empire Circuit, Yarralumla, Canberra A.C.T. 2600",
+        "phone": "+61-2-6273-3244",
+        "website": "https://www.au.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.au.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "ニュージーランド",
+        "region": "Oceania",
+        "name": "在ニュージーランド日本国大使館",
+        "address": "Level 18, The Majestic Centre, 100 Willis Street, Wellington",
+        "phone": "+64-4-473-1540",
+        "website": "https://www.nz.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.nz.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "アルゼンチン",
+        "region": "Latin America",
+        "name": "在アルゼンチン日本国大使館",
+        "address": "Bouchard 547 Piso 17, C1106ABG - Buenos Aires",
+        "phone": "+54-11-4318-8200",
+        "website": "https://www.ar.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.ar.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "コロンビア",
+        "region": "Latin America",
+        "name": "在コロンビア日本国大使館",
+        "address": "Carrera 7 No. 71-21, Torre B Piso 11, Edificio Banco Davivienda, Bogota D.C.",
+        "phone": "+57-601-317-5001",
+        "website": "https://www.colombia.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.colombia.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "チリ",
+        "region": "Latin America",
+        "name": "在チリ日本国大使館",
+        "address": "Avenida Ricardo Lyon 520, Providencia, Santiago",
+        "phone": "+56-2-2232-1807",
+        "website": "https://www.cl.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.cl.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "ブラジル",
+        "region": "Latin America",
+        "name": "在ブラジル日本国大使館",
+        "address": "SES - Avenida das Nações, Lote 39, Brasilia - DF, CEP 70200-900",
+        "phone": "+55-61-3442-4200",
+        "website": "https://www.br.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.br.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "ペルー",
+        "region": "Latin America",
+        "name": "在ペルー日本国大使館",
+        "address": "Avenida San Felipe 356, Jesus Maria, Lima",
+        "phone": "+51-1-219-9500",
+        "website": "https://www.pe.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.pe.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "UAE",
+        "region": "Africa & Middle East",
+        "name": "在アラブ首長国連邦日本国大使館",
+        "address": "Abu Dhabi, United Arab Emirates (P.O. Box 2430)",
+        "phone": "+971-2-4435696",
+        "website": "https://www.uae.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.uae.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "エジプト",
+        "region": "Africa & Middle East",
+        "name": "在エジプト日本国大使館",
+        "address": "81 Corniche El Nil Street, Maadi, Cairo",
+        "phone": "+20-2-2528-5940",
+        "website": "https://www.eg.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.eg.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "エチオピア",
+        "region": "Africa & Middle East",
+        "name": "在エチオピア日本国大使館",
+        "address": "Bole Sub-City, Kebele 02, Addis Ababa",
+        "phone": "+251-11-667-1166",
+        "website": "https://www.et.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.et.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "ケニア",
+        "region": "Africa & Middle East",
+        "name": "在ケニア日本国大使館",
+        "address": "Mara Road, Upper Hill, Nairobi",
+        "phone": "+254-20-2898000",
+        "website": "https://www.ke.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.ke.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "タンザニア",
+        "region": "Africa & Middle East",
+        "name": "在タンザニア日本国大使館",
+        "address": "Plot No. 1018, Ali Hassan Mwinyi Road, Dar es Salaam",
+        "phone": "+255-22-2115827",
+        "website": "https://www.tz.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.tz.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "ナイジェリア",
+        "region": "Africa & Middle East",
+        "name": "在ナイジェリア日本国大使館",
+        "address": "No.9 Bobo Street (off Gana Street), Maitama, Abuja",
+        "phone": "+234-90-6000-9019",
+        "website": "https://www.ng.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.ng.emb-japan.go.jp/itpr_ja/news_list.html"
+    },
+    {
+        "country": "南アフリカ",
+        "region": "Africa & Middle East",
+        "name": "在南アフリカ共和国日本国大使館",
+        "address": "259 Baines Street, Groenkloof, Pretoria 0181",
+        "phone": "+27-12-452-1500",
+        "website": "https://www.za.emb-japan.go.jp/itprtop_ja/index.html",
+        "alertFeedUrl": "https://www.za.emb-japan.go.jp/itpr_ja/news_list.html"
     }
 ]
