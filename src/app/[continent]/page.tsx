@@ -35,7 +35,7 @@ const continentDisplayMap: Record<string, string> = {
     'Europe': 'ヨーロッパ',
     'Oceania': 'オセアニア',
     'Africa & Middle East': 'アフリカ・中東',
-    'Latin America': '中南米 (LatAm)'
+    'Latin America': '中南米'
 };
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
@@ -140,7 +140,7 @@ export default async function ContinentPage(props: PageProps) {
             <div className="container mx-auto max-w-7xl py-10 px-4 min-h-[100dvh]">
                 {/* Breadcrumbs */}
                 <div className="text-sm text-muted-foreground mb-6 flex items-center gap-2">
-                    <Link href="/" className="hover:text-primary transition-colors">トップ (Home)</Link>
+                    <Link href="/" className="hover:text-primary transition-colors">トップ</Link>
                     <span>/</span>
                     <span className="text-foreground">{displayName}</span>
                 </div>

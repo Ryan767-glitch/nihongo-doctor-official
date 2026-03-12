@@ -181,7 +181,7 @@ export function ClinicList({ clinics, embassies }: ClinicListProps) {
 
             {/* Country Selector (Sticky) */}
             {countryStats.length > 0 && (
-                <div className="sticky top-20 z-30 bg-background/95 backdrop-blur py-4 border-b border-border/40 -mx-4 px-4 md:mx-0 md:px-0">
+                <div className="py-4 border-b border-border/40 -mx-4 px-4 md:mx-0 md:px-0">
                     <CountrySelector
                         countries={countryStats}
                         onSelect={scrollToCountry}
