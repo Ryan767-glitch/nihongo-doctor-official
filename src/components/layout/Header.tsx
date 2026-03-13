@@ -10,7 +10,7 @@ export function Header() {
 
     return (
         <header className="w-full flex flex-col">
-            <div className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/40 shadow-sm">
+            <div className="fixed inset-x-0 top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/40 shadow-sm">
                 <div className="container mx-auto max-w-7xl flex h-16 items-center px-4">
                     <Link href="/" className="mr-6 flex items-center space-x-2">
                         <span className="font-bold text-xl tracking-tight text-foreground">
@@ -67,6 +67,8 @@ export function Header() {
                     </div>
                 )}
             </div>
+
+            <div className="h-16 shrink-0" />
 
             <div className="border-b border-border/20 bg-muted/20 overflow-x-auto scrollbar-hide">
                 <div className="container mx-auto max-w-7xl px-4 flex items-center justify-start h-10 gap-6 text-sm font-medium text-muted-foreground whitespace-nowrap">
