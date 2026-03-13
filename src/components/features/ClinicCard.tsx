@@ -14,6 +14,9 @@ interface ClinicCardProps {
 
 export function ClinicCard({ clinic, colorTheme, isHighlighted }: ClinicCardProps) {
     const { t, language } = useLanguage();
+    const normalizedHoursDescription = clinic.hoursDescription?.replace(/\s+/g, '');
+    const showsEmergencyHoursLabel =
+        !!normalizedHoursDescription && /24.*救急|救急.*24/.test(normalizedHoursDescription);
 
     const translateCountry = (c: string) => {
         if (language === 'ja') {
@@ -115,7 +118,7 @@ export function ClinicCard({ clinic, colorTheme, isHighlighted }: ClinicCardProp
                                     {t('診療時間外', 'Closed')}
                                 </span>
                             )
-                        ) : clinic.hoursDescription ? (
+                        ) : clinic.hoursDescription && !(clinic.emergencyAvailable && showsEmergencyHoursLabel) ? (
                             <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-600 truncate max-w-[200px]" title={clinic.hoursDescription}>
                                 <Clock className="w-3 h-3" />
                                 {clinic.hoursDescription}
