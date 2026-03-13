@@ -145,7 +145,7 @@ export default async function ContinentPage(props: PageProps) {
                     <span className="text-foreground">{displayName}</span>
                 </div>
 
-                <ContinentHeader continentName={continentName} />
+                <ContinentHeader displayName={displayName} />
 
                 {/* Stats Summary */}
                 <div className="mb-8 p-4 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between flex-wrap gap-4">
