@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Building2, Map, Landmark, TreePalm, Sun, Tent } from "lucide-react";
 import { GlobalSearch } from "@/components/features/GlobalSearch";
 import clinicsData from "@/data/clinics.json";
+
+export const metadata: Metadata = {
+  title: "にほんごドクター.com | 海外で日本語が通じる病院・クリニック検索",
+  description:
+    "海外在住・旅行中の日本人のための、世界各国の日本語対応病院・クリニック検索サイト。アジア・北米・ヨーロッパ・オセアニアなど35カ国以上、260件超の医療機関を掲載。",
+};
 
 function getContinentStats(continentName: string) {
   const filtered = clinicsData.filter((c) => c.continent === continentName);
