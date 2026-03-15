@@ -11,7 +11,7 @@ const countryCodeMap: Record<string, string> = {
     'Brazil': 'br', 'Peru': 'pe', 'Italy': 'it', 'Netherlands': 'nl', 'Austria': 'at',
     'Switzerland': 'ch', 'Spain': 'es', 'Germany': 'de', 'France': 'fr', 'Belgium': 'be',
     'UK': 'gb', 'Australia': 'au', 'New Zealand': 'nz', 'UAE': 'ae', 'Egypt': 'eg',
-    'Ethiopia': 'et', 'Kenya': 'ke', 'Tanzania': 'tz', 'Nigeria': 'ng', 'South Africa': 'za'
+    'Ethiopia': 'et', 'Kenya': 'ke', 'Tanzania': 'tz', 'Nigeria': 'ng', 'South Africa': 'za',
 };
 
 export default function EmbassyPage() {
@@ -21,15 +21,17 @@ export default function EmbassyPage() {
         <div className="container mx-auto px-4 py-8 max-w-5xl">
             <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6 sm:p-10 mb-8">
                 <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 border-b pb-4">
-                    大使館・領事館情報 / Embassy Information
+                    大使館・領事館情報
                 </h1>
 
                 <p className="text-gray-600 mb-8 leading-relaxed">
-                    パスポートの紛失、重大な犯罪被害、その他緊急事態が発生した場合は、速やかに以下に記載された最寄りの日本国大使館または総領事館にご連絡ください。<br className="hidden sm:block" />
-                    <span className="text-sm bg-yellow-50 text-yellow-800 px-2 py-1 rounded inline-block mt-2 border border-yellow-200">※休館日や夜間の緊急連絡先については、各公館の公式ウェブサイトをご確認ください。</span>
+                    パスポートの紛失や事故、事件、災害などの緊急時に確認しやすいよう、各国の日本大使館・総領事館の情報をまとめています。
+                    <br className="hidden sm:block" />
+                    <span className="text-sm bg-yellow-50 text-yellow-800 px-2 py-1 rounded inline-block mt-2 border border-yellow-200">
+                        最新情報や受付時間は、必ず各公館の公式サイトでご確認ください。
+                    </span>
                 </p>
 
-                {/* 地域タブ */}
                 <div className="flex overflow-x-auto hide-scrollbar border-b border-gray-200 mb-8 pb-[1px]">
                     <div className="flex space-x-6 px-2">
                         {embassies.map((region) => (
@@ -50,9 +52,8 @@ export default function EmbassyPage() {
                     </div>
                 </div>
 
-                {/* 国別カード一覧 */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {embassies.find(r => r.region === activeTab)?.countries.map((country) => (
+                    {embassies.find((region) => region.region === activeTab)?.countries.map((country) => (
                         <div key={country.name} className="border border-gray-200 rounded-xl p-5 hover:shadow-md transition-shadow bg-gradient-to-br from-white to-gray-50/50">
                             <div className="flex items-center gap-3 mb-5 border-b pb-3">
                                 {countryCodeMap[country.nameEn] ? (
@@ -109,7 +110,7 @@ export default function EmbassyPage() {
                                             <Globe className="w-4 h-4 group-hover:scale-110 transition-transform" />
                                             <span className="text-xs font-bold">公式サイト</span>
                                         </div>
-                                        <span className="text-[10px] text-gray-500 truncate w-full text-center px-1">外部サイトへ</span>
+                                        <span className="text-[10px] text-gray-500 truncate w-full text-center px-1">詳細を見る</span>
                                     </a>
                                 </div>
                             </div>

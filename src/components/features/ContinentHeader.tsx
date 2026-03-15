@@ -13,7 +13,7 @@ export function ContinentHeader({ displayName }: ContinentHeaderProps) {
                 <Globe className="w-8 h-8 text-primary" />
                 {displayName}
             </h1>
-            <p className="text-muted-foreground mt-2">{displayName}の日本人向け医療情報</p>
+            <p className="text-muted-foreground mt-2">{displayName}で日本語が通じる医療機関を掲載しています</p>
         </div>
     );
 }

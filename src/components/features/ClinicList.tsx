@@ -248,7 +248,7 @@ export function ClinicList({ clinics, embassies }: ClinicListProps) {
                                         <>
                                             {hasSubregions && (
                                                 <div className="flex flex-wrap gap-2 mb-8 bg-slate-50/50 p-3 rounded-xl border border-border/40">
-                                                    <span className="text-xs text-muted-foreground mr-2 py-1.5 px-1">{t('地域・州:', 'Regions:')}</span>
+                                                    <span className="text-xs text-muted-foreground mr-2 py-1.5 px-1">{t('地域:', 'Regions:')}</span>
                                                     {cities.map(city => (
                                                         <button
                                                             key={city}

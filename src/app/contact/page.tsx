@@ -56,16 +56,16 @@ export default function ContactPage() {
         <div className="container mx-auto px-4 py-8 max-w-3xl">
             <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6 sm:p-10">
                 <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 border-b pb-4">
-                    お問い合わせ / Contact Us
+                    お問い合わせ
                 </h1>
 
                 <p className="text-gray-600 mb-8">
-                    掲載情報の修正依頼、新規掲載のご希望、医療機関からのお問い合わせ、その他ご質問をお寄せください。
+                    掲載情報の修正、新規掲載のご相談、医療機関からのお問い合わせなどがありましたら、こちらのフォームからご連絡ください。
                 </p>
 
                 {submitStatus === 'success' && (
                     <div className="bg-green-50 border border-green-200 text-green-800 rounded-md p-4 mb-8">
-                        <p className="font-medium">お問い合わせを受け付けました。内容を確認のうえ、順次ご連絡いたします。</p>
+                        <p className="font-medium">お問い合わせを受け付けました。内容を確認のうえ、順次ご返信いたします。</p>
                     </div>
                 )}
 
@@ -111,7 +111,7 @@ export default function ContactPage() {
 
                     <div>
                         <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-1">
-                            カテゴリ <span className="text-red-500">*</span>
+                            お問い合わせ内容 <span className="text-red-500">*</span>
                         </label>
                         <select
                             id="category"
@@ -121,9 +121,9 @@ export default function ContactPage() {
                         >
                             <option value="">選択してください</option>
                             <option value="掲載情報の修正依頼">掲載情報の修正依頼</option>
-                            <option value="新規掲載の依頼">新規掲載の依頼</option>
+                            <option value="新規医療機関の掲載依頼">新規医療機関の掲載依頼</option>
                             <option value="医療機関からのお問い合わせ">医療機関からのお問い合わせ</option>
-                            <option value="バグ・不具合の報告">バグ・不具合の報告</option>
+                            <option value="バグ・表示不具合の報告">バグ・表示不具合の報告</option>
                             <option value="その他">その他</option>
                         </select>
                     </div>
@@ -139,7 +139,7 @@ export default function ContactPage() {
                             maxLength={1000}
                             rows={6}
                             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors resize-y"
-                            placeholder="お問い合わせ内容をご記入ください（最大1000文字）"
+                            placeholder="お問い合わせ内容をご記入ください。最大1000文字まで入力できます。"
                             onChange={(e) => setMessageLength(e.target.value.length)}
                         />
                         <div className="text-right text-xs text-gray-500 mt-1">
@@ -171,7 +171,7 @@ export default function ContactPage() {
                                 送信中...
                             </>
                         ) : (
-                            '送信する / Submit'
+                            '送信する'
                         )}
                     </button>
                 </form>
