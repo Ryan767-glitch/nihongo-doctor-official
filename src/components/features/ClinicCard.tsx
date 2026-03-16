@@ -235,7 +235,7 @@ export function ClinicCard({ clinic, colorTheme, isHighlighted }: ClinicCardProp
                             "alternateName": secondaryName,
                             "address": clinic.address,
                             "telephone": clinic.phone,
-                            "url": clinic.website,
+                            ...(clinic.website ? { "url": clinic.website } : {}),
                             "publicAccess": true,
                             "isAccessibleForFree": false,
                             "availableService": {
