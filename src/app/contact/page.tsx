@@ -90,7 +90,7 @@ export default function ContactPage() {
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="sr-only" aria-hidden="true">
+                    <div hidden aria-hidden="true">
                         <label htmlFor="bot-field">Leave this field empty</label>
                         <input id="bot-field" name="bot-field" tabIndex={-1} autoComplete="off" />
                     </div>
