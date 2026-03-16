@@ -44,5 +44,5 @@ export interface Embassy {
     address: string;
     phone: string;
     website: string;
-    alertFeedUrl: string;
+    alertFeedUrl?: string;
 }

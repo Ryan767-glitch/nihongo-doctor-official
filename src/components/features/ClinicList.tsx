@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import { Clinic, Embassy } from '@/types';
 import { ClinicCard } from '@/components/features/ClinicCard';
-import { Building, CreditCard, Ambulance, Info, Clock, AlertTriangle } from 'lucide-react';
+import { Building, CreditCard, Ambulance, Info, Clock } from 'lucide-react';
 import { checkIsOpen, stringToColor } from '@/lib/utils';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { COUNTRY_MAP, COUNTRY_JA_MAP } from '@/lib/constants';
@@ -226,12 +226,6 @@ export function ClinicList({ clinics, embassies }: ClinicListProps) {
                                                     </a>
                                                     {embassy.website && (
                                                         <a href={embassy.website} target="_blank" rel="noopener noreferrer" className="hover:text-amber-700 transition-colors">{t('公式サイト', 'Website')}</a>
-                                                    )}
-                                                    {embassy.alertFeedUrl && (
-                                                        <a href={embassy.alertFeedUrl} target="_blank" rel="noopener noreferrer" className="hover:text-amber-700 flex items-center gap-1 transition-colors">
-                                                            <AlertTriangle className="w-3 h-3" />
-                                                            {t('安全情報', 'Safety Alert')}
-                                                        </a>
                                                     )}
                                                 </div>
                                             </div>
