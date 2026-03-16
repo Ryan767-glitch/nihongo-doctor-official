@@ -3,9 +3,19 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 
+type SubmitStatus = 'idle' | 'success' | 'error';
+
+const categories = [
+    '掲載情報の修正依頼',
+    '新規掲載のご相談',
+    '医療機関からのお問い合わせ',
+    '広告・提携について',
+    'その他',
+];
+
 export default function ContactPage() {
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+    const [submitStatus, setSubmitStatus] = useState<SubmitStatus>('idle');
     const [messageLength, setMessageLength] = useState(0);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -22,18 +32,17 @@ export default function ContactPage() {
         }
 
         try {
-            const response = await fetch('https://formsubmit.co/ajax/urutorayoyo@gmail.com', {
+            const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     Accept: 'application/json',
                 },
                 body: JSON.stringify({
-                    お名前: formData.get('name'),
-                    メールアドレス: formData.get('_replyto'),
-                    カテゴリ: formData.get('category'),
-                    メッセージ: formData.get('message'),
-                    _subject: `にほんごドクター.com お問い合わせ: ${formData.get('category')}`,
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    category: formData.get('category'),
+                    message: formData.get('message'),
                 }),
             });
 
@@ -60,18 +69,23 @@ export default function ContactPage() {
                 </h1>
 
                 <p className="text-gray-600 mb-8">
-                    掲載情報の修正、新規掲載のご相談、医療機関からのお問い合わせなどがありましたら、こちらのフォームからご連絡ください。
+                    掲載情報の修正、新規掲載のご相談、医療機関からのお問い合わせなどがありましたら、
+                    こちらのフォームからご連絡ください。
                 </p>
 
                 {submitStatus === 'success' && (
                     <div className="bg-green-50 border border-green-200 text-green-800 rounded-md p-4 mb-8">
-                        <p className="font-medium">お問い合わせを受け付けました。内容を確認のうえ、順次ご返信いたします。</p>
+                        <p className="font-medium">
+                            お問い合わせを受け付けました。内容を確認のうえ、順次ご返信します。
+                        </p>
                     </div>
                 )}
 
                 {submitStatus === 'error' && (
                     <div className="bg-red-50 border border-red-200 text-red-800 rounded-md p-4 mb-8">
-                        <p className="font-medium">送信に失敗しました。時間をおいて再度お試しください。</p>
+                        <p className="font-medium">
+                            送信に失敗しました。時間をおいて再度お試しください。
+                        </p>
                     </div>
                 )}
 
@@ -102,7 +116,7 @@ export default function ContactPage() {
                         <input
                             type="email"
                             id="email"
-                            name="_replyto"
+                            name="email"
                             required
                             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
                             placeholder="your@email.com"
@@ -111,20 +125,23 @@ export default function ContactPage() {
 
                     <div>
                         <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-1">
-                            お問い合わせ内容 <span className="text-red-500">*</span>
+                            お問い合わせ種別 <span className="text-red-500">*</span>
                         </label>
                         <select
                             id="category"
                             name="category"
                             required
                             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors bg-white"
+                            defaultValue=""
                         >
-                            <option value="">選択してください</option>
-                            <option value="掲載情報の修正依頼">掲載情報の修正依頼</option>
-                            <option value="新規医療機関の掲載依頼">新規医療機関の掲載依頼</option>
-                            <option value="医療機関からのお問い合わせ">医療機関からのお問い合わせ</option>
-                            <option value="バグ・表示不具合の報告">バグ・表示不具合の報告</option>
-                            <option value="その他">その他</option>
+                            <option value="" disabled>
+                                選択してください
+                            </option>
+                            {categories.map((category) => (
+                                <option key={category} value={category}>
+                                    {category}
+                                </option>
+                            ))}
                         </select>
                     </div>
 
@@ -149,7 +166,7 @@ export default function ContactPage() {
 
                     <div className="bg-gray-50 p-4 rounded-md text-sm text-gray-600 mb-6">
                         個人情報の取り扱いについては
-                        <Link href="/privacy" className="text-blue-600 hover:underline">
+                        <Link href="/privacy" className="text-blue-600 hover:underline ml-1">
                             プライバシーポリシー
                         </Link>
                         をご確認ください。
