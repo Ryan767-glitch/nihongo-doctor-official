@@ -9,9 +9,9 @@ export default function PhrasesPage() {
     const [openCategories, setOpenCategories] = useState<string[]>(['emergency', 'reception']);
 
     const toggleCategory = (categoryId: string) => {
-        setOpenCategories(prev =>
+        setOpenCategories((prev) =>
             prev.includes(categoryId)
-                ? prev.filter(id => id !== categoryId)
+                ? prev.filter((id) => id !== categoryId)
                 : [...prev, categoryId]
         );
     };
@@ -23,7 +23,6 @@ export default function PhrasesPage() {
                     医療フレーズ集
                 </h1>
 
-                {/* 言語タブ */}
                 <div className="flex overflow-x-auto hide-scrollbar border-b border-gray-200 mb-8 pb-[1px]">
                     <div className="flex space-x-2 px-1">
                         {languages.map((lang) => (
@@ -44,7 +43,6 @@ export default function PhrasesPage() {
                     </div>
                 </div>
 
-                {/* フレーズカテゴリ（アコーディオン） */}
                 <div className="space-y-4">
                     {phraseCategories.map((category) => {
                         const isOpen = openCategories.includes(category.id);
@@ -70,12 +68,12 @@ export default function PhrasesPage() {
                                         <div className="hidden sm:grid sm:grid-cols-12 gap-4 px-4 py-2 bg-gray-50 text-xs font-bold text-gray-500 uppercase rounded-md mb-2">
                                             <div className="col-span-4">日本語</div>
                                             <div className="col-span-4">現地語</div>
-                                            <div className="col-span-4">発音ガイド</div>
+                                            <div className="col-span-4">読み方</div>
                                         </div>
 
                                         <ul className="divide-y divide-gray-100">
                                             {category.phrases.map((phrase, idx) => {
-                                                const translation = (phrase.translations as Record<string, { text: string, pron: string }>)?.[activeLang] || { text: 'N/A', pron: 'N/A' };
+                                                const translation = (phrase.translations as Record<string, { text: string; pron: string }>)?.[activeLang] || { text: 'N/A', pron: 'N/A' };
                                                 return (
                                                     <li key={idx} className="p-4 hover:bg-blue-50/30 transition-colors">
                                                         <div className="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-4 items-start sm:items-center">

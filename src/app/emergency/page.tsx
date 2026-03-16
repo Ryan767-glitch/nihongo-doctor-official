@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { PhoneCall } from 'lucide-react';
+import { PhoneCall, AlertTriangle, MessageSquareText } from 'lucide-react';
 import { emergencies, steps } from './data';
 
 export default function EmergencyPage() {
@@ -12,14 +12,13 @@ export default function EmergencyPage() {
         <div className="container mx-auto px-4 py-8 max-w-4xl">
             <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6 sm:p-10 mb-8">
                 <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-8 border-b pb-4">
-                    緊急時ガイド / Emergency Guide
+                    緊急時ガイド
                 </h1>
 
-                {/* セクション1: 緊急時の行動フロー */}
                 <section className="mb-12">
                     <h2 className="text-xl font-bold text-gray-800 mb-6 flex items-center">
                         <span className="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center mr-3 text-sm">1</span>
-                        緊急時の行動フロー
+                        緊急時の初動フロー
                     </h2>
 
                     <div className="space-y-4">
@@ -42,7 +41,7 @@ export default function EmergencyPage() {
                                                 href={step.link.href}
                                                 className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline bg-white px-3 py-1.5 rounded-md border border-gray-200 shadow-sm transition-all"
                                             >
-                                                {step.link.label} →
+                                                {step.link.label}
                                             </Link>
                                         )}
                                     </div>
@@ -52,14 +51,12 @@ export default function EmergencyPage() {
                     </div>
                 </section>
 
-                {/* セクション2: 各国の緊急電話番号一覧 */}
                 <section>
                     <h2 className="text-xl font-bold text-gray-800 mb-6 flex items-center">
                         <span className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mr-3 text-sm">2</span>
-                        各国の緊急電話番号一覧
+                        国・地域別の緊急連絡先
                     </h2>
 
-                    {/* 地域タブ */}
                     <div className="flex overflow-x-auto hide-scrollbar border-b border-gray-200 mb-6 pb-[1px]">
                         <div className="flex space-x-8 px-2">
                             {emergencies.map((region) => (
@@ -80,9 +77,8 @@ export default function EmergencyPage() {
                         </div>
                     </div>
 
-                    {/* 国別カード一覧 */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {emergencies.find(r => r.region === activeTab)?.countries.map((country) => (
+                        {emergencies.find((region) => region.region === activeTab)?.countries.map((country) => (
                             <div key={country.name} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow bg-white">
                                 <div className="flex items-center gap-2 mb-4 border-b pb-2">
                                     <span className="text-2xl">{country.flag}</span>
@@ -109,8 +105,28 @@ export default function EmergencyPage() {
                             </div>
                         ))}
                     </div>
-
                 </section>
+
+                <div className="grid sm:grid-cols-2 gap-4 mt-12 pt-8 border-t border-gray-100">
+                    <Link href="/insurance" className="flex items-center justify-between p-4 bg-gray-50 hover:bg-red-50 hover:text-red-700 hover:border-red-200 rounded-lg border border-gray-200 transition-colors group">
+                        <div className="flex items-center gap-3">
+                            <div className="p-2 bg-white rounded-md shadow-sm group-hover:bg-red-100 transition-colors">
+                                <AlertTriangle className="w-5 h-5 text-gray-700 group-hover:text-red-700" />
+                            </div>
+                            <span className="font-bold text-gray-700 group-hover:text-red-700">海外保険ガイド</span>
+                        </div>
+                        <span className="text-gray-400 group-hover:text-red-500">›</span>
+                    </Link>
+                    <Link href="/phrases" className="flex items-center justify-between p-4 bg-gray-50 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200 rounded-lg border border-gray-200 transition-colors group">
+                        <div className="flex items-center gap-3">
+                            <div className="p-2 bg-white rounded-md shadow-sm group-hover:bg-blue-100 transition-colors">
+                                <MessageSquareText className="w-5 h-5 text-gray-700 group-hover:text-blue-700" />
+                            </div>
+                            <span className="font-bold text-gray-700 group-hover:text-blue-700">医療フレーズ集</span>
+                        </div>
+                        <span className="text-gray-400 group-hover:text-blue-500">›</span>
+                    </Link>
+                </div>
             </div>
         </div>
     );

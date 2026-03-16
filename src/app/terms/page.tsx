@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
     title: '利用規約 | にほんごドクター.com',
-    description: 'にほんごドクター.comの利用規約',
+    description: 'にほんごドクター.com の利用規約',
 };
 
 export default function TermsPage() {
@@ -11,47 +11,52 @@ export default function TermsPage() {
         <div className="container mx-auto px-4 py-8 max-w-4xl">
             <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6 sm:p-10">
                 <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-8 border-b pb-4">
-                    利用規約 / Terms of Use
+                    利用規約
                 </h1>
 
                 <div className="prose prose-gray max-w-none prose-headings:text-gray-800 prose-p:text-gray-600 prose-li:text-gray-600">
                     <p className="font-bold text-gray-800 mb-8">にほんごドクター.com 利用規約</p>
 
-                    <h2 className="text-xl font-bold mt-8 mb-4">第1条（サービスの目的）</h2>
+                    <h2 className="text-xl font-bold mt-8 mb-4">第1条 本サービスの目的</h2>
                     <p>
-                        にほんごドクター.com（以下「本サイト」）は、海外在住・渡航中の日本語話者に対し、日本語での対応が可能な医療機関の情報を提供することを目的とするウェブサイトです。
+                        にほんごドクター.com は、海外で日本語対応の医療機関を探すための情報提供を目的としたサービスです。
+                        利用者は、本規約に同意のうえ本サービスを利用するものとします。
                     </p>
 
-                    <h2 className="text-xl font-bold mt-8 mb-4">第2条（情報の正確性・免責事項）</h2>
+                    <h2 className="text-xl font-bold mt-8 mb-4">第2条 情報の利用</h2>
                     <ol className="list-decimal pl-5 space-y-2">
-                        <li>本サイトに掲載された情報は、外務省『世界の医療事情』等の公開資料を基に作成していますが、その正確性、最新性、完全性を保証するものではありません。</li>
-                        <li>診療内容、対応言語、営業時間、電話番号等は予告なく変更される可能性があります。受診前に必ず各医療機関へ直接ご確認ください。</li>
-                        <li>本サイトの情報に基づく行動によって生じたいかなる損害についても、運営者は一切の責任を負いません。</li>
-                        <li>本サイトは医療行為の提供、医療機関の推奨・保証を行うものではありません。</li>
+                        <li>本サービスの掲載情報は、受診先の検討を補助する目的で提供しています。</li>
+                        <li>掲載情報の正確性、完全性、最新性について保証するものではありません。</li>
+                        <li>医療判断、診断、治療、緊急対応は、必ず医療機関または公的機関へ直接ご確認ください。</li>
+                        <li>利用者は自己の責任において本サービスを利用するものとします。</li>
                     </ol>
 
-                    <h2 className="text-xl font-bold mt-8 mb-4">第3条（著作権）</h2>
+                    <h2 className="text-xl font-bold mt-8 mb-4">第3条 禁止事項</h2>
                     <p>
-                        本サイトに掲載されたコンテンツ（テキスト、デザイン、画像等）の著作権は運営者に帰属します。無断転載・複製を禁じます。
+                        法令または公序良俗に反する行為、本サービスの運営を妨げる行為、
+                        他者の権利を侵害する行為、その他当サイトが不適切と判断する行為を禁止します。
                     </p>
 
-                    <h2 className="text-xl font-bold mt-8 mb-4">第4条（個人情報の取り扱い）</h2>
+                    <h2 className="text-xl font-bold mt-8 mb-4">第4条 個人情報の取扱い</h2>
                     <p>
-                        本サイトのお問い合わせフォーム等にて取得する個人情報の取り扱いについては、プライバシーポリシー（/privacy）をご参照ください。
+                        お問い合わせ等で取得する個人情報の取扱いについては、
+                        プライバシーポリシーに従うものとします。
                     </p>
 
-                    <h2 className="text-xl font-bold mt-8 mb-4">第5条（禁止事項）</h2>
+                    <h2 className="text-xl font-bold mt-8 mb-4">第5条 サービスの変更・停止</h2>
                     <p>
-                        利用者は、本サイトの情報を商業目的で無断利用すること、虚偽の情報を送信すること、その他法令に反する行為を行ってはなりません。
+                        当サイトは、必要に応じて本サービスの内容変更、停止、終了を行うことがあります。
+                        これにより生じた損害について、当サイトは責任を負いません。
                     </p>
 
-                    <h2 className="text-xl font-bold mt-8 mb-4">第6条（規約の変更）</h2>
+                    <h2 className="text-xl font-bold mt-8 mb-4">第6条 規約の改定</h2>
                     <p>
-                        本規約は、運営者の判断により予告なく変更される場合があります。変更後の規約は本ページに掲載した時点で効力を生じます。
+                        本規約は、必要に応じて予告なく改定する場合があります。
+                        改定後の内容は、本ページに掲載した時点で効力を生じます。
                     </p>
 
                     <div className="mt-12 pt-6 border-t text-sm text-gray-500 text-right">
-                        最終更新日: 2026年2月24日
+                        最終更新日: 2026年3月16日
                     </div>
                 </div>
             </div>
