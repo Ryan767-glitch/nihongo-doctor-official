@@ -1,7 +1,6 @@
 "use client";
 
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Globe } from "lucide-react";
 
 export function LanguageSwitcher() {
     const { language } = useLanguage();
@@ -13,7 +12,6 @@ export function LanguageSwitcher() {
             aria-label="Switch Language (Coming Soon)"
             disabled
         >
-            <Globe className="w-4 h-4 text-primary" />
             <span>{language === 'ja' ? 'English' : '日本語'}</span>
         </button>
     );

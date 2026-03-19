@@ -4,7 +4,7 @@ import * as React from "react";
 import { Command } from "cmdk";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import { Search, MapPin, Building2, Globe } from "lucide-react";
+import { Search, MapPin, Building2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Clinic } from "@/types";
 import clinicsData from "@/data/clinics.json";

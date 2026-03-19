@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { PhoneCall, MapPin, Globe, Building } from 'lucide-react';
+import { PhoneCall, MapPin, Building } from 'lucide-react';
 import { embassies } from './data';
 
 const countryCodeMap: Record<string, string> = {
@@ -107,7 +107,6 @@ export default function EmbassyPage() {
                                         className="flex flex-col items-center justify-center p-3 rounded-lg bg-gray-50 hover:bg-gray-100 text-gray-700 transition-colors border border-gray-200 group"
                                     >
                                         <div className="flex items-center gap-2 mb-1">
-                                            <Globe className="w-4 h-4 group-hover:scale-110 transition-transform" />
                                             <span className="text-xs font-bold">公式サイト</span>
                                         </div>
                                         <span className="text-[10px] text-gray-500 truncate w-full text-center px-1">詳細を見る</span>

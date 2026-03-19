@@ -1,17 +1,17 @@
 "use client";
 
 import Link from 'next/link';
-import { Globe, Map, Building2 } from 'lucide-react';
+import { Map, Building2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const continents = [
-    { name: 'Asia', ja: 'アジア', slug: 'asia', icon: Globe, color: 'bg-blue-50 text-blue-600' },
+    { name: 'Asia', ja: 'アジア', slug: 'asia', icon: Map, color: 'bg-blue-50 text-blue-600' },
     { name: 'North America', ja: '北米', slug: 'north-america', icon: Map, color: 'bg-green-50 text-green-600' },
     { name: 'Europe', ja: 'ヨーロッパ', slug: 'europe', icon: Building2, color: 'bg-indigo-50 text-indigo-600' },
-    { name: 'Oceania', ja: 'オセアニア', slug: 'oceania', icon: Globe, color: 'bg-orange-50 text-orange-600' },
+    { name: 'Oceania', ja: 'オセアニア', slug: 'oceania', icon: Map, color: 'bg-orange-50 text-orange-600' },
     { name: 'Africa', ja: 'アフリカ', slug: 'africa', icon: Map, color: 'bg-yellow-50 text-yellow-600' },
-    { name: 'South America', ja: '南米', slug: 'south-america', icon: Globe, color: 'bg-emerald-50 text-emerald-600' },
+    { name: 'South America', ja: '南米', slug: 'south-america', icon: Map, color: 'bg-emerald-50 text-emerald-600' },
 ];
 
 export function ContinentSelector() {

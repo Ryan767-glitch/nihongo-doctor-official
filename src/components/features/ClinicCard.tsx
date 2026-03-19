@@ -1,7 +1,7 @@
 "use client";
 
 import { Clinic } from '@/types';
-import { MapPin, Phone, Clock, CreditCard, Stethoscope, AlertCircle, Calendar, ExternalLink, Ambulance, Info, Map, Globe } from 'lucide-react';
+import { MapPin, Phone, Clock, CreditCard, Stethoscope, AlertCircle, Calendar, ExternalLink, Ambulance, Info, Map } from 'lucide-react';
 import { checkIsOpen } from '@/lib/utils';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { COUNTRY_MAP, COUNTRY_JA_MAP, SPECIALTY_MAP, CITY_MAP } from '@/lib/constants';
@@ -267,7 +267,6 @@ export function ClinicCard({ clinic, colorTheme, isHighlighted }: ClinicCardProp
                         className="flex-1 inline-flex justify-center items-center gap-1.5 bg-blue-50 text-blue-700 border border-blue-100 py-3 rounded-xl text-sm font-semibold hover:bg-blue-100 transition-all shadow-sm active:scale-[0.98] min-h-[48px]"
                         aria-label={t('公式サイト', 'Website')}
                     >
-                        <Globe className="w-4 h-4" />
                         {t('WEB', 'Web')}
                     </a>
                 )}
