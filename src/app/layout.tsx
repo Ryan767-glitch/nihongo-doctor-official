@@ -4,12 +4,18 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Providers } from "@/components/layout/Providers";
+import clinicsData from "@/data/clinics.json";
+import { filterJapaneseCompatibleClinics } from "@/lib/clinic-support";
+import { Clinic } from "@/types";
 
 const inter = Inter({ subsets: ["latin"] });
+const publishedClinics = filterJapaneseCompatibleClinics(clinicsData as Clinic[]);
+const totalCount = publishedClinics.length;
+const totalCountries = new Set(publishedClinics.map((clinic) => clinic.country)).size;
 
 const siteTitle = "にほんごドクター.com | 海外で日本語が通じる病院・クリニック検索";
 const siteDescription =
-  "海外在住・旅行中の日本人のための、世界各国の日本語対応病院・クリニック検索サイト。アジア・北米・ヨーロッパ・オセアニアなど35カ国以上、260件超の医療機関を掲載。";
+  `海外在住・旅行中の日本人のための、世界各国の日本語対応病院・クリニック検索サイト。アジア・北米・ヨーロッパ・オセアニアなど${totalCountries}カ国以上、${totalCount}件超の医療機関を掲載。`;
 const siteUrl = "https://nihongo-doctor.com";
 const iconVersion = "20260322";
 
