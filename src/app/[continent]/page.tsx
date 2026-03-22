@@ -6,8 +6,9 @@ import { ContinentHeader } from '@/components/features/ContinentHeader';
 import { Clinic, Embassy } from '@/types';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import { filterJapaneseCompatibleClinics } from '@/lib/clinic-support';
 
-const allClinics = clinics as Clinic[];
+const allClinics = filterJapaneseCompatibleClinics(clinics as Clinic[]);
 const allEmbassies = embassies as Embassy[];
 
 interface PageProps {

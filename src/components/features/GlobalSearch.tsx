@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { Clinic } from "@/types";
 import clinicsData from "@/data/clinics.json";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { filterJapaneseCompatibleClinics } from "@/lib/clinic-support";
 
 interface GlobalSearchProps {
     variant?: 'default' | 'hero' | 'icon' | 'modal';
@@ -22,7 +23,10 @@ export function GlobalSearch({ variant = 'default' }: GlobalSearchProps) {
     const { t } = useLanguage();
 
     // Load data - in a real app ensuring this is memoized or loaded efficiently
-    const clinics = clinicsData as Clinic[];
+    const clinics = React.useMemo(
+        () => filterJapaneseCompatibleClinics(clinicsData as Clinic[]),
+        []
+    );
 
     React.useEffect(() => {
         setMounted(true);
