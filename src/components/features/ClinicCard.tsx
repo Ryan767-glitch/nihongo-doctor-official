@@ -1,10 +1,11 @@
 "use client";
 
 import { Clinic } from '@/types';
-import { MapPin, Phone, Clock, CreditCard, Stethoscope, AlertCircle, Calendar, ExternalLink, Ambulance, Info, Map } from 'lucide-react';
+import { MapPin, Phone, Clock, CreditCard, ExternalLink, Ambulance, Info, Map } from 'lucide-react';
 import { checkIsOpen } from '@/lib/utils';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { COUNTRY_MAP, COUNTRY_JA_MAP, SPECIALTY_MAP, CITY_MAP } from '@/lib/constants';
+import { getHoursReviewState, hasVerifiedOfficialHours } from '@/lib/clinic-hours';
 
 interface ClinicCardProps {
     clinic: Clinic;
@@ -72,7 +73,9 @@ export function ClinicCard({ clinic, colorTheme, isHighlighted }: ClinicCardProp
         else if (clinic.nameJa !== primaryName) secondaryName = clinic.nameJa;
     }
 
-    const isOpen = checkIsOpen(clinic.openingHours);
+    const isOpen = checkIsOpen(clinic.openingHours, clinic.timeZone);
+    const reviewState = getHoursReviewState(clinic);
+    const hasVerifiedHours = hasVerifiedOfficialHours(clinic);
 
     const getJapaneseSupportSummary = (details?: string) => {
         if (!details) return null;
@@ -109,15 +112,29 @@ export function ClinicCard({ clinic, colorTheme, isHighlighted }: ClinicCardProp
 
                         {clinic.openingHours ? (
                             isOpen ? (
-                                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">
+                                <span
+                                    className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700"
+                                    title={hasVerifiedHours && clinic.hoursVerifiedAt ? `${t('公式サイト確認日', 'Verified')}: ${clinic.hoursVerifiedAt}` : undefined}
+                                >
                                     <span className="w-2 h-2 rounded-full bg-green-600 animate-pulse" />
                                     {t('診療中', 'Open Now')}
                                 </span>
                             ) : (
-                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-500">
+                                <span
+                                    className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-500"
+                                    title={hasVerifiedHours && clinic.hoursVerifiedAt ? `${t('公式サイト確認日', 'Verified')}: ${clinic.hoursVerifiedAt}` : undefined}
+                                >
                                     {t('診療時間外', 'Closed')}
                                 </span>
                             )
+                        ) : reviewState ? (
+                            <span
+                                className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-50 text-amber-700 truncate max-w-[220px]"
+                                title={reviewState.verifiedAt ? `${t('最終確認', 'Last checked')}: ${reviewState.verifiedAt}` : clinic.hoursDescription}
+                            >
+                                <Clock className="w-3 h-3" />
+                                {t('営業時間要確認', 'Hours need review')}
+                            </span>
                         ) : clinic.hoursDescription && !(clinic.emergencyAvailable && showsEmergencyHoursLabel) ? (
                             <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-600 truncate max-w-[200px]" title={clinic.hoursDescription}>
                                 <Clock className="w-3 h-3" />

@@ -83,24 +83,73 @@ export function getCountryFlag(countryName: string): string {
 }
 // ... imports
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function checkIsOpen(hours: any): boolean {
-    if (!hours) return false;
-    // ... (keep existing logic or simplified logic)
+function getNowInTimeZone(timeZone?: string) {
     const now = new Date();
-    const day = now.toLocaleDateString('en-US', { weekday: 'short' }).toLowerCase();
+    if (!timeZone) {
+        return {
+            day: now.toLocaleDateString('en-US', { weekday: 'short' }).toLowerCase(),
+            hour: now.getHours(),
+            minute: now.getMinutes(),
+        };
+    }
+
+    const formatter = new Intl.DateTimeFormat('en-US', {
+        timeZone,
+        weekday: 'short',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+    });
+
+    const parts = formatter.formatToParts(now);
+    const weekday = parts.find((part) => part.type === 'weekday')?.value.toLowerCase() ?? 'mon';
+    const hour = Number(parts.find((part) => part.type === 'hour')?.value ?? '0');
+    const minute = Number(parts.find((part) => part.type === 'minute')?.value ?? '0');
+
+    return { day: weekday, hour, minute };
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function checkIsOpen(hours: any, timeZone?: string): boolean {
+    if (!hours) return false;
+    const now = getNowInTimeZone(timeZone);
+    const day = now.day;
     const todaysHours = hours[day];
-    if (!todaysHours || todaysHours.length < 2) return false;
+    if (!Array.isArray(todaysHours) || todaysHours.length < 2) return false;
 
-    const [start, end] = todaysHours;
-    const [h1, m1] = start.split(':').map(Number);
-    const [h2, m2] = end.split(':').map(Number);
+    const currentMinutes = now.hour * 60 + now.minute;
 
-    const currentLink = now.getHours() * 60 + now.getMinutes();
-    const startMins = h1 * 60 + m1;
-    const endMins = h2 * 60 + m2;
+    for (let index = 0; index < todaysHours.length - 1; index += 2) {
+        const start = todaysHours[index];
+        const end = todaysHours[index + 1];
 
-    return currentLink >= startMins && currentLink < endMins;
+        if (!start || !end) {
+            continue;
+        }
+
+        const [h1, m1] = start.split(':').map(Number);
+        const [h2, m2] = end.split(':').map(Number);
+
+        if ([h1, m1, h2, m2].some((value) => Number.isNaN(value))) {
+            continue;
+        }
+
+        const startMinutes = h1 * 60 + m1;
+        const endMinutes = h2 * 60 + m2;
+
+        if (endMinutes < startMinutes) {
+            if (currentMinutes >= startMinutes || currentMinutes < endMinutes) {
+                return true;
+            }
+            continue;
+        }
+
+        if (currentMinutes >= startMinutes && currentMinutes < endMinutes) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 export function stringToColor(str: string): string {

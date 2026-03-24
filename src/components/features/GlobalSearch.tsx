@@ -10,6 +10,7 @@ import { Clinic } from "@/types";
 import clinicsData from "@/data/clinics.json";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { filterJapaneseCompatibleClinics } from "@/lib/clinic-support";
+import { enrichClinicsWithHoursSync } from "@/lib/clinic-hours";
 
 interface GlobalSearchProps {
     variant?: 'default' | 'hero' | 'icon' | 'modal';
@@ -24,7 +25,7 @@ export function GlobalSearch({ variant = 'default' }: GlobalSearchProps) {
 
     // Load data - in a real app ensuring this is memoized or loaded efficiently
     const clinics = React.useMemo(
-        () => filterJapaneseCompatibleClinics(clinicsData as Clinic[]),
+        () => enrichClinicsWithHoursSync(filterJapaneseCompatibleClinics(clinicsData as Clinic[])),
         []
     );
 

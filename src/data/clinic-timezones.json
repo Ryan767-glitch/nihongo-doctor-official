@@ -1,0 +1,69 @@
+{
+  "defaultByCountry": {
+    "タイ": "Asia/Bangkok",
+    "インドネシア": "Asia/Jakarta",
+    "カンボジア": "Asia/Phnom_Penh",
+    "ラオス": "Asia/Vientiane",
+    "ミャンマー": "Asia/Yangon",
+    "フィリピン": "Asia/Manila",
+    "ベトナム": "Asia/Ho_Chi_Minh",
+    "マレーシア": "Asia/Kuala_Lumpur",
+    "中国": "Asia/Shanghai",
+    "中国（香港）": "Asia/Hong_Kong",
+    "英国": "Europe/London",
+    "フランス": "Europe/Paris",
+    "ドイツ": "Europe/Berlin",
+    "イタリア": "Europe/Rome",
+    "スペイン": "Europe/Madrid",
+    "オランダ": "Europe/Amsterdam",
+    "ベルギー": "Europe/Brussels",
+    "オーストリア": "Europe/Vienna",
+    "スイス": "Europe/Zurich",
+    "UAE": "Asia/Dubai",
+    "エジプト": "Africa/Cairo",
+    "ケニア": "Africa/Nairobi",
+    "タンザニア": "Africa/Dar_es_Salaam",
+    "エチオピア": "Africa/Addis_Ababa",
+    "ナイジェリア": "Africa/Lagos",
+    "南アフリカ": "Africa/Johannesburg",
+    "ニュージーランド": "Pacific/Auckland",
+    "アルゼンチン": "America/Argentina/Buenos_Aires",
+    "チリ": "America/Santiago",
+    "コロンビア": "America/Bogota",
+    "ペルー": "America/Lima"
+  },
+  "cityOverrides": {
+    "United States": {
+      "グアム": "Pacific/Guam",
+      "サイパン": "Pacific/Saipan",
+      "サンフランシスコ/ベイエリア": "America/Los_Angeles",
+      "シカゴ/中西部": "America/Chicago",
+      "ニュージャージー": "America/New_York",
+      "ニューヨーク": "America/New_York",
+      "ハワイ（ホノルル）": "Pacific/Honolulu",
+      "マイアミ/フロリダ": "America/New_York",
+      "ロサンゼルス": "America/Los_Angeles",
+      "ワシントンDC/MD/VA": "America/New_York"
+    },
+    "Canada": {
+      "エドモントン（AB州）": "America/Edmonton",
+      "オタワ（ON州）": "America/Toronto",
+      "カルガリー（AB州）": "America/Edmonton",
+      "トロント（ON州）": "America/Toronto",
+      "バンクーバー（BC州）": "America/Vancouver",
+      "モントリオール（QC州）": "America/Toronto"
+    },
+    "オーストラリア": {
+      "ACT": "Australia/Sydney",
+      "NSW": "Australia/Sydney",
+      "QLD": "Australia/Brisbane",
+      "VIC": "Australia/Melbourne"
+    },
+    "ブラジル": {
+      "クリチバ": "America/Sao_Paulo",
+      "サンパウロ": "America/Sao_Paulo",
+      "ポルトアレグレ": "America/Sao_Paulo",
+      "リオデジャネイロ": "America/Sao_Paulo"
+    }
+  }
+}

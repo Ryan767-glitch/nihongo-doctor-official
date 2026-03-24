@@ -1,0 +1,372 @@
+{
+  "generatedAt": "2026-03-24T05:28:39.109Z",
+  "clinics": {
+    "115": {
+      "openingHours": {
+        "mon": [
+          "09:00",
+          "17:00"
+        ],
+        "tue": [
+          "09:00",
+          "17:00"
+        ],
+        "wed": [
+          "09:00",
+          "17:00"
+        ],
+        "thu": [
+          "09:00",
+          "17:00"
+        ],
+        "fri": [
+          "09:00",
+          "17:00"
+        ],
+        "sat": [
+          "09:00",
+          "15:00"
+        ],
+        "sun": []
+      },
+      "hoursDescription": "月〜金 09:00-17:00 / 土 09:00-15:00 / 日 休診",
+      "status": "verified",
+      "sourceType": "official_website",
+      "sourceUrl": "https://jmedny.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "medium",
+      "timeZone": "America/New_York",
+      "rawSnippet": "診療時間\n\n  月、火、水、木、金  9am – 5pm\n 土  9am – 3pm\n休診日:\n日・祝日\n\n\t\t\t\t\t   \n\n\t\t\t\t\t\t  ホワイト・プレインズ院\n\n\t\t\t\t\t\t  311 North Street, Suite 407\nWhite Plains, NY 10605\n(DAIDOマーケットのそば)\n電話:  212-204-8567\n\n  MAP\n\n  外来診療時間\n\n  火、水、金  9am – 5pm\n 土  9am – 3pm\n\n\t\t\t\t<div class=\"et_pb_module et_pb_blurb et_pb_blurb_"
+    },
+    "118": {
+      "openingHours": {
+        "mon": [
+          "09:00",
+          "17:00"
+        ],
+        "tue": [
+          "09:00",
+          "17:00"
+        ],
+        "wed": [
+          "09:00",
+          "17:00"
+        ],
+        "thu": [
+          "09:00",
+          "17:00"
+        ],
+        "fri": [
+          "09:00",
+          "17:00"
+        ],
+        "sat": [
+          "09:00",
+          "15:00"
+        ],
+        "sun": []
+      },
+      "hoursDescription": "月〜金 09:00-17:00 / 土 09:00-15:00 / 日 休診",
+      "status": "verified",
+      "sourceType": "official_website",
+      "sourceUrl": "https://hibarifamilymedical.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high",
+      "timeZone": "America/New_York"
+    },
+    "120": {
+      "openingHours": {
+        "mon": [
+          "09:00",
+          "12:00",
+          "13:00",
+          "16:00"
+        ],
+        "tue": [
+          "09:00",
+          "12:00",
+          "13:00",
+          "16:00"
+        ],
+        "wed": [
+          "09:00",
+          "12:00",
+          "13:00",
+          "16:00"
+        ],
+        "thu": [
+          "09:00",
+          "12:00",
+          "13:00",
+          "16:00"
+        ],
+        "fri": [],
+        "sat": [],
+        "sun": []
+      },
+      "hoursDescription": "月〜木 09:00-12:00 / 13:00-16:00 / 金〜日 休診",
+      "status": "verified",
+      "sourceType": "official_website",
+      "sourceUrl": "http://www.nsrclinic.com",
+      "verifiedAt": "2026-03-24",
+      "confidence": "medium",
+      "timeZone": "America/Los_Angeles",
+      "rawSnippet": "診療時間\n\n月 : 9am-12pm  1pm-4pm\n\n火 : 9am-12pm  1pm-4pm\n\n水 : 9am-12pm  1pm-4pm\n\n木 : 9am-12pm  1pm-4pm\n\n定休日 : 金・土・日\n\n 診療内容\n\n応急治療 • 内科 • 婦人科 • 小児科\n\n心療内科 • 皮膚科 • 予防接種 • 健診 など\n\n  Facebook\n\t\t\t     New Sunrise Clinic  -  Family Medicine\n\n\t\t <li id=\"menu-item-11\" class=\"menu-item menu-item-type-post_type menu-i"
+    },
+    "128": {
+      "openingHours": {
+        "mon": [
+          "08:30",
+          "17:00"
+        ],
+        "tue": [
+          "08:30",
+          "17:00"
+        ],
+        "wed": [
+          "08:30",
+          "12:30"
+        ],
+        "thu": [
+          "08:30",
+          "17:00"
+        ],
+        "fri": [
+          "08:30",
+          "17:00"
+        ],
+        "sat": [
+          "08:30",
+          "12:30"
+        ],
+        "sun": []
+      },
+      "hoursDescription": "月〜火 08:30-17:00 / 水 08:30-12:30 / 木〜金 08:30-17:00 / 土 08:30-12:30 / 日 休診",
+      "status": "verified",
+      "sourceType": "official_website",
+      "sourceUrl": "http://www.nihon-bayclinic.com",
+      "verifiedAt": "2026-03-24",
+      "confidence": "medium",
+      "timeZone": "America/Los_Angeles",
+      "rawSnippet": "診療時間: 月火木金 8:30am-5:00pm\n\n         水土 8:30am-12:30pm\n\n  \t  MENU\n\n    \t\t   ホーム  Home\n\t\t\t\t   健康診断・人間ドックのおしらせ  Patient Registration Form\n\t\t\t\t   保険の取り扱いについて  Insurance Information\n                \t\t\t\t   English  英語\n\n\t\t\t 日本ベイクリニックへようこそ\n\n -->\n\n    \t 医師紹介\n\n               紀平 昌保\n きひら まさやす\n院長・医師・医学博士\n\n\t\t\t\t 名古"
+    },
+    "137": {
+      "openingHours": {
+        "mon": [
+          "09:00",
+          "17:00"
+        ],
+        "tue": [
+          "09:00",
+          "17:00"
+        ],
+        "wed": [
+          "09:00",
+          "17:00"
+        ],
+        "thu": [
+          "09:00",
+          "17:00"
+        ],
+        "fri": [
+          "09:00",
+          "17:00"
+        ],
+        "sat": [
+          "11:00",
+          "14:00"
+        ],
+        "sun": []
+      },
+      "hoursDescription": "月〜金 09:00-17:00 / 土 11:00-14:00 / 日 休診",
+      "status": "verified",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.kidsdentalcastle.com",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high",
+      "timeZone": "America/New_York"
+    },
+    "154": {
+      "openingHours": {
+        "mon": [
+          "08:00",
+          "17:00"
+        ],
+        "tue": [
+          "08:00",
+          "17:00"
+        ],
+        "wed": [
+          "08:00",
+          "17:00"
+        ],
+        "thu": [
+          "08:00",
+          "17:00"
+        ],
+        "fri": [
+          "08:00",
+          "17:00"
+        ],
+        "sat": [
+          "09:00",
+          "14:30"
+        ],
+        "sun": []
+      },
+      "hoursDescription": "月〜金 08:00-17:00 / 土 09:00-14:30 / 日 休診",
+      "status": "verified",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.familydentistinvancouver.com",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high",
+      "timeZone": "America/Vancouver"
+    },
+    "173": {
+      "openingHours": {
+        "mon": [
+          "00:00",
+          "23:59"
+        ],
+        "tue": [
+          "00:00",
+          "23:59"
+        ],
+        "wed": [
+          "00:00",
+          "23:59"
+        ],
+        "thu": [
+          "00:00",
+          "23:59"
+        ],
+        "fri": [
+          "00:00",
+          "23:59"
+        ],
+        "sat": [
+          "00:00",
+          "23:59"
+        ],
+        "sun": []
+      },
+      "hoursDescription": "月〜土 00:00-23:59 / 日 休診",
+      "status": "verified",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.hje.org.uk",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high",
+      "timeZone": "Europe/London"
+    },
+    "207": {
+      "openingHours": {
+        "mon": [
+          "08:00",
+          "18:00"
+        ],
+        "tue": [
+          "08:00",
+          "18:00"
+        ],
+        "wed": [
+          "08:00",
+          "18:00"
+        ],
+        "thu": [
+          "08:00",
+          "18:00"
+        ],
+        "fri": [
+          "08:00",
+          "18:00"
+        ],
+        "sat": [
+          "09:00",
+          "18:00"
+        ],
+        "sun": []
+      },
+      "hoursDescription": "月〜金 08:00-18:00 / 土 09:00-18:00 / 日 休診",
+      "status": "verified",
+      "sourceType": "official_website",
+      "sourceUrl": "https://smcenter.ch",
+      "verifiedAt": "2026-03-24",
+      "confidence": "medium",
+      "timeZone": "Europe/Zurich",
+      "rawSnippet": "Opening Hours\n     Monday to Friday from 08:00 – 18:00.\n\n   Saturday from 09:00 – 18:00.\n\n   Sundays and public holidays closed.\n\n\t          \t\t\t      Charter   We are recognized both under Geneva and Swiss law as a health care provider and health institution\n\n    Values   Our values are founded on a"
+    },
+    "240": {
+      "openingHours": {
+        "mon": [
+          "07:30",
+          "17:00"
+        ],
+        "tue": [
+          "07:30",
+          "17:00"
+        ],
+        "wed": [
+          "07:30",
+          "17:00"
+        ],
+        "thu": [
+          "07:30",
+          "13:00"
+        ],
+        "fri": [
+          "07:30",
+          "17:00"
+        ],
+        "sat": [],
+        "sun": []
+      },
+      "hoursDescription": "月〜水 07:30-17:00 / 木 07:30-13:00 / 金 07:30-17:00 / 土〜日 休診",
+      "status": "verified",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.otmc.com.au/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high",
+      "timeZone": "Australia/Sydney"
+    },
+    "252": {
+      "openingHours": {
+        "mon": [
+          "08:00",
+          "18:00"
+        ],
+        "tue": [
+          "08:00",
+          "18:00"
+        ],
+        "wed": [
+          "08:00",
+          "18:00"
+        ],
+        "thu": [
+          "08:00",
+          "18:00"
+        ],
+        "fri": [
+          "08:00",
+          "18:00"
+        ],
+        "sat": [
+          "10:00",
+          "15:00"
+        ],
+        "sun": [
+          "10:00",
+          "15:00"
+        ]
+      },
+      "hoursDescription": "月〜金 08:00-18:00 / 土〜日 10:00-15:00",
+      "status": "verified",
+      "sourceType": "official_website",
+      "sourceUrl": "https://skyarchmedicalclinic.com.au/ja/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "medium",
+      "timeZone": "Australia/Brisbane",
+      "rawSnippet": "診療時間・アクセス\n\nブリスベンクリニック診療\n\n月-金：8:00am-6:00pm\n\n土日祝：10:00am - 3:00pm\n\nオンライン診療時間 （電話/ビデオ診療）"
+    }
+  }
+}

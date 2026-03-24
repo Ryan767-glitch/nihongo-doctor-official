@@ -4,9 +4,10 @@ import { Building2, Map, Landmark, TreePalm, Sun, Tent } from "lucide-react";
 import { GlobalSearch } from "@/components/features/GlobalSearch";
 import clinicsData from "@/data/clinics.json";
 import { filterJapaneseCompatibleClinics } from "@/lib/clinic-support";
+import { enrichClinicsWithHoursSync } from "@/lib/clinic-hours";
 import { Clinic } from "@/types";
 
-const publishedClinics = filterJapaneseCompatibleClinics(clinicsData as Clinic[]);
+const publishedClinics = enrichClinicsWithHoursSync(filterJapaneseCompatibleClinics(clinicsData as Clinic[]));
 const totalCount = publishedClinics.length;
 const totalCountries = new Set(publishedClinics.map((c) => c.country)).size;
 

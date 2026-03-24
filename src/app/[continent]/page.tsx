@@ -7,8 +7,9 @@ import { Clinic, Embassy } from '@/types';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { filterJapaneseCompatibleClinics } from '@/lib/clinic-support';
+import { enrichClinicsWithHoursSync } from '@/lib/clinic-hours';
 
-const allClinics = filterJapaneseCompatibleClinics(clinics as Clinic[]);
+const allClinics = enrichClinicsWithHoursSync(filterJapaneseCompatibleClinics(clinics as Clinic[]));
 const allEmbassies = embassies as Embassy[];
 
 interface PageProps {

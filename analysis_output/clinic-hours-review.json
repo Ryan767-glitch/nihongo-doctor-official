@@ -1,0 +1,435 @@
+{
+  "generatedAt": "2026-03-24T05:28:39.109Z",
+  "reviewedWebsites": 71,
+  "verifiedCount": 10,
+  "reviewCount": 61,
+  "clinics": [
+    {
+      "id": "1",
+      "nameJa": "Bangkok Hospital（バンコク病院）",
+      "website": "http://www.bangkokhospital.com",
+      "currentHours": "24時間",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "2",
+      "nameJa": "BNH Hospital",
+      "website": "https://www.bnhhospital.com",
+      "currentHours": "24時間",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "3",
+      "nameJa": "Bumrungrad International Hospital",
+      "website": "https://www.bumrungrad.com",
+      "currentHours": "24時間",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "4",
+      "nameJa": "Samitivej Sukhumvit Hospital",
+      "website": "https://www.samitivejhospitals.com",
+      "currentHours": "24時間",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "97",
+      "nameJa": "アル・サラム国際病院",
+      "website": "https://www.assih.com",
+      "currentHours": "毎日08:00-22:00、緊急時24時間",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "113",
+      "nameJa": "東京海上記念診療所",
+      "website": "https://www.mountsinai.org/locations/msd-japanese-medical-practice",
+      "currentHours": "月〜金 要確認",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "114",
+      "nameJa": "20イーストメディカル",
+      "website": "http://www.20eastmedical.com/index-jp.html",
+      "currentHours": "要確認",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "116",
+      "nameJa": "ジャパニーズメディカルケア（J・MEDICAL）",
+      "website": "https://www.jmedical.com/",
+      "currentHours": "要確認",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "117",
+      "nameJa": "安心メディカル",
+      "website": "http://www.anshinmedical.com/",
+      "currentHours": "要確認",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "123",
+      "nameJa": "大里一雅医師クリニック（Osato Medical）",
+      "website": "https://www.osatoclinic.com",
+      "currentHours": "月〜金 9:00-12:00 / 14:00-17:00",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "124",
+      "nameJa": "松本尚子小児科クリニック",
+      "website": "https://matsumotomd.com",
+      "currentHours": "月〜金 9:00-12:00 / 14:00-17:00（完全予約制）",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "125",
+      "nameJa": "有田治生ペインクリニック",
+      "website": "https://www.painmedicinemd.com",
+      "currentHours": "月〜金 9:00-17:00",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "127",
+      "nameJa": "鎌田聡一般内科",
+      "website": "https://gmail.com",
+      "currentHours": "月水金 9:00-12:00 / 14:00-17:00、火木 9:00-12:00",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "129",
+      "nameJa": "こばやしクリニック",
+      "website": "http://www.kobayashi-naika.com",
+      "currentHours": "要確認",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "135",
+      "nameJa": "畑山歯科（畑山貴代歯科医師）",
+      "website": "https://www.drhatakeyamany.com",
+      "currentHours": "月・土曜（予約制）",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "136",
+      "nameJa": "岡本歯科（岡本豊歯科医師）",
+      "website": "https://smilewelldds.com/",
+      "currentHours": "要確認",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "139",
+      "nameJa": "ノバ根管治療（山口舞美歯科医師）",
+      "website": "https://novaendo.com/",
+      "currentHours": "要確認",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "140",
+      "nameJa": "日本クリニック・シカゴ",
+      "website": "https://nihonclinic.com/jp/chicago-clinic/",
+      "currentHours": "完全予約制（要電話）",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "142",
+      "nameJa": "松木隆志医師（精神科・心療内科）",
+      "website": "https://chicago.takashimatsukimd.com/",
+      "currentHours": "月〜土 8:00-20:00",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "146",
+      "nameJa": "バプティスト・ヘルス・サウスフロリダ",
+      "website": "https://www.baptisthealth.net/",
+      "currentHours": "24時間救急対応",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "151",
+      "nameJa": "ケアポイント・メディカル（日本語対応）",
+      "website": "https://www.carepoint.ca/japanese",
+      "currentHours": "要確認（拠点による）",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "168",
+      "nameJa": "ジャパングリーン\nメディカルセンター\nアクトンクリニック・\nレディースクリニック",
+      "website": "https://www.japangreen.co.uk",
+      "currentHours": "要問合せ",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "169",
+      "nameJa": "ジャパングリーン\nメディカルセンター\nシティクリニック",
+      "website": "https://www.japangreen.co.uk",
+      "currentHours": "要問合せ",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "171",
+      "nameJa": "セントラル・ジャパニーズ・\nクリニック",
+      "website": "https://www.fitfiddle.co.uk",
+      "currentHours": "要問合せ",
+      "reason": "fetch failed"
+    },
+    {
+      "id": "172",
+      "nameJa": "Dr伊藤クリニック",
+      "website": "https://www.dritoclinic.co.uk",
+      "currentHours": "要問合せ",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "174",
+      "nameJa": "キースコーヘン\n総合歯科医院（アクトン）",
+      "website": "https://www.keithcohendentist.co.uk",
+      "currentHours": "要問合せ",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "175",
+      "nameJa": "高歯科医院",
+      "website": "https://www.kodental.co.uk",
+      "currentHours": "要問合せ",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "176",
+      "nameJa": "奈美デンタルクリニック",
+      "website": "https://namidentalclinic.com",
+      "currentHours": "要問合せ",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "177",
+      "nameJa": "アメリカン・ホスピタル",
+      "website": "https://jp.american-hospital.org",
+      "currentHours": "月〜金 9:00〜18:00（日本語対応）",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "189",
+      "nameJa": "ノイゲバウア馬場内科\nクリニック（本院）",
+      "website": "https://www.neugebauer-baba.de",
+      "currentHours": "要問合せ",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "190",
+      "nameJa": "ノイゲバウア馬場内科\nクリニック（プリンツェン\nパーク外来）",
+      "website": "https://www.neugebauer-baba.de",
+      "currentHours": "受付8:00〜（日本語）",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "192",
+      "nameJa": "日本メディカルセンター\n（人間ドック）",
+      "website": "https://www.dock-nmc.de",
+      "currentHours": "要予約",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "193",
+      "nameJa": "HSアレルゲンプラクシス\n（一般内科）",
+      "website": "https://www.hs-allgemeinpraxis.de",
+      "currentHours": "要問合せ",
+      "reason": "fetch failed"
+    },
+    {
+      "id": "194",
+      "nameJa": "診療所アム・ニッダタール",
+      "website": "https://www.praxis-am-niddatal.de",
+      "currentHours": "要問合せ",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "196",
+      "nameJa": "大島歯科医院",
+      "website": "https://oshima-private-dentaloffice.com",
+      "currentHours": "要問合せ",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "197",
+      "nameJa": "Dr. Ybs診療所（一般内科）",
+      "website": "https://www.praxis-drybs.de",
+      "currentHours": "要問合せ",
+      "reason": "fetch failed"
+    },
+    {
+      "id": "201",
+      "nameJa": "JECジャパンクリニック",
+      "website": "https://japanclinic.nl",
+      "currentHours": "要予約",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "214",
+      "nameJa": "プリヴァートクリニック\nドゥブリング（総合病院）",
+      "website": "https://www.privatklinik-doebling.at",
+      "currentHours": "24時間",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "215",
+      "nameJa": "岡本一郎医師（皮膚科）",
+      "website": "https://www.hautarztokamoto.at",
+      "currentHours": "月〜金（完全予約制）",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "219",
+      "nameJa": "Centro Médico Liberdade / Hospital Nipo-Brasileiro ENKYO\n（援協リベルダージ医療センター）",
+      "website": "https://www.enkyo.org.br",
+      "currentHours": "月-金（要確認）",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "220",
+      "nameJa": "Hospital Nipo-Brasileiro（日伯友好病院）",
+      "website": "https://hnipo.org.br",
+      "currentHours": "救急24時間",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "221",
+      "nameJa": "Hospital Sírio-Libanês（シリオ・リバネス病院）",
+      "website": "https://j-helpdesk.jp",
+      "currentHours": "救急24時間",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "225",
+      "nameJa": "Hospital Sugisawa（スギサワ病院）",
+      "website": "https://hospitalsugisawa.com.br",
+      "currentHours": "救急24時間",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "230",
+      "nameJa": "Clínica Alemana（クリニカ・アレマナ）",
+      "website": "https://alemana.cl",
+      "currentHours": "救急24時間",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "232",
+      "nameJa": "Clínica Santa María（クリニカ・サンタ・マリア）",
+      "website": "https://clinicasantamaria.cl",
+      "currentHours": "救急24時間",
+      "reason": "fetch failed"
+    },
+    {
+      "id": "236",
+      "nameJa": "Clínica del Country（クリニカ・デル・カントリー）",
+      "website": "https://clinicadelcountry.com",
+      "currentHours": "救急24時間",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "238",
+      "nameJa": "ワールドシティ日本語医療・歯科センター",
+      "website": "http://www.worldcitimedical.com.au/jp/",
+      "currentHours": "月火木金土（日本人スタッフ対応日）/ 9:00-16:00 土",
+      "reason": "HTTP 500"
+    },
+    {
+      "id": "239",
+      "nameJa": "タウンホールクリニック",
+      "website": "https://www.townhallclinic.com.au/",
+      "currentHours": "月〜金 8:30-18:00",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "241",
+      "nameJa": "ノースブリッジメディカルプラクティス",
+      "website": "http://www.northbridgemp.com.au/",
+      "currentHours": "月〜土（水曜鳥居医師休診）8:00-11:00 土",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "242",
+      "nameJa": "メディセントラル（Dr. セリーナ ラパポート）",
+      "website": "https://medicentral.com.au",
+      "currentHours": "月火木金 8:00-16:00",
+      "reason": "fetch failed"
+    },
+    {
+      "id": "243",
+      "nameJa": "パラマウントクリニック",
+      "website": "https://paramountclinic.com.au/",
+      "currentHours": "要確認（月〜金中心）",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "244",
+      "nameJa": "ミッドタウンメディカルクリニック（富田愛子医師）",
+      "website": "https://www.doctoraiko.com.au/ja",
+      "currentHours": "月・水・金・不定期土曜（富田医師診察日）",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "245",
+      "nameJa": "橋村ひかる（内分泌糖尿病内科専門医）",
+      "website": "https://number1womenshealth.com/pages/dr-hikaru-hashimura",
+      "currentHours": "第1・3金曜（Number1）/ 毎週月曜（Parkside）/ 第2・4金曜（Valewood）",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "246",
+      "nameJa": "ウィメンズヘルスハブ（高橋さゆり医師）",
+      "website": "https://womenshealthhub.com.au",
+      "currentHours": "要確認",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "251",
+      "nameJa": "さくらファミリークリニック",
+      "website": "https://sakuraclinic.com.au/",
+      "currentHours": "月〜土（要確認）",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "253",
+      "nameJa": "CBD 7 DAYメディカルセンター（日本語医療担当）",
+      "website": "https://jp.cbdmedical.com.au/",
+      "currentHours": "月〜日 早朝〜夜間",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "254",
+      "nameJa": "ホーソーンクリニック（高尾康瑞医師）",
+      "website": "https://www.dryasutakao.com.au",
+      "currentHours": "月〜土（水曜休診あり）",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "257",
+      "nameJa": "日本語医療センター ゴールドコースト",
+      "website": "https://www.nihongoiryo.com.au/",
+      "currentHours": "要確認",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "263",
+      "nameJa": "ホワイトクロス時間外診療クリニック",
+      "website": "https://www.whitecross.co.nz/",
+      "currentHours": "月〜日（早朝〜夜間・22時頃まで）",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "265",
+      "nameJa": "ヘルスポイント（日本語GP検索）",
+      "website": "https://www.healthpoint.co.nz/",
+      "currentHours": "GP各診察：通常NZ$60〜70",
+      "reason": "営業時間を自動抽出できませんでした"
+    },
+    {
+      "id": "268",
+      "nameJa": "さくらメディカル＆デンタルクリニック",
+      "website": "https://www.americanwellnesscenter.ae",
+      "currentHours": "土〜木曜日：8:00〜22:00（金曜休診）",
+      "reason": "営業時間を自動抽出できませんでした"
+    }
+  ]
+}

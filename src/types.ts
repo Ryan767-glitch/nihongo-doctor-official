@@ -25,6 +25,12 @@ export interface Clinic {
     emergencyAvailable?: boolean;
     cashlessAvailable?: boolean;
     notes?: string;
+    hoursSyncStatus?: HoursSyncStatus;
+    hoursSourceType?: HoursSourceType;
+    hoursSourceUrl?: string;
+    hoursVerifiedAt?: string;
+    hoursConfidence?: HoursConfidence;
+    timeZone?: string;
 }
 
 export interface OpeningHours {
@@ -35,6 +41,27 @@ export interface OpeningHours {
     fri: string[];
     sat: string[];
     sun: string[];
+}
+
+export type HoursSyncStatus = 'verified' | 'needs_review' | 'unavailable';
+export type HoursSourceType = 'official_website' | 'manual_review';
+export type HoursConfidence = 'high' | 'medium' | 'low';
+
+export interface ClinicHoursSyncEntry {
+    openingHours?: OpeningHours;
+    hoursDescription?: string;
+    status: HoursSyncStatus;
+    sourceType: HoursSourceType;
+    sourceUrl: string;
+    verifiedAt?: string;
+    confidence?: HoursConfidence;
+    timeZone?: string;
+    rawSnippet?: string;
+}
+
+export interface ClinicHoursSyncFile {
+    generatedAt: string;
+    clinics: Record<string, ClinicHoursSyncEntry>;
 }
 
 export interface Embassy {

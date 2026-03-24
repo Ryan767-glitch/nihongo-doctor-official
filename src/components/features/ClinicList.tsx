@@ -41,7 +41,7 @@ export function ClinicList({ clinics, embassies }: ClinicListProps) {
 
             // Open Now Logic: Truly open via hours OR 24H Emergency
             if (filterOpenNow) {
-                const isOpen = checkIsOpen(clinic.openingHours);
+                const isOpen = checkIsOpen(clinic.openingHours, clinic.timeZone);
                 if (!isOpen && !clinic.emergencyAvailable) return false;
             }
 
