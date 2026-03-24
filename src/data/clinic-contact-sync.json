@@ -1,0 +1,457 @@
+{
+  "generatedAt": "2026-03-24T08:37:22.302Z",
+  "clinics": {
+    "5": {
+      "website": "https://blez-clinic.com/en/",
+      "sourceUrl": "https://blez-clinic.com/en/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "6": {
+      "website": "https://dymclinic.com/en/",
+      "sourceUrl": "https://dymclinic.com/en/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "7": {
+      "website": "https://cotovia.co.th/",
+      "sourceUrl": "https://cotovia.co.th/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "8": {
+      "website": "https://www.sakuracross.jp/",
+      "sourceUrl": "https://www.sakuracross.jp/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "9": {
+      "website": "https://praram9.com/en",
+      "sourceUrl": "https://praram9.com/en",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "10": {
+      "website": "https://www.bangkokhospital.com/",
+      "sourceUrl": "https://www.bangkokhospital.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "11": {
+      "website": "https://www.kasemrad.co.th/en",
+      "sourceUrl": "https://www.kasemrad.co.th/en",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "12": {
+      "website": "https://www.chiangmai-hospital.com/en/home",
+      "sourceUrl": "https://www.chiangmai-hospital.com/en/home",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "13": {
+      "website": "https://www.bangkokhospital.com/",
+      "sourceUrl": "https://www.bangkokhospital.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "14": {
+      "website": "https://www.bangkokhospital.com/",
+      "sourceUrl": "https://www.bangkokhospital.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "16": {
+      "website": "https://www.hfh.com.vn/",
+      "sourceUrl": "https://www.hfh.com.vn/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "17": {
+      "website": "https://rafflesmedical.vn/",
+      "sourceUrl": "https://rafflesmedical.vn/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "18": {
+      "website": "https://www.vietnammedicalpractice.com/",
+      "sourceUrl": "https://www.vietnammedicalpractice.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "23": {
+      "website": "https://lotus-clinic.com/sp/en/",
+      "sourceUrl": "https://lotus-clinic.com/sp/en/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "24": {
+      "website": "https://www.vinmec.com/eng/",
+      "sourceUrl": "https://www.vinmec.com/eng/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "27": {
+      "website": "https://www.vietnammedicalpractice.com/",
+      "sourceUrl": "https://www.vietnammedicalpractice.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "28": {
+      "website": "https://rafflesmedical.vn/",
+      "sourceUrl": "https://rafflesmedical.vn/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "29": {
+      "website": "https://www.fvhospital.com/",
+      "sourceUrl": "https://www.fvhospital.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "30": {
+      "website": "https://www.vinmec.com/eng/",
+      "sourceUrl": "https://www.vinmec.com/eng/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "35": {
+      "website": "https://gleneagles.com.my/",
+      "sourceUrl": "https://gleneagles.com.my/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "36": {
+      "website": "https://princecourt.com/",
+      "sourceUrl": "https://princecourt.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "37": {
+      "website": "https://www.sunwaymedical.com/",
+      "sourceUrl": "https://www.sunwaymedical.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "38": {
+      "website": "https://parkcitymedicalcentre.com/",
+      "sourceUrl": "https://parkcitymedicalcentre.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "40": {
+      "website": "https://islandhospital.com/",
+      "sourceUrl": "https://islandhospital.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "41": {
+      "website": "https://www.lohguanlye.com/",
+      "sourceUrl": "https://www.lohguanlye.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "42": {
+      "website": "https://pah.com.my/",
+      "sourceUrl": "https://pah.com.my/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "49": {
+      "website": "https://dymclinic.com/en/",
+      "sourceUrl": "https://dymclinic.com/en/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "53": {
+      "website": "https://www.siloamhospitals.com/en/",
+      "sourceUrl": "https://www.siloamhospitals.com/en/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "54": {
+      "website": "https://www.rspondokindah.co.id/en",
+      "sourceUrl": "https://www.rspondokindah.co.id/en",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "55": {
+      "website": "https://medistra.com/",
+      "sourceUrl": "https://medistra.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "58": {
+      "website": "https://bimcbali.com/",
+      "sourceUrl": "https://bimcbali.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "60": {
+      "website": "https://bimcbali.com/",
+      "sourceUrl": "https://bimcbali.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "63": {
+      "website": "https://www.makatimed.net.ph/",
+      "sourceUrl": "https://www.makatimed.net.ph/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "64": {
+      "website": "https://www.stlukes.com.ph/",
+      "sourceUrl": "https://www.stlukes.com.ph/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "65": {
+      "website": "https://www.stlukes.com.ph/",
+      "sourceUrl": "https://www.stlukes.com.ph/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "66": {
+      "website": "https://www.asianhospital.com/",
+      "sourceUrl": "https://www.asianhospital.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "69": {
+      "website": "https://www.rafflesmedical.cn/",
+      "sourceUrl": "https://www.rafflesmedical.cn/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "70": {
+      "website": "https://www.unitedfamilyhospitals.com/",
+      "sourceUrl": "https://www.unitedfamilyhospitals.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "77": {
+      "website": "https://www.hkah.org.hk/",
+      "sourceUrl": "https://www.hkah.org.hk/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "80": {
+      "website": "https://sunrise-hs.com/",
+      "sourceUrl": "https://sunrise-hs.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "81": {
+      "website": "https://royalphnompenhhospital.com/",
+      "sourceUrl": "https://royalphnompenhhospital.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "87": {
+      "website": "https://www.royalangkorhospital.com/",
+      "sourceUrl": "https://www.royalangkorhospital.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "92": {
+      "website": "https://www.asiaroyalhospital.com/",
+      "sourceUrl": "https://www.asiaroyalhospital.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "93": {
+      "website": "https://punhlainghospitals.com/",
+      "sourceUrl": "https://punhlainghospitals.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "96": {
+      "website": "https://www.cleopatrahospitals.com/",
+      "sourceUrl": "https://www.cleopatrahospitals.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "100": {
+      "website": "https://hospitals.aku.edu/nairobi/Pages/default.aspx",
+      "sourceUrl": "https://hospitals.aku.edu/nairobi/Pages/default.aspx",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "101": {
+      "website": "https://thenairobihosp.org/",
+      "sourceUrl": "https://thenairobihosp.org/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "102": {
+      "website": "https://www.gerties.org/",
+      "sourceUrl": "https://www.gerties.org/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "104": {
+      "website": "https://mpshahhosp.org/",
+      "sourceUrl": "https://mpshahhosp.org/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "111": {
+      "website": "https://reddingtonhospital.com/",
+      "sourceUrl": "https://reddingtonhospital.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "112": {
+      "website": "https://evercare.ng/",
+      "sourceUrl": "https://evercare.ng/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "129": {
+      "phone": "650-962-4630",
+      "phoneClean": "+16509624630",
+      "sourceUrl": "http://www.kobayashi-naika.com",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "130": {
+      "website": "https://www.ucsfhealth.org/",
+      "sourceUrl": "https://www.ucsfhealth.org/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "146": {
+      "phone": "833-692-2784",
+      "phoneClean": "+18336922784",
+      "sourceUrl": "https://www.baptisthealth.net/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "147": {
+      "website": "https://www.nicklauschildrens.org/",
+      "sourceUrl": "https://www.nicklauschildrens.org/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "148": {
+      "website": "https://www.grmc.gu/",
+      "sourceUrl": "https://www.grmc.gu/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "149": {
+      "website": "https://chcc.gov.mp/",
+      "sourceUrl": "https://chcc.gov.mp/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "152": {
+      "website": "https://www.vgh.ca/",
+      "sourceUrl": "https://www.vgh.ca/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "153": {
+      "website": "https://www.providencehealthcare.org/en/locations/st-pauls-hospital",
+      "sourceUrl": "https://www.providencehealthcare.org/en/locations/st-pauls-hospital",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "154": {
+      "phone": "604-266-4353",
+      "phoneClean": "+16042664353",
+      "sourceUrl": "https://www.familydentistinvancouver.com",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "158": {
+      "website": "https://www.sinaihealth.ca/our-hospitals/mount-sinai-hospital",
+      "sourceUrl": "https://www.sinaihealth.ca/our-hospitals/mount-sinai-hospital",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "161": {
+      "website": "https://www.ottawahospital.on.ca/en/",
+      "sourceUrl": "https://www.ottawahospital.on.ca/en/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "163": {
+      "website": "https://www.jgh.ca/",
+      "sourceUrl": "https://www.jgh.ca/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "164": {
+      "website": "https://muhc.ca/",
+      "sourceUrl": "https://muhc.ca/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "202": {
+      "website": "https://www.ziekenhuisamstelland.nl/",
+      "sourceUrl": "https://www.ziekenhuisamstelland.nl/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "208": {
+      "website": "https://www.hug.ch/en",
+      "sourceUrl": "https://www.hug.ch/en",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "217": {
+      "website": "https://www.saintluc.be/en",
+      "sourceUrl": "https://www.saintluc.be/en",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "219": {
+      "phone": "11 3274-6555",
+      "phoneClean": "+551132746555",
+      "sourceUrl": "https://www.enkyo.org.br",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "222": {
+      "website": "https://www.einstein.br/en/",
+      "sourceUrl": "https://www.einstein.br/en/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "226": {
+      "website": "https://www.moinhos.com.br/",
+      "sourceUrl": "https://www.moinhos.com.br/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "251": {
+      "phone": "07 3211 4520",
+      "phoneClean": "+61732114520",
+      "sourceUrl": "https://sakuraclinic.com.au/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "252": {
+      "phone": "07 3438 9835",
+      "phoneClean": "+61734389835",
+      "sourceUrl": "https://skyarchmedicalclinic.com.au/ja/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "253": {
+      "phone": "0410-834-563",
+      "phoneClean": "+61410834563",
+      "sourceUrl": "https://jp.cbdmedical.com.au/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    },
+    "254": {
+      "phone": "(07) 3399 5444",
+      "phoneClean": "+61733995444",
+      "sourceUrl": "https://www.dryasutakao.com.au",
+      "verifiedAt": "2026-03-24",
+      "confidence": "high"
+    }
+  }
+}

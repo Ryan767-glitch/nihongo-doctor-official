@@ -64,6 +64,21 @@ export interface ClinicHoursSyncFile {
     clinics: Record<string, ClinicHoursSyncEntry>;
 }
 
+export interface ClinicContactSyncEntry {
+    website?: string;
+    phone?: string;
+    phoneClean?: string;
+    googleMapsUrl?: string;
+    sourceUrl?: string;
+    verifiedAt?: string;
+    confidence?: HoursConfidence;
+}
+
+export interface ClinicContactSyncFile {
+    generatedAt: string;
+    clinics: Record<string, ClinicContactSyncEntry>;
+}
+
 export interface Embassy {
     country: string;
     region: string;

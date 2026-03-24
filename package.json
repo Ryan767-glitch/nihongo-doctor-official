@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "sync:clinic-hours": "node scripts/sync-clinic-hours.js"
+    "sync:clinic-hours": "node scripts/sync-clinic-hours.js",
+    "sync:clinic-contact": "node scripts/sync-clinic-contact.js"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",

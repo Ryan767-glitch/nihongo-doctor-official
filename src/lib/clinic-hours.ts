@@ -1,8 +1,10 @@
 import hoursSyncData from '@/data/clinic-hours-sync.json';
+import contactSyncData from '@/data/clinic-contact-sync.json';
 import clinicTimezones from '@/data/clinic-timezones.json';
-import { Clinic, ClinicHoursSyncEntry, ClinicHoursSyncFile } from '@/types';
+import { Clinic, ClinicContactSyncFile, ClinicHoursSyncEntry, ClinicHoursSyncFile } from '@/types';
 
 const syncFile = hoursSyncData as ClinicHoursSyncFile;
+const contactSyncFile = contactSyncData as ClinicContactSyncFile;
 
 type TimezoneMap = {
     defaultByCountry: Record<string, string>;
@@ -30,15 +32,24 @@ export function getClinicHoursSync(clinicId: string) {
 
 export function enrichClinicWithHoursSync(clinic: Clinic): Clinic {
     const syncEntry = getClinicHoursSync(clinic.id);
+    const contactEntry = contactSyncFile.clinics[clinic.id];
     if (!syncEntry) {
         return {
             ...clinic,
+            website: contactEntry?.website ?? clinic.website,
+            phone: contactEntry?.phone ?? clinic.phone,
+            phoneClean: contactEntry?.phoneClean ?? clinic.phoneClean,
+            googleMapsUrl: contactEntry?.googleMapsUrl ?? clinic.googleMapsUrl,
             timeZone: getClinicTimeZone(clinic),
         };
     }
 
     return {
         ...clinic,
+        website: contactEntry?.website ?? clinic.website,
+        phone: contactEntry?.phone ?? clinic.phone,
+        phoneClean: contactEntry?.phoneClean ?? clinic.phoneClean,
+        googleMapsUrl: contactEntry?.googleMapsUrl ?? clinic.googleMapsUrl,
         openingHours: syncEntry.openingHours ?? clinic.openingHours,
         hoursDescription: syncEntry.hoursDescription ?? clinic.hoursDescription,
         hoursSyncStatus: syncEntry.status,
