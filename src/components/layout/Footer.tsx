@@ -8,7 +8,7 @@ export function Footer() {
             <div className="border-t py-6 md:py-0">
                 <div className="container mx-auto max-w-7xl flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row px-4 text-sm text-muted-foreground">
                     <p className="text-center leading-loose md:text-left">
-                        © 2026 NihongoDoctor.com. All rights reserved.
+                        © 2026 にほんごドクター.com
                     </p>
                     <div className="flex gap-4">
                         <Link href="/privacy" className="hover:underline">プライバシーポリシー</Link>

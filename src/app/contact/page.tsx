@@ -91,7 +91,7 @@ export default function ContactPage() {
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div hidden aria-hidden="true">
-                        <label htmlFor="bot-field">Leave this field empty</label>
+                        <label htmlFor="bot-field">この項目は空欄のままにしてください</label>
                         <input id="bot-field" name="bot-field" tabIndex={-1} autoComplete="off" />
                     </div>
 

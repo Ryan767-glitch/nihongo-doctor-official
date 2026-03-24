@@ -222,10 +222,10 @@ export function ClinicList({ clinics, embassies }: ClinicListProps) {
                                                 </div>
                                                 <div className="flex flex-wrap gap-x-4 gap-y-1 text-amber-800/80">
                                                     <a href={`tel:${embassy.phone}`} className="hover:underline flex items-center gap-1">
-                                                        <span className="opacity-70 text-xs">Tel:</span> {embassy.phone}
+                                                        <span className="opacity-70 text-xs">{t('電話:', 'Phone:')}</span> {embassy.phone}
                                                     </a>
                                                     {embassy.website && (
-                                                        <a href={embassy.website} target="_blank" rel="noopener noreferrer" className="hover:text-amber-700 transition-colors">{t('公式サイト', 'Website')}</a>
+                                                        <a href={embassy.website} target="_blank" rel="noopener noreferrer" className="hover:text-amber-700 transition-colors">{t('公式サイト', 'Official site')}</a>
                                                     )}
                                                 </div>
                                             </div>
@@ -242,7 +242,7 @@ export function ClinicList({ clinics, embassies }: ClinicListProps) {
                                         <>
                                             {hasSubregions && (
                                                 <div className="flex flex-wrap gap-2 mb-8 bg-slate-50/50 p-3 rounded-xl border border-border/40">
-                                                    <span className="text-xs text-muted-foreground mr-2 py-1.5 px-1">{t('地域:', 'Regions:')}</span>
+                                                    <span className="text-xs text-muted-foreground mr-2 py-1.5 px-1">{t('地域:', 'Area:')}</span>
                                                     {cities.map(city => (
                                                         <button
                                                             key={city}
