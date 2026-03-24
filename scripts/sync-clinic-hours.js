@@ -448,6 +448,7 @@ async function main() {
     const withWebsite = clinics.filter((clinic) => clinic.website);
     const syncEntries = {};
     const reviewEntries = [];
+    const verifiedAt = new Date().toISOString().slice(0, 10);
 
     for (const clinic of withWebsite) {
         try {
@@ -455,6 +456,15 @@ async function main() {
             const parsed = parseHoursFromHtml(clinic, html);
 
             if (!parsed) {
+                syncEntries[clinic.id] = {
+                    hoursDescription: clinic.hoursDescription || '要確認',
+                    status: 'needs_review',
+                    sourceType: 'official_website',
+                    sourceUrl: clinic.website,
+                    verifiedAt,
+                    confidence: 'low',
+                    timeZone: getClinicTimeZone(clinic) || undefined,
+                };
                 reviewEntries.push({
                     id: clinic.id,
                     nameJa: clinic.nameJa,
@@ -471,12 +481,21 @@ async function main() {
                 status: 'verified',
                 sourceType: 'official_website',
                 sourceUrl: clinic.website,
-                verifiedAt: new Date().toISOString().slice(0, 10),
+                verifiedAt,
                 confidence: parsed.confidence,
                 timeZone: getClinicTimeZone(clinic) || undefined,
                 rawSnippet: parsed.rawSnippet,
             };
         } catch (error) {
+            syncEntries[clinic.id] = {
+                hoursDescription: clinic.hoursDescription || '要確認',
+                status: 'needs_review',
+                sourceType: 'official_website',
+                sourceUrl: clinic.website,
+                verifiedAt,
+                confidence: 'low',
+                timeZone: getClinicTimeZone(clinic) || undefined,
+            };
             reviewEntries.push({
                 id: clinic.id,
                 nameJa: clinic.nameJa,
@@ -491,6 +510,8 @@ async function main() {
         generatedAt: new Date().toISOString(),
         clinics: syncEntries,
     };
+    const verifiedCount = Object.values(syncEntries).filter((entry) => entry.status === 'verified').length;
+    const reviewCount = Object.values(syncEntries).filter((entry) => entry.status === 'needs_review').length;
 
     fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
     fs.mkdirSync(path.dirname(REVIEW_PATH), { recursive: true });
@@ -500,13 +521,13 @@ async function main() {
         `${JSON.stringify({
             generatedAt: output.generatedAt,
             reviewedWebsites: withWebsite.length,
-            verifiedCount: Object.keys(syncEntries).length,
-            reviewCount: reviewEntries.length,
+            verifiedCount,
+            reviewCount,
             clinics: reviewEntries,
         }, null, 2)}\n`
     );
 
-    console.log(`verified=${Object.keys(syncEntries).length} review=${reviewEntries.length}`);
+    console.log(`verified=${verifiedCount} review=${reviewCount}`);
 }
 
 main().catch((error) => {

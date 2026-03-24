@@ -1,6 +1,69 @@
 {
-  "generatedAt": "2026-03-24T05:28:39.109Z",
+  "generatedAt": "2026-03-24T07:58:02.034Z",
   "clinics": {
+    "1": {
+      "hoursDescription": "24時間",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "http://www.bangkokhospital.com",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Asia/Bangkok"
+    },
+    "2": {
+      "hoursDescription": "24時間",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.bnhhospital.com",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Asia/Bangkok"
+    },
+    "3": {
+      "hoursDescription": "24時間",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.bumrungrad.com",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Asia/Bangkok"
+    },
+    "4": {
+      "hoursDescription": "24時間",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.samitivejhospitals.com",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Asia/Bangkok"
+    },
+    "97": {
+      "hoursDescription": "毎日08:00-22:00、緊急時24時間",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.assih.com",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Africa/Cairo"
+    },
+    "113": {
+      "hoursDescription": "月〜金 要確認",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.mountsinai.org/locations/msd-japanese-medical-practice",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "America/New_York"
+    },
+    "114": {
+      "hoursDescription": "要確認",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "http://www.20eastmedical.com/index-jp.html",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "America/New_York"
+    },
     "115": {
       "openingHours": {
         "mon": [
@@ -37,6 +100,24 @@
       "confidence": "medium",
       "timeZone": "America/New_York",
       "rawSnippet": "診療時間\n\n  月、火、水、木、金  9am – 5pm\n 土  9am – 3pm\n休診日:\n日・祝日\n\n\t\t\t\t\t   \n\n\t\t\t\t\t\t  ホワイト・プレインズ院\n\n\t\t\t\t\t\t  311 North Street, Suite 407\nWhite Plains, NY 10605\n(DAIDOマーケットのそば)\n電話:  212-204-8567\n\n  MAP\n\n  外来診療時間\n\n  火、水、金  9am – 5pm\n 土  9am – 3pm\n\n\t\t\t\t<div class=\"et_pb_module et_pb_blurb et_pb_blurb_"
+    },
+    "116": {
+      "hoursDescription": "要確認",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.jmedical.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "America/New_York"
+    },
+    "117": {
+      "hoursDescription": "要確認",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "http://www.anshinmedical.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "America/New_York"
     },
     "118": {
       "openingHours": {
@@ -113,6 +194,42 @@
       "timeZone": "America/Los_Angeles",
       "rawSnippet": "診療時間\n\n月 : 9am-12pm  1pm-4pm\n\n火 : 9am-12pm  1pm-4pm\n\n水 : 9am-12pm  1pm-4pm\n\n木 : 9am-12pm  1pm-4pm\n\n定休日 : 金・土・日\n\n 診療内容\n\n応急治療 • 内科 • 婦人科 • 小児科\n\n心療内科 • 皮膚科 • 予防接種 • 健診 など\n\n  Facebook\n\t\t\t     New Sunrise Clinic  -  Family Medicine\n\n\t\t <li id=\"menu-item-11\" class=\"menu-item menu-item-type-post_type menu-i"
     },
+    "123": {
+      "hoursDescription": "月〜金 9:00-12:00 / 14:00-17:00",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.osatoclinic.com",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "America/Los_Angeles"
+    },
+    "124": {
+      "hoursDescription": "月〜金 9:00-12:00 / 14:00-17:00（完全予約制）",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://matsumotomd.com",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "America/Los_Angeles"
+    },
+    "125": {
+      "hoursDescription": "月〜金 9:00-17:00",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.painmedicinemd.com",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "America/Los_Angeles"
+    },
+    "127": {
+      "hoursDescription": "月水金 9:00-12:00 / 14:00-17:00、火木 9:00-12:00",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://gmail.com",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "America/Los_Angeles"
+    },
     "128": {
       "openingHours": {
         "mon": [
@@ -150,6 +267,33 @@
       "timeZone": "America/Los_Angeles",
       "rawSnippet": "診療時間: 月火木金 8:30am-5:00pm\n\n         水土 8:30am-12:30pm\n\n  \t  MENU\n\n    \t\t   ホーム  Home\n\t\t\t\t   健康診断・人間ドックのおしらせ  Patient Registration Form\n\t\t\t\t   保険の取り扱いについて  Insurance Information\n                \t\t\t\t   English  英語\n\n\t\t\t 日本ベイクリニックへようこそ\n\n -->\n\n    \t 医師紹介\n\n               紀平 昌保\n きひら まさやす\n院長・医師・医学博士\n\n\t\t\t\t 名古"
     },
+    "129": {
+      "hoursDescription": "要確認",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "http://www.kobayashi-naika.com",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "America/Los_Angeles"
+    },
+    "135": {
+      "hoursDescription": "月・土曜（予約制）",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.drhatakeyamany.com",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "America/New_York"
+    },
+    "136": {
+      "hoursDescription": "要確認",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://smilewelldds.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "America/New_York"
+    },
     "137": {
       "openingHours": {
         "mon": [
@@ -185,6 +329,51 @@
       "verifiedAt": "2026-03-24",
       "confidence": "high",
       "timeZone": "America/New_York"
+    },
+    "139": {
+      "hoursDescription": "要確認",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://novaendo.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "America/New_York"
+    },
+    "140": {
+      "hoursDescription": "完全予約制（要電話）",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://nihonclinic.com/jp/chicago-clinic/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "America/Chicago"
+    },
+    "142": {
+      "hoursDescription": "月〜土 8:00-20:00",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://chicago.takashimatsukimd.com/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "America/Chicago"
+    },
+    "146": {
+      "hoursDescription": "24時間救急対応",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.baptisthealth.net/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "America/New_York"
+    },
+    "151": {
+      "hoursDescription": "要確認（拠点による）",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.carepoint.ca/japanese",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "America/Vancouver"
     },
     "154": {
       "openingHours": {
@@ -222,6 +411,42 @@
       "confidence": "high",
       "timeZone": "America/Vancouver"
     },
+    "168": {
+      "hoursDescription": "要問合せ",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.japangreen.co.uk",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Europe/London"
+    },
+    "169": {
+      "hoursDescription": "要問合せ",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.japangreen.co.uk",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Europe/London"
+    },
+    "171": {
+      "hoursDescription": "要問合せ",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.fitfiddle.co.uk",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Europe/London"
+    },
+    "172": {
+      "hoursDescription": "要問合せ",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.dritoclinic.co.uk",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Europe/London"
+    },
     "173": {
       "openingHours": {
         "mon": [
@@ -257,6 +482,114 @@
       "verifiedAt": "2026-03-24",
       "confidence": "high",
       "timeZone": "Europe/London"
+    },
+    "174": {
+      "hoursDescription": "要問合せ",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.keithcohendentist.co.uk",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Europe/London"
+    },
+    "175": {
+      "hoursDescription": "要問合せ",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.kodental.co.uk",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Europe/London"
+    },
+    "176": {
+      "hoursDescription": "要問合せ",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://namidentalclinic.com",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Europe/London"
+    },
+    "177": {
+      "hoursDescription": "月〜金 9:00〜18:00（日本語対応）",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://jp.american-hospital.org",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Europe/Paris"
+    },
+    "189": {
+      "hoursDescription": "要問合せ",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.neugebauer-baba.de",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Europe/Berlin"
+    },
+    "190": {
+      "hoursDescription": "受付8:00〜（日本語）",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.neugebauer-baba.de",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Europe/Berlin"
+    },
+    "192": {
+      "hoursDescription": "要予約",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.dock-nmc.de",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Europe/Berlin"
+    },
+    "193": {
+      "hoursDescription": "要問合せ",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.hs-allgemeinpraxis.de",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Europe/Berlin"
+    },
+    "194": {
+      "hoursDescription": "要問合せ",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.praxis-am-niddatal.de",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Europe/Berlin"
+    },
+    "196": {
+      "hoursDescription": "要問合せ",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://oshima-private-dentaloffice.com",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Europe/Berlin"
+    },
+    "197": {
+      "hoursDescription": "要問合せ",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.praxis-drybs.de",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Europe/Berlin"
+    },
+    "201": {
+      "hoursDescription": "要予約",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://japanclinic.nl",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Europe/Amsterdam"
     },
     "207": {
       "openingHours": {
@@ -295,6 +628,105 @@
       "timeZone": "Europe/Zurich",
       "rawSnippet": "Opening Hours\n     Monday to Friday from 08:00 – 18:00.\n\n   Saturday from 09:00 – 18:00.\n\n   Sundays and public holidays closed.\n\n\t          \t\t\t      Charter   We are recognized both under Geneva and Swiss law as a health care provider and health institution\n\n    Values   Our values are founded on a"
     },
+    "214": {
+      "hoursDescription": "24時間",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.privatklinik-doebling.at",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Europe/Vienna"
+    },
+    "215": {
+      "hoursDescription": "月〜金（完全予約制）",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.hautarztokamoto.at",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Europe/Vienna"
+    },
+    "219": {
+      "hoursDescription": "月-金（要確認）",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.enkyo.org.br",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "America/Sao_Paulo"
+    },
+    "220": {
+      "hoursDescription": "救急24時間",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://hnipo.org.br",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "America/Sao_Paulo"
+    },
+    "221": {
+      "hoursDescription": "救急24時間",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://j-helpdesk.jp",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "America/Sao_Paulo"
+    },
+    "225": {
+      "hoursDescription": "救急24時間",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://hospitalsugisawa.com.br",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "America/Sao_Paulo"
+    },
+    "230": {
+      "hoursDescription": "救急24時間",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://alemana.cl",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "America/Santiago"
+    },
+    "232": {
+      "hoursDescription": "救急24時間",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://clinicasantamaria.cl",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "America/Santiago"
+    },
+    "236": {
+      "hoursDescription": "救急24時間",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://clinicadelcountry.com",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "America/Bogota"
+    },
+    "238": {
+      "hoursDescription": "月火木金土（日本人スタッフ対応日）/ 9:00-16:00 土",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "http://www.worldcitimedical.com.au/jp/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Australia/Sydney"
+    },
+    "239": {
+      "hoursDescription": "月〜金 8:30-18:00",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.townhallclinic.com.au/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Australia/Sydney"
+    },
     "240": {
       "openingHours": {
         "mon": [
@@ -327,6 +759,69 @@
       "verifiedAt": "2026-03-24",
       "confidence": "high",
       "timeZone": "Australia/Sydney"
+    },
+    "241": {
+      "hoursDescription": "月〜土（水曜鳥居医師休診）8:00-11:00 土",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "http://www.northbridgemp.com.au/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Australia/Sydney"
+    },
+    "242": {
+      "hoursDescription": "月火木金 8:00-16:00",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://medicentral.com.au",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Australia/Sydney"
+    },
+    "243": {
+      "hoursDescription": "要確認（月〜金中心）",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://paramountclinic.com.au/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Australia/Melbourne"
+    },
+    "244": {
+      "hoursDescription": "月・水・金・不定期土曜（富田医師診察日）",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.doctoraiko.com.au/ja",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Australia/Melbourne"
+    },
+    "245": {
+      "hoursDescription": "第1・3金曜（Number1）/ 毎週月曜（Parkside）/ 第2・4金曜（Valewood）",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://number1womenshealth.com/pages/dr-hikaru-hashimura",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Australia/Melbourne"
+    },
+    "246": {
+      "hoursDescription": "要確認",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://womenshealthhub.com.au",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Australia/Melbourne"
+    },
+    "251": {
+      "hoursDescription": "月〜土（要確認）",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://sakuraclinic.com.au/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Australia/Brisbane"
     },
     "252": {
       "openingHours": {
@@ -367,6 +862,60 @@
       "confidence": "medium",
       "timeZone": "Australia/Brisbane",
       "rawSnippet": "診療時間・アクセス\n\nブリスベンクリニック診療\n\n月-金：8:00am-6:00pm\n\n土日祝：10:00am - 3:00pm\n\nオンライン診療時間 （電話/ビデオ診療）"
+    },
+    "253": {
+      "hoursDescription": "月〜日 早朝〜夜間",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://jp.cbdmedical.com.au/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Australia/Brisbane"
+    },
+    "254": {
+      "hoursDescription": "月〜土（水曜休診あり）",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.dryasutakao.com.au",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Australia/Brisbane"
+    },
+    "257": {
+      "hoursDescription": "要確認",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.nihongoiryo.com.au/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Australia/Brisbane"
+    },
+    "263": {
+      "hoursDescription": "月〜日（早朝〜夜間・22時頃まで）",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.whitecross.co.nz/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Pacific/Auckland"
+    },
+    "265": {
+      "hoursDescription": "GP各診察：通常NZ$60〜70",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.healthpoint.co.nz/",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Pacific/Auckland"
+    },
+    "268": {
+      "hoursDescription": "土〜木曜日：8:00〜22:00（金曜休診）",
+      "status": "needs_review",
+      "sourceType": "official_website",
+      "sourceUrl": "https://www.americanwellnesscenter.ae",
+      "verifiedAt": "2026-03-24",
+      "confidence": "low",
+      "timeZone": "Asia/Dubai"
     }
   }
 }

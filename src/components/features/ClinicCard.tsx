@@ -15,6 +15,7 @@ interface ClinicCardProps {
 
 export function ClinicCard({ clinic, colorTheme, isHighlighted }: ClinicCardProps) {
     const { t, language } = useLanguage();
+    const VAGUE_HOURS_RE = /要確認|要問合|要問い合わせ|要電話|要予約|完全予約制|拠点による|中心|早朝〜夜間/;
     const normalizedHoursDescription = clinic.hoursDescription?.replace(/\s+/g, '');
     const showsEmergencyHoursLabel =
         !!normalizedHoursDescription && /24.*救急|救急.*24/.test(normalizedHoursDescription);
@@ -76,6 +77,7 @@ export function ClinicCard({ clinic, colorTheme, isHighlighted }: ClinicCardProp
     const isOpen = checkIsOpen(clinic.openingHours, clinic.timeZone);
     const reviewState = getHoursReviewState(clinic);
     const hasVerifiedHours = hasVerifiedOfficialHours(clinic);
+    const hasSpecificHoursDescription = !!clinic.hoursDescription && !VAGUE_HOURS_RE.test(clinic.hoursDescription);
 
     const getJapaneseSupportSummary = (details?: string) => {
         if (!details) return null;
@@ -127,7 +129,7 @@ export function ClinicCard({ clinic, colorTheme, isHighlighted }: ClinicCardProp
                                     {t('診療時間外', 'Closed')}
                                 </span>
                             )
-                        ) : reviewState ? (
+                        ) : reviewState && !hasSpecificHoursDescription ? (
                             <span
                                 className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-50 text-amber-700 truncate max-w-[220px]"
                                 title={reviewState.verifiedAt ? `${t('最終確認', 'Last checked')}: ${reviewState.verifiedAt}` : clinic.hoursDescription}
