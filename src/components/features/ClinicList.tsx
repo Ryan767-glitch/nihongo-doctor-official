@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import { Clinic, Embassy } from '@/types';
 import { ClinicCard } from '@/components/features/ClinicCard';
-import { Building, CreditCard, Ambulance, Info, Clock } from 'lucide-react';
+import { CreditCard, Ambulance, Info, Clock } from 'lucide-react';
 import { checkIsOpen, stringToColor } from '@/lib/utils';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { COUNTRY_MAP, COUNTRY_JA_MAP } from '@/lib/constants';
@@ -198,7 +198,6 @@ export function ClinicList({ clinics, embassies }: ClinicListProps) {
                 <div className="space-y-16">
                     {sortedCountries.map(country => {
                         const countryClinics = clinicsByCountry[country];
-                        const countryEmbassies = embassies.filter(e => e.country === country);
 
                         return (
                             <section key={country} id={encodeURIComponent(country)} className="space-y-6 scroll-mt-48">
@@ -211,27 +210,6 @@ export function ClinicList({ clinics, embassies }: ClinicListProps) {
                                         </span>
                                     </h2>
                                 </div>
-
-                                {countryEmbassies.length > 0 && (
-                                    <div className="grid gap-3 mb-6">
-                                        {countryEmbassies.map((embassy, i) => (
-                                            <div key={i} className="flex flex-col sm:flex-row gap-3 p-4 bg-amber-50/50 border border-amber-100 rounded-xl text-sm">
-                                                <div className="flex items-center gap-2 font-semibold text-amber-900 shrink-0">
-                                                    <Building className="w-4 h-4" />
-                                                    {embassy.name}
-                                                </div>
-                                                <div className="flex flex-wrap gap-x-4 gap-y-1 text-amber-800/80">
-                                                    <a href={`tel:${embassy.phone}`} className="hover:underline flex items-center gap-1">
-                                                        <span className="opacity-70 text-xs">{t('電話:', 'Phone:')}</span> {embassy.phone}
-                                                    </a>
-                                                    {embassy.website && (
-                                                        <a href={embassy.website} target="_blank" rel="noopener noreferrer" className="hover:text-amber-700 transition-colors">{t('公式サイト', 'Official site')}</a>
-                                                    )}
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
 
                                 {(() => {
                                     const cities = Array.from(new Set(countryClinics.map(c => c.city).filter(Boolean))).sort();
