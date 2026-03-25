@@ -17,8 +17,6 @@ const siteTitle = "にほんごドクター.com | 海外で日本語が通じる
 const siteDescription =
   `海外在住・旅行中の日本人のための、世界各国の日本語対応病院・クリニック検索サイト。アジア・北米・ヨーロッパ・オセアニアなど${totalCountries}カ国以上、${totalCount}件超の医療機関を掲載。`;
 const siteUrl = "https://nihongo-doctor.com";
-const iconVersion = "20260322";
-
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
@@ -27,6 +25,7 @@ export const metadata: Metadata = {
   },
   description: siteDescription,
   applicationName: "にほんごドクター.com",
+  manifest: "/manifest.json",
   alternates: {
     canonical: "/",
   },
@@ -54,11 +53,13 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: `/favicon.ico?v=${iconVersion}` },
-      { url: `/icon.png?v=${iconVersion}`, type: "image/png", sizes: "512x512" },
+      { url: "/favicon.ico" },
+      { url: "/icon-48.png", type: "image/png", sizes: "48x48" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
     ],
-    shortcut: [`/favicon.ico?v=${iconVersion}`],
-    apple: [{ url: `/apple-touch-icon.png?v=${iconVersion}` }],
+    shortcut: ["/favicon.ico"],
+    apple: [{ url: "/apple-touch-icon.png" }],
   },
 };
 
@@ -77,7 +78,7 @@ const organizationJsonLd = {
   "@type": "Organization",
   name: "にほんごドクター.com",
   url: siteUrl,
-  logo: `${siteUrl}/icon.png?v=${iconVersion}`,
+  logo: `${siteUrl}/icon-512.png`,
 };
 
 export default function RootLayout({
