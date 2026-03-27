@@ -55,23 +55,29 @@ export function ClinicCard({ clinic, colorTheme, isHighlighted }: ClinicCardProp
         return { en: name, ja: name };
     };
 
+    const normalizeInlineText = (value?: string | null) =>
+        value ? value.replace(/\s*\n+\s*/g, ' ').replace(/\s{2,}/g, ' ').trim() : '';
+
+    const normalizeMultilineMeta = (value?: string | null) =>
+        value ? value.replace(/\s*\n+\s*/g, ' / ').replace(/\s{2,}/g, ' ').trim() : '';
+
     let primaryName = '';
     let secondaryName: string | null = null;
 
     if (language === 'ja') {
         const parsed = parseName(clinic.nameJa);
-        primaryName = parsed.ja;
-        if (parsed.ja === clinic.nameJa) primaryName = clinic.nameJa;
-        if (parsed.en !== parsed.ja) secondaryName = parsed.en;
-        else if (clinic.nameEn && clinic.nameEn !== clinic.nameJa) secondaryName = clinic.nameEn;
+        primaryName = normalizeInlineText(parsed.ja);
+        if (parsed.ja === clinic.nameJa) primaryName = normalizeInlineText(clinic.nameJa);
+        if (parsed.en !== parsed.ja) secondaryName = normalizeInlineText(parsed.en);
+        else if (clinic.nameEn && clinic.nameEn !== clinic.nameJa) secondaryName = normalizeInlineText(clinic.nameEn);
     } else {
         const parsed = parseName(clinic.nameJa);
-        primaryName = clinic.nameEn || parsed.en;
+        primaryName = normalizeInlineText(clinic.nameEn || parsed.en);
         if ((!clinic.nameEn || clinic.nameEn === clinic.nameJa) && parsed.en !== parsed.ja) {
-            primaryName = parsed.en;
+            primaryName = normalizeInlineText(parsed.en);
         }
-        if (parsed.ja !== parsed.en) secondaryName = parsed.ja;
-        else if (clinic.nameJa !== primaryName) secondaryName = clinic.nameJa;
+        if (parsed.ja !== parsed.en) secondaryName = normalizeInlineText(parsed.ja);
+        else if (clinic.nameJa !== primaryName) secondaryName = normalizeInlineText(clinic.nameJa);
     }
 
     const isOpen = checkIsOpen(clinic.openingHours, clinic.timeZone);
@@ -95,6 +101,9 @@ export function ClinicCard({ clinic, colorTheme, isHighlighted }: ClinicCardProp
     };
 
     const supportSummary = getJapaneseSupportSummary(clinic.japaneseSupportDetails);
+    const displayHoursDescription = normalizeMultilineMeta(clinic.hoursDescription);
+    const displayAddress = normalizeMultilineMeta(clinic.address);
+    const displayPhone = normalizeMultilineMeta(clinic.phone);
 
     const displayNotes = language === 'ja'
         ? clinic.notes
@@ -178,9 +187,9 @@ export function ClinicCard({ clinic, colorTheme, isHighlighted }: ClinicCardProp
                                 {t('営業時間要確認', 'Hours need review')}
                             </span>
                         ) : clinic.hoursDescription && !(clinic.emergencyAvailable && showsEmergencyHoursLabel) ? (
-                            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-600 truncate max-w-[200px]" title={clinic.hoursDescription}>
-                                <Clock className="w-3 h-3" />
-                                {clinic.hoursDescription}
+                            <span className="inline-flex max-w-full items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-600 leading-relaxed" title={displayHoursDescription}>
+                                <Clock className="h-3 w-3 shrink-0" />
+                                <span className="break-words">{displayHoursDescription}</span>
                             </span>
                         ) : null}
 
@@ -200,19 +209,19 @@ export function ClinicCard({ clinic, colorTheme, isHighlighted }: ClinicCardProp
                     </div>
 
                     <div className="flex justify-between items-start gap-2">
-                        <div>
-                            <h3 className="font-bold text-lg leading-tight group-hover:text-primary transition-colors flex items-center gap-2">
+                        <div className="min-w-0">
+                            <h3 className="flex items-center gap-2 break-words font-bold text-lg leading-tight transition-colors group-hover:text-primary">
                                 {clinic.website ? (
-                                    <a href={clinic.website} target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center gap-2">
-                                        {primaryName}
-                                        <ExternalLink className="w-4 h-4 text-muted-foreground opacity-50 group-hover:opacity-100" />
+                                    <a href={clinic.website} target="_blank" rel="noopener noreferrer" className="flex min-w-0 items-center gap-2 hover:underline">
+                                        <span className="break-words">{primaryName}</span>
+                                        <ExternalLink className="h-4 w-4 shrink-0 text-muted-foreground opacity-50 group-hover:opacity-100" />
                                     </a>
                                 ) : (
-                                    primaryName
+                                    <span className="break-words">{primaryName}</span>
                                 )}
                             </h3>
                             {secondaryName && (
-                                <p className="text-sm text-muted-foreground mt-0.5">{secondaryName}</p>
+                                <p className="mt-0.5 text-sm text-muted-foreground break-words">{secondaryName}</p>
                             )}
                         </div>
                         {clinic.supportLevel === 'medical' && (
@@ -250,9 +259,9 @@ export function ClinicCard({ clinic, colorTheme, isHighlighted }: ClinicCardProp
                         href={clinic.googleMapsUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hover:text-primary hover:underline"
+                        className="break-words hover:text-primary hover:underline"
                     >
-                        {clinic.address}
+                        {displayAddress}
                     </a>
                 </div>
 
@@ -261,9 +270,9 @@ export function ClinicCard({ clinic, colorTheme, isHighlighted }: ClinicCardProp
                         <Phone className="w-4 h-4 flex-shrink-0" />
                         <a
                             href={`tel:${clinic.phoneClean || clinic.phone}`}
-                            className="hover:text-primary hover:underline"
+                            className="break-words hover:text-primary hover:underline"
                         >
-                            {clinic.phone}
+                            {displayPhone}
                         </a>
                     </div>
                 )}
