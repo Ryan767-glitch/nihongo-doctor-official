@@ -31,7 +31,7 @@ export function Header() {
                             <button
                                 className="md:hidden p-2 rounded-md hover:bg-muted transition-colors"
                                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                aria-label="Toggle menu"
+                                aria-label={isMenuOpen ? 'メニューを閉じる' : 'メニューを開く'}
                             >
                                 {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                             </button>

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 
-type SubmitStatus = 'idle' | 'success' | 'error';
+type SubmitStatus = 'idle' | 'success' | 'error' | 'rate_limited';
 
 const categories = [
     '掲載情報の修正依頼',
@@ -50,6 +50,8 @@ export default function ContactPage() {
                 setSubmitStatus('success');
                 setMessageLength(0);
                 form.reset();
+            } else if (response.status === 429) {
+                setSubmitStatus('rate_limited');
             } else {
                 setSubmitStatus('error');
             }
@@ -77,6 +79,14 @@ export default function ContactPage() {
                     <div className="bg-green-50 border border-green-200 text-green-800 rounded-md p-4 mb-8">
                         <p className="font-medium">
                             お問い合わせを受け付けました。内容を確認のうえ、順次ご返信します。
+                        </p>
+                    </div>
+                )}
+
+                {submitStatus === 'rate_limited' && (
+                    <div className="bg-amber-50 border border-amber-200 text-amber-800 rounded-md p-4 mb-8">
+                        <p className="font-medium">
+                            短時間に送信が集中しています。しばらく待ってから再度お試しください。
                         </p>
                     </div>
                 )}
@@ -119,7 +129,7 @@ export default function ContactPage() {
                             name="email"
                             required
                             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
-                            placeholder="your@email.com"
+                            placeholder="info@example.com"
                         />
                     </div>
 

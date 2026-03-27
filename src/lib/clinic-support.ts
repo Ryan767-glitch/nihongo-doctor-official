@@ -1,9 +1,8 @@
 import { Clinic } from '@/types';
 
-const JAPANESE_SIGNAL_RE = /日本語|通訳|翻訳|日本人|日系人|JapaneseHelpDesk|鳥居|TORII/;
+const JAPANESE_SIGNAL_RE =
+    /日本語|邦人|通訳|翻訳|コーディネーター|日本人|日系人|日本語スタッフ|日本人スタッフ|日本人医師|日本人歯科医|日本人歯科衛生士|日本人看護師|ジャパニーズヘルプデスク|ヘルプデスク|Japan(?:ese)?\s*Desk|Japanese|日英両語|日英対応|鳥居|TORII/i;
 const NO_JAPANESE_RE = /日本語不可/;
-const FOREIGN_LANGUAGE_RE = /(英語|ドイツ語|スペイン語|ポルトガル語|広東語|中国語|フランス語|アラビア語|韓国語)/;
-const SUPPORT_WORD_RE = /(対応|医師|スタッフ)/;
 
 function getSupportDetails(clinic: Clinic) {
     return [clinic.japaneseSupportDetails, clinic.notes].filter(Boolean).join(' ');
@@ -20,11 +19,11 @@ export function isJapaneseCompatibleClinic(clinic: Clinic) {
         return true;
     }
 
-    if (JAPANESE_SIGNAL_RE.test(details)) {
-        return true;
+    if (clinic.supportLevel === 'none') {
+        return false;
     }
 
-    return !(FOREIGN_LANGUAGE_RE.test(details) && SUPPORT_WORD_RE.test(details));
+    return JAPANESE_SIGNAL_RE.test(details);
 }
 
 export function filterJapaneseCompatibleClinics(clinics: Clinic[]) {

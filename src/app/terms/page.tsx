@@ -2,7 +2,7 @@ import React from 'react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: '利用規約 | にほんごドクター.com',
+    title: '利用規約',
     description: 'にほんごドクター.com の利用規約',
 };
 

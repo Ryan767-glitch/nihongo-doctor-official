@@ -2,7 +2,7 @@ import React from 'react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: '免責事項 | にほんごドクター.com',
+    title: '免責事項',
     description: 'にほんごドクター.com の免責事項',
 };
 

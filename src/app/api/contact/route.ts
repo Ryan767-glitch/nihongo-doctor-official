@@ -18,6 +18,15 @@ type ContactPayload = {
     message?: unknown;
 };
 
+type RateLimitEntry = {
+    count: number;
+    resetAt: number;
+};
+
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const RATE_LIMIT_MAX_REQUESTS = 3;
+const rateLimitStore = new Map<string, RateLimitEntry>();
+
 function getMissingEnvVars() {
     return requiredEnvVars.filter((key) => !process.env[key]);
 }
@@ -33,6 +42,28 @@ function escapeHtml(value: string) {
         .replaceAll('>', '&gt;')
         .replaceAll('"', '&quot;')
         .replaceAll("'", '&#39;');
+}
+
+function getClientKey(request: Request, email: string) {
+    const forwardedFor = request.headers.get('x-forwarded-for');
+    const ip = forwardedFor?.split(',')[0]?.trim() || request.headers.get('x-real-ip') || 'unknown';
+    return `${ip}:${email.toLowerCase()}`;
+}
+
+function isRateLimited(key: string, now: number) {
+    const current = rateLimitStore.get(key);
+    if (!current || current.resetAt <= now) {
+        rateLimitStore.set(key, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+        return false;
+    }
+
+    if (current.count >= RATE_LIMIT_MAX_REQUESTS) {
+        return true;
+    }
+
+    current.count += 1;
+    rateLimitStore.set(key, current);
+    return false;
 }
 
 export async function POST(request: Request) {
@@ -64,6 +95,12 @@ export async function POST(request: Request) {
 
     if (message.length > 1000) {
         return NextResponse.json({ error: 'message_too_long' }, { status: 400 });
+    }
+
+    const now = Date.now();
+    const clientKey = getClientKey(request, email);
+    if (isRateLimited(clientKey, now)) {
+        return NextResponse.json({ error: 'rate_limited' }, { status: 429 });
     }
 
     const transporter = nodemailer.createTransport({

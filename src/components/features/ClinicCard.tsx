@@ -100,6 +100,46 @@ export function ClinicCard({ clinic, colorTheme, isHighlighted }: ClinicCardProp
         ? clinic.notes
         : (clinic.notes && !/[\u3000-\u303f\u3040-\u309f\u30a0-\u30ff\uff00-\uff9f\u4e00-\u9faf\u3400-\u4dbf]/.test(clinic.notes) ? clinic.notes : null);
 
+    const normalizeSpecialties = (specialties: string[]) => {
+        const merged: string[] = [];
+        let buffer = '';
+
+        const pushBuffer = () => {
+            if (!buffer) return;
+            merged.push(
+                buffer
+                    .replace(/\s*\/\s*/g, ' / ')
+                    .replace(/\s*・\s*/g, '・')
+                    .replace(/（\s+/g, '（')
+                    .replace(/\s+）/g, '）')
+                    .trim()
+            );
+            buffer = '';
+        };
+
+        for (const specialty of specialties) {
+            const current = specialty.trim();
+            if (!current) continue;
+
+            if (!buffer) {
+                buffer = current;
+            } else {
+                buffer += `・${current}`;
+            }
+
+            const openCount = (buffer.match(/[（(]/g) || []).length;
+            const closeCount = (buffer.match(/[）)]/g) || []).length;
+            if (openCount === closeCount) {
+                pushBuffer();
+            }
+        }
+
+        pushBuffer();
+        return merged;
+    };
+
+    const normalizedSpecialties = normalizeSpecialties(clinic.specialties);
+
     const borderColorClass = colorTheme ? colorTheme.split(' ')[0].replace('bg-', 'border-t-') : '';
     const highlightClass = isHighlighted ? 'ring-4 ring-primary bg-primary/5 transition-all duration-1000' : 'ring-1 ring-slate-100 bg-card';
 
@@ -228,9 +268,9 @@ export function ClinicCard({ clinic, colorTheme, isHighlighted }: ClinicCardProp
                     </div>
                 )}
 
-                {clinic.specialties.length > 0 && (
+                {normalizedSpecialties.length > 0 && (
                     <div className="flex flex-wrap gap-1.5 pt-1">
-                        {clinic.specialties.map((s, i) => (
+                        {normalizedSpecialties.map((s, i) => (
                             <span key={i} className="px-2 py-1 bg-white border border-border rounded-md text-xs text-muted-foreground">
                                 {translateSpecialty(s)}
                             </span>
