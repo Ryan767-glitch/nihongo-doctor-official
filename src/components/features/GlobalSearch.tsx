@@ -65,7 +65,7 @@ export function GlobalSearch({ variant = 'default' }: GlobalSearchProps) {
                 open={open}
                 onOpenChange={setOpen}
                 label={t('サイト内検索', 'Site search')}
-                className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm flex items-start justify-center pt-[15vh] px-4"
+                className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm flex items-start justify-center pt-[12vh] px-3 sm:px-4"
                 shouldFilter={true}
             >
                 <VisuallyHidden.Root>
@@ -153,13 +153,14 @@ export function GlobalSearch({ variant = 'default' }: GlobalSearchProps) {
                 <div className="w-full max-w-3xl mx-auto flex flex-col items-center">
                     <button
                         onClick={triggerOpen}
-                        className="flex items-center w-full bg-white h-14 sm:h-16 rounded-full shadow-lg border border-border/50 hover:shadow-xl transition-all duration-300 pr-2 pl-6 group overflow-hidden"
+                        className="flex items-center w-full bg-white h-12 sm:h-16 rounded-full shadow-lg border border-border/50 hover:shadow-xl transition-all duration-300 pr-1.5 pl-4 sm:pr-2 sm:pl-6 group overflow-hidden"
                     >
                         <Search className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
-                        <span className="flex-1 text-left text-muted-foreground ml-3 text-sm sm:text-base">
-                            {t('症状、診療科、病院名で検索...', 'Search by symptom, specialty, or clinic name...')}
+                        <span className="flex-1 text-left text-muted-foreground ml-2 sm:ml-3 text-sm sm:text-base truncate">
+                            <span className="sm:hidden">{t('病院名・診療科で検索', 'Search clinics')}</span>
+                            <span className="hidden sm:inline">{t('症状、診療科、病院名で検索...', 'Search by symptom, specialty, or clinic name...')}</span>
                         </span>
-                        <div className="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-2 md:py-2.5 rounded-full font-medium transition-colors ml-2 shrink-0 h-10 sm:h-12 flex items-center justify-center">
+                        <div className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-8 py-2 md:py-2.5 rounded-full font-medium transition-colors ml-2 shrink-0 h-9 sm:h-12 flex items-center justify-center">
                             {t('検索', 'Search')}
                         </div>
                     </button>

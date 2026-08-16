@@ -68,7 +68,7 @@ export default async function ClinicPage({ params }: PageProps) {
         <div className="container mx-auto max-w-5xl py-10 px-4">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-            <div className="text-sm text-muted-foreground mb-6 flex flex-wrap items-center gap-2">
+            <div className="text-xs sm:text-sm text-muted-foreground mb-6 flex flex-wrap items-center gap-2 break-keep">
                 <Link href="/" className="hover:text-primary">トップ</Link>
                 <span>/</span>
                 <Link href={`/${continent}`} className="hover:text-primary">{CONTINENT_JA[record.continent]}</Link>
@@ -96,7 +96,7 @@ export default async function ClinicPage({ params }: PageProps) {
                     )}
                 </div>
 
-                <h1 className="text-3xl font-bold text-slate-900 mb-2">{name}</h1>
+                <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2 break-keep">{name}</h1>
                 {record.nameEn && record.nameEn !== name && (
                     <p className="text-muted-foreground mb-4">{record.nameEn}</p>
                 )}
@@ -156,19 +156,19 @@ export default async function ClinicPage({ params }: PageProps) {
                     )}
                 </div>
 
-                <div className="flex flex-wrap gap-3 mt-8">
+                <div className="flex flex-col sm:flex-row flex-wrap gap-3 mt-8">
                     {record.phone && (
-                        <a href={`tel:${record.phoneClean || record.phone}`} className="inline-flex items-center gap-2 bg-primary text-white px-5 py-3 rounded-xl font-semibold">
+                        <a href={`tel:${record.phoneClean || record.phone}`} className="inline-flex justify-center items-center gap-2 bg-primary text-white px-5 py-3 rounded-xl font-semibold min-h-[48px]">
                             <Phone className="w-4 h-4" /> 電話する
                         </a>
                     )}
                     {record.website && (
-                        <a href={record.website} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-5 py-3 rounded-xl font-semibold">
+                        <a href={record.website} target="_blank" rel="noopener noreferrer" className="inline-flex justify-center items-center gap-2 bg-blue-50 text-blue-700 px-5 py-3 rounded-xl font-semibold min-h-[48px]">
                             <ExternalLink className="w-4 h-4" /> 公式サイト
                         </a>
                     )}
                     {record.googleMapsUrl && (
-                        <a href={record.googleMapsUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border px-5 py-3 rounded-xl font-semibold">
+                        <a href={record.googleMapsUrl} target="_blank" rel="noopener noreferrer" className="inline-flex justify-center items-center gap-2 border px-5 py-3 rounded-xl font-semibold min-h-[48px]">
                             <MapPin className="w-4 h-4" /> 地図
                         </a>
                     )}

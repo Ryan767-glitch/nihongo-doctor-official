@@ -10,10 +10,10 @@ export function Header() {
 
     return (
         <header className="w-full flex flex-col">
-            <div className="fixed inset-x-0 top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/80 border-b border-sky-100/80">
-                <div className="container mx-auto max-w-7xl flex h-16 items-center px-4">
-                    <Link href="/" className="mr-6 flex items-center space-x-2">
-                        <span className="font-bold text-xl tracking-tight text-foreground">
+            <div className="fixed inset-x-0 top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/80 border-b border-sky-100/80 pt-[env(safe-area-inset-top)]">
+                <div className="container mx-auto max-w-7xl flex h-14 sm:h-16 items-center px-3 sm:px-4">
+                    <Link href="/" className="mr-3 sm:mr-6 flex min-w-0 items-center">
+                        <span className="font-bold text-[15px] sm:text-xl tracking-tight text-foreground truncate">
                             にほんごドクター<span className="text-primary">.com</span>
                         </span>
                     </Link>
@@ -55,7 +55,7 @@ export function Header() {
                                 <Link
                                     key={href}
                                     href={href}
-                                    className="hover:text-primary transition-colors py-2 border-b border-border/50 last:border-b-0"
+                                    className="hover:text-primary transition-colors py-3 min-h-[48px] flex items-center border-b border-border/50 last:border-b-0"
                                     onClick={() => setIsMenuOpen(false)}
                                 >
                                     {label}
@@ -66,10 +66,10 @@ export function Header() {
                 )}
             </div>
 
-            <div className="h-16 shrink-0" />
+            <div className="h-14 sm:h-16 shrink-0" />
 
             <div className="border-b border-sky-100/70 bg-white overflow-x-auto scrollbar-hide">
-                <div className="container mx-auto max-w-7xl px-4 flex items-center justify-start h-10 gap-6 text-sm font-medium text-slate-500 whitespace-nowrap">
+                <div className="container mx-auto max-w-7xl px-4 flex items-center justify-start h-10 gap-5 sm:gap-6 text-sm font-medium text-slate-500 whitespace-nowrap pr-8">
                     <Link href="/asia" className="hover:text-primary transition-colors">アジア</Link>
                     <Link href="/north-america" className="hover:text-primary transition-colors">北米</Link>
                     <Link href="/latin-america" className="hover:text-primary transition-colors">中南米</Link>

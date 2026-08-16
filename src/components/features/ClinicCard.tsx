@@ -213,10 +213,10 @@ export function ClinicCard({ clinic, colorTheme, isHighlighted }: ClinicCardProp
 
                     <div className="flex justify-between items-start gap-2">
                         <div className="min-w-0">
-                            <h3 className="flex items-start gap-2 break-words font-bold text-lg leading-tight transition-colors group-hover:text-primary">
+                            <h3 className="flex items-start gap-2 font-bold text-lg leading-tight transition-colors group-hover:text-primary">
                                 <OpenStatusDot clinic={clinic} showLabel={false} />
                                 <Link href={getClinicHref(clinic)} className="min-w-0 hover:underline">
-                                    <span className="break-words">{primaryName}</span>
+                                    <span className="break-keep">{primaryName}</span>
                                 </Link>
                             </h3>
                             {secondaryName && (

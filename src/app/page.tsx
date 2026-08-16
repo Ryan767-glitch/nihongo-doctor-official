@@ -30,7 +30,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
-      <section className="relative overflow-hidden min-h-[620px] md:min-h-[720px]">
+      <section className="relative overflow-hidden min-h-[520px] sm:min-h-[620px] md:min-h-[720px]">
         <Image
           src="/hero-travel.png"
           alt=""
@@ -41,20 +41,22 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-sky-100/10 via-white/25 to-white" />
 
-        <div className="relative z-10 container mx-auto px-4 pt-16 sm:pt-20 pb-36 text-center">
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-slate-800 mb-5 drop-shadow-[0_1px_0_rgba(255,255,255,0.8)]">
-            世界中で、<span className="text-[#1aa3c7]">日本語の通じる</span>ドクターを。
+        <div className="relative z-10 container mx-auto px-4 pt-10 sm:pt-20 pb-28 sm:pb-36 text-center">
+          <h1 className="text-[1.7rem] leading-snug font-extrabold tracking-tight sm:text-5xl md:text-6xl text-slate-800 mb-4 sm:mb-5 drop-shadow-[0_1px_0_rgba(255,255,255,0.8)]">
+            世界中で、<br className="sm:hidden" />
+            <span className="text-[#1aa3c7]">日本語の通じる</span>ドクターを。
           </h1>
-          <p className="text-lg sm:text-2xl font-medium text-slate-600 mb-8">
+          <p className="text-base sm:text-2xl font-medium text-slate-600 mb-6 sm:mb-8 px-2">
             {totalCountries}カ国以上・{totalCount}件強の日本語対応医療機関を掲載
           </p>
           <div className="mx-auto max-w-3xl mb-4">
             <GlobalSearch variant="hero" />
           </div>
-          <p className="text-xs text-slate-500/80 text-center mt-5">
-            出典：外務省『世界の医療事情』、各国大使館・総領事館、各医療機関の公開情報
+          <p className="text-xs text-slate-500/80 text-center mt-4 px-6">
+            <span className="sm:hidden">出典：外務省『世界の医療事情』等</span>
+            <span className="hidden sm:inline">出典：外務省『世界の医療事情』、各国大使館・総領事館、各医療機関の公開情報</span>
           </p>
-          <div className="flex flex-wrap justify-center gap-3 mt-7">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mt-5 sm:mt-7">
             <Link href="/nearby" className="inline-flex items-center gap-2 bg-[#1aa3c7] text-white px-5 py-3 rounded-full font-semibold shadow-md">
               <LocateFixed className="w-4 h-4" /> 現在地から近い病院
             </Link>

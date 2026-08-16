@@ -20,6 +20,13 @@ const siteTitle = "にほんごドクター.com | 海外で日本語が通じる
 const siteDescription =
   `海外在住・旅行中の日本人のための、世界各国の日本語対応病院・クリニック検索サイト。アジア・北米・ヨーロッパ・オセアニアなど${totalCountries}カ国以上、${totalCount}件超の医療機関を掲載。`;
 const siteUrl = "https://nihongo-doctor.com";
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover" as const,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
@@ -95,7 +102,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
+    <html lang="ja" className="overflow-x-hidden">
       <body className={notoSansJp.className}>
         <script
           type="application/ld+json"
