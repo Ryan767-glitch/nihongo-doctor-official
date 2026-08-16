@@ -72,6 +72,33 @@
         "alertFeedUrl": "https://www.la.emb-japan.go.jp/itpr_ja/news_list.html"
     },
     {
+        "country": "シンガポール",
+        "region": "Asia",
+        "name": "在シンガポール日本国大使館",
+        "address": "16 Nassim Road, Singapore 258390",
+        "phone": "+65-6235-8855",
+        "website": "https://www.sg.emb-japan.go.jp/",
+        "alertFeedUrl": "https://www.sg.emb-japan.go.jp/itpr_ja/newinfo.html"
+    },
+    {
+        "country": "韓国",
+        "region": "Asia",
+        "name": "在大韓民国日本国大使館",
+        "address": "58 Yulgok-ro, Jongno-gu, Seoul 03061",
+        "phone": "+82-2-739-7400",
+        "website": "https://www.kr.emb-japan.go.jp/",
+        "alertFeedUrl": "https://www.kr.emb-japan.go.jp/itpr_ja/news.html"
+    },
+    {
+        "country": "台湾",
+        "region": "Asia",
+        "name": "日本台湾交流協会 台北事務所",
+        "address": "台北市松山區慶城街28號",
+        "phone": "+886-2-2713-8000",
+        "website": "https://www.koryu.or.jp/about/taipei/",
+        "alertFeedUrl": "https://www.koryu.or.jp/news/"
+    },
+    {
         "country": "中国",
         "region": "Asia",
         "name": "在中国日本国大使館",

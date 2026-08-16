@@ -15,6 +15,9 @@ export const emergencies = [
             { name: 'ラオス', nameEn: 'Laos', flag: '🇱🇦', numbers: [{ label: '救急', number: '195' }, { label: '警察', number: '191' }, { label: '消防', number: '190' }] },
             { name: '中国', nameEn: 'China', flag: '🇨🇳', numbers: [{ label: '救急', number: '120' }, { label: '警察', number: '110' }, { label: '消防', number: '119' }] },
             { name: '香港', nameEn: 'Hong Kong', flag: '🇭🇰', numbers: [{ label: '緊急共通', number: '999' }] },
+            { name: 'シンガポール', nameEn: 'Singapore', flag: '🇸🇬', numbers: [{ label: '救急', number: '995' }, { label: '警察', number: '999' }] },
+            { name: '韓国', nameEn: 'South Korea', flag: '🇰🇷', numbers: [{ label: '救急・消防', number: '119' }, { label: '警察', number: '112' }] },
+            { name: '台湾', nameEn: 'Taiwan', flag: '🇹🇼', numbers: [{ label: '救急・消防', number: '119' }, { label: '警察', number: '110' }] },
         ],
     },
     {

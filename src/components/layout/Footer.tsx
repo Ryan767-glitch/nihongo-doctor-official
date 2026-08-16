@@ -10,8 +10,15 @@ export function Footer() {
                     <p className="text-center leading-loose md:text-left">
                         © 2026 にほんごドクター.com
                     </p>
-                    <div className="flex gap-4">
-                        <Link href="/privacy" className="hover:underline">プライバシーポリシー</Link>
+                    <div className="flex flex-wrap justify-center gap-4">
+                        <Link href="/nearby" className="hover:underline">現在地から探す</Link>
+                        <Link href="/emergency" className="hover:underline">緊急時</Link>
+                        <Link href="/insurance" className="hover:underline">海外保険</Link>
+                        <Link href="/embassy" className="hover:underline">大使館</Link>
+                        <Link href="/phrases" className="hover:underline">フレーズ集</Link>
+                        <Link href="/contact" className="hover:underline">お問い合わせ</Link>
+                        <Link href="/privacy" className="hover:underline">プライバシー</Link>
+                        <Link href="/terms" className="hover:underline">利用規約</Link>
                         <Link href="/disclaimer" className="hover:underline">免責事項</Link>
                     </div>
                 </div>

@@ -1,93 +1,69 @@
 import { MetadataRoute } from 'next';
+import { publishedClinics } from '@/lib/catalog';
+import { getCityHref, getClinicHref, getCountryHref } from '@/lib/slugs';
 
 const SITE_URL = 'https://nihongo-doctor.com';
-const LAST_MODIFIED = new Date('2026-03-02');
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    return [
-        {
-            url: SITE_URL,
-            lastModified: LAST_MODIFIED,
-            changeFrequency: 'monthly',
-            priority: 1.0,
-        },
-        {
-            url: `${SITE_URL}/asia`,
-            lastModified: LAST_MODIFIED,
-            changeFrequency: 'monthly',
-            priority: 0.9,
-        },
-        {
-            url: `${SITE_URL}/north-america`,
-            lastModified: LAST_MODIFIED,
-            changeFrequency: 'monthly',
-            priority: 0.9,
-        },
-        {
-            url: `${SITE_URL}/europe`,
-            lastModified: LAST_MODIFIED,
-            changeFrequency: 'monthly',
-            priority: 0.9,
-        },
-        {
-            url: `${SITE_URL}/oceania`,
-            lastModified: LAST_MODIFIED,
-            changeFrequency: 'monthly',
-            priority: 0.9,
-        },
-        {
-            url: `${SITE_URL}/latin-america`,
-            lastModified: LAST_MODIFIED,
-            changeFrequency: 'monthly',
-            priority: 0.9,
-        },
-        {
-            url: `${SITE_URL}/africa-middle-east`,
-            lastModified: LAST_MODIFIED,
-            changeFrequency: 'monthly',
-            priority: 0.9,
-        },
-        {
-            url: `${SITE_URL}/emergency`,
-            lastModified: LAST_MODIFIED,
-            changeFrequency: 'weekly',
-            priority: 0.9,
-        },
-        {
-            url: `${SITE_URL}/phrases`,
-            lastModified: LAST_MODIFIED,
-            changeFrequency: 'monthly',
-            priority: 0.8,
-        },
-        {
-            url: `${SITE_URL}/embassy`,
-            lastModified: LAST_MODIFIED,
-            changeFrequency: 'monthly',
-            priority: 0.8,
-        },
-        {
-            url: `${SITE_URL}/insurance`,
-            lastModified: LAST_MODIFIED,
-            changeFrequency: 'monthly',
-            priority: 0.8,
-        },
-        {
-            url: `${SITE_URL}/contact`,
-            lastModified: LAST_MODIFIED,
-            changeFrequency: 'monthly',
-            priority: 0.5,
-        },
-        {
-            url: `${SITE_URL}/privacy`,
-            lastModified: LAST_MODIFIED,
-            changeFrequency: 'monthly',
-            priority: 0.4,
-        },
-        {
-            url: `${SITE_URL}/terms`,
-            lastModified: LAST_MODIFIED,
-            changeFrequency: 'monthly',
-            priority: 0.4,
-        },
-    ];
+    const now = new Date();
+    const staticRoutes: MetadataRoute.Sitemap = [
+        '',
+        '/nearby',
+        '/asia',
+        '/north-america',
+        '/europe',
+        '/oceania',
+        '/latin-america',
+        '/africa-middle-east',
+        '/emergency',
+        '/phrases',
+        '/embassy',
+        '/insurance',
+        '/contact',
+        '/privacy',
+        '/terms',
+        '/disclaimer',
+    ].map((path) => ({
+        url: `${SITE_URL}${path}`,
+        lastModified: now,
+        changeFrequency: path === '/emergency' || path === '/nearby' ? 'weekly' : 'monthly',
+        priority: path === '' ? 1 : path.startsWith('/asia') || path === '/nearby' ? 0.9 : 0.7,
+    }));
+
+    const countrySeen = new Set<string>();
+    const citySeen = new Set<string>();
+    const countryRoutes: MetadataRoute.Sitemap = [];
+    const cityRoutes: MetadataRoute.Sitemap = [];
+
+    for (const clinic of publishedClinics) {
+        const countryHref = getCountryHref(clinic.continent, clinic.country);
+        if (!countrySeen.has(countryHref)) {
+            countrySeen.add(countryHref);
+            countryRoutes.push({
+                url: `${SITE_URL}${countryHref}`,
+                lastModified: now,
+                changeFrequency: 'weekly',
+                priority: 0.85,
+            });
+        }
+        const cityHref = getCityHref(clinic.continent, clinic.country, clinic.city);
+        if (!citySeen.has(cityHref)) {
+            citySeen.add(cityHref);
+            cityRoutes.push({
+                url: `${SITE_URL}${cityHref}`,
+                lastModified: now,
+                changeFrequency: 'weekly',
+                priority: 0.8,
+            });
+        }
+    }
+
+    const clinicRoutes = publishedClinics.map((clinic) => ({
+        url: `${SITE_URL}${getClinicHref(clinic)}`,
+        lastModified: clinic.hoursVerifiedAt ? new Date(clinic.hoursVerifiedAt) : now,
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+    }));
+
+    return [...staticRoutes, ...countryRoutes, ...cityRoutes, ...clinicRoutes];
 }

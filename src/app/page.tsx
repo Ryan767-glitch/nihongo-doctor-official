@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { Building2, Map, Landmark, TreePalm, Sun, Tent } from "lucide-react";
+import { Building2, Map, Landmark, TreePalm, Sun, Tent, LocateFixed, PhoneCall, BookOpen } from "lucide-react";
 import { GlobalSearch } from "@/components/features/GlobalSearch";
-import clinicsData from "@/data/clinics.json";
-import { filterJapaneseCompatibleClinics } from "@/lib/clinic-support";
-import { enrichClinicsWithHoursSync } from "@/lib/clinic-hours";
-import { Clinic } from "@/types";
+import { getPopularCities, getPublishedStats, publishedClinics } from "@/lib/catalog";
+import { COUNTRY_JA_MAP } from "@/lib/constants";
 
-const publishedClinics = enrichClinicsWithHoursSync(filterJapaneseCompatibleClinics(clinicsData as Clinic[]));
-const totalCount = publishedClinics.length;
-const totalCountries = new Set(publishedClinics.map((c) => c.country)).size;
+const { clinicCount: totalCount, countryCount: totalCountries } = getPublishedStats();
 
 export const metadata: Metadata = {
   title: "にほんごドクター.com | 海外で日本語が通じる病院・クリニック検索",
@@ -33,27 +30,46 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-primary/5 to-background pt-20 pb-32">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-foreground mb-6">
-            世界中で、<span className="text-primary">日本語の通じる</span>ドクターを。
+      <section className="relative overflow-hidden min-h-[620px] md:min-h-[720px]">
+        <Image
+          src="/hero-travel.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[center_42%]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-sky-100/10 via-white/25 to-white" />
+
+        <div className="relative z-10 container mx-auto px-4 pt-16 sm:pt-20 pb-36 text-center">
+          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-slate-800 mb-5 drop-shadow-[0_1px_0_rgba(255,255,255,0.8)]">
+            世界中で、<span className="text-[#1aa3c7]">日本語の通じる</span>ドクターを。
           </h1>
-          <p className="text-xl sm:text-2xl font-medium opacity-80 mt-4 mb-10 text-muted-foreground">
+          <p className="text-lg sm:text-2xl font-medium text-slate-600 mb-8">
             {totalCountries}カ国以上・{totalCount}件強の日本語対応医療機関を掲載
           </p>
           <div className="mx-auto max-w-3xl mb-4">
             <GlobalSearch variant="hero" />
           </div>
-          <p className="text-xs text-muted-foreground/60 text-center mt-6">
-            出典：外務省『世界の医療事情』等参照
+          <p className="text-xs text-slate-500/80 text-center mt-5">
+            出典：外務省『世界の医療事情』、各国大使館・総領事館、各医療機関の公開情報
           </p>
+          <div className="flex flex-wrap justify-center gap-3 mt-7">
+            <Link href="/nearby" className="inline-flex items-center gap-2 bg-[#1aa3c7] text-white px-5 py-3 rounded-full font-semibold shadow-md">
+              <LocateFixed className="w-4 h-4" /> 現在地から近い病院
+            </Link>
+            <Link href="/emergency" className="inline-flex items-center gap-2 bg-white/90 border border-white px-5 py-3 rounded-full font-semibold shadow-sm">
+              <PhoneCall className="w-4 h-4" /> 緊急時ガイド
+            </Link>
+            <Link href="/phrases" className="inline-flex items-center gap-2 bg-white/90 border border-white px-5 py-3 rounded-full font-semibold shadow-sm">
+              <BookOpen className="w-4 h-4" /> 医療フレーズ
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* Continent Selection (Grid) */}
-      <section className="container mx-auto px-4 -mt-20 relative z-10 mb-20">
-        <div className="bg-card rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-6 md:p-10 border border-border/50 bg-white/50 backdrop-blur-sm">
+      <section className="container mx-auto px-4 -mt-24 relative z-10 mb-20">
+        <div className="bg-white/95 rounded-[32px] shadow-[0_16px_50px_rgba(15,23,42,0.08)] p-6 md:p-10 border border-white">
           <div className="text-center mb-10">
             <h2 className="text-2xl font-bold mb-2 flex items-center justify-center gap-2">
               地域から探す
@@ -123,6 +139,27 @@ export default function Home() {
                 {africaMiddleEast.countryCount}カ国・{africaMiddleEast.count}件
               </span>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="container mx-auto px-4 mb-20">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold mb-2 text-center">よく探される都市</h2>
+          <p className="text-sm text-muted-foreground text-center mb-6">国・都市ごとの一覧ページから、病院の詳細ページへ進めます</p>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            {getPopularCities().map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="rounded-2xl border bg-white px-4 py-4 hover:shadow-md transition-shadow"
+              >
+                <p className="font-bold">{item.city}</p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  {COUNTRY_JA_MAP[item.country] || item.country} ・ {item.count}件
+                </p>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

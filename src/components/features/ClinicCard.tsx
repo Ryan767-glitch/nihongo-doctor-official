@@ -1,11 +1,14 @@
 "use client";
 
 import { Clinic } from '@/types';
-import { MapPin, Phone, Clock, CreditCard, ExternalLink, Ambulance, Info, Map } from 'lucide-react';
+import { MapPin, Phone, Clock, CreditCard, Ambulance, Info, Map } from 'lucide-react';
 import { checkIsOpen } from '@/lib/utils';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { COUNTRY_MAP, COUNTRY_JA_MAP, SPECIALTY_MAP, CITY_MAP } from '@/lib/constants';
 import { getHoursReviewState, hasVerifiedOfficialHours } from '@/lib/clinic-hours';
+import { getClinicHref } from '@/lib/slugs';
+import { OpenStatusDot } from '@/components/features/OpenStatusDot';
+import Link from 'next/link';
 
 interface ClinicCardProps {
     clinic: Clinic;
@@ -187,9 +190,9 @@ export function ClinicCard({ clinic, colorTheme, isHighlighted }: ClinicCardProp
                                 {t('営業時間要確認', 'Hours need review')}
                             </span>
                         ) : clinic.hoursDescription && !(clinic.emergencyAvailable && showsEmergencyHoursLabel) ? (
-                            <span className="inline-flex max-w-full items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-600 leading-relaxed" title={displayHoursDescription}>
+                            <span className="inline-flex max-w-[220px] items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-600" title={displayHoursDescription}>
                                 <Clock className="h-3 w-3 shrink-0" />
-                                <span className="break-words">{displayHoursDescription}</span>
+                                <span className="truncate">{displayHoursDescription}</span>
                             </span>
                         ) : null}
 
@@ -210,18 +213,19 @@ export function ClinicCard({ clinic, colorTheme, isHighlighted }: ClinicCardProp
 
                     <div className="flex justify-between items-start gap-2">
                         <div className="min-w-0">
-                            <h3 className="flex items-center gap-2 break-words font-bold text-lg leading-tight transition-colors group-hover:text-primary">
-                                {clinic.website ? (
-                                    <a href={clinic.website} target="_blank" rel="noopener noreferrer" className="flex min-w-0 items-center gap-2 hover:underline">
-                                        <span className="break-words">{primaryName}</span>
-                                        <ExternalLink className="h-4 w-4 shrink-0 text-muted-foreground opacity-50 group-hover:opacity-100" />
-                                    </a>
-                                ) : (
+                            <h3 className="flex items-start gap-2 break-words font-bold text-lg leading-tight transition-colors group-hover:text-primary">
+                                <OpenStatusDot clinic={clinic} showLabel={false} />
+                                <Link href={getClinicHref(clinic)} className="min-w-0 hover:underline">
                                     <span className="break-words">{primaryName}</span>
-                                )}
+                                </Link>
                             </h3>
                             {secondaryName && (
                                 <p className="mt-0.5 text-sm text-muted-foreground break-words">{secondaryName}</p>
+                            )}
+                            {(clinic.hoursVerifiedAt || clinic.lastReviewedAt) && (
+                                <p className="mt-1 text-[11px] text-muted-foreground">
+                                    {t('最終確認', 'Last checked')}: {clinic.hoursVerifiedAt || clinic.lastReviewedAt}
+                                </p>
                             )}
                         </div>
                         {clinic.supportLevel === 'medical' && (

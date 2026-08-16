@@ -11,6 +11,8 @@ import clinicsData from "@/data/clinics.json";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { filterJapaneseCompatibleClinics } from "@/lib/clinic-support";
 import { enrichClinicsWithHoursSync } from "@/lib/clinic-hours";
+import { getClinicHref } from "@/lib/slugs";
+import { OpenStatusDot } from "@/components/features/OpenStatusDot";
 
 interface GlobalSearchProps {
     variant?: 'default' | 'hero' | 'icon' | 'modal';
@@ -103,8 +105,7 @@ export function GlobalSearch({ variant = 'default' }: GlobalSearchProps) {
                                     key={clinic.id}
                                     value={`${clinic.nameJa} ${clinic.nameEn} ${clinic.city} ${clinic.country} ${clinic.address || ''} ${clinic.specialties?.join(' ') ?? ''}`}
                                     onSelect={() => {
-                                        const slug = clinic.continent.toLowerCase().replace(' ', '-');
-                                        runCommand(() => router.push(`/${slug}?highlight=${clinic.id}`));
+                                        runCommand(() => router.push(getClinicHref(clinic)));
                                         setOpen(false);
                                     }}
                                     className="relative flex cursor-default select-none items-start rounded-lg px-3 py-3 text-sm outline-none data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground hover:bg-slate-100 aria-selected:bg-slate-100 transition-colors cursor-pointer overflow-hidden mt-1"
@@ -112,6 +113,7 @@ export function GlobalSearch({ variant = 'default' }: GlobalSearchProps) {
                                     <Building2 className="mr-3 h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
                                     <div className="flex-1 flex flex-col gap-1 min-w-0">
                                         <div className="flex items-center gap-2 flex-wrap">
+                                            <OpenStatusDot clinic={clinic} showLabel={false} />
                                             <span className="font-semibold text-foreground text-base truncate">{clinic.nameJa}</span>
                                             <span className={`text-[10px] px-2 py-0.5 rounded-full border font-medium whitespace-nowrap shrink-0 ${stringToColor(clinic.country)}`}>
                                                 {clinic.country}

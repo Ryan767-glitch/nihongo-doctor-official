@@ -76,6 +76,33 @@ export const embassies = [
                 url: 'https://www.la.emb-japan.go.jp/'
             },
             {
+                name: 'シンガポール',
+                nameEn: 'Singapore',
+                flag: '🇸🇬',
+                embassyName: '在シンガポール日本国大使館',
+                address: '16 Nassim Road, Singapore 258390',
+                phone: '+65-6235-8855',
+                url: 'https://www.sg.emb-japan.go.jp/'
+            },
+            {
+                name: '韓国',
+                nameEn: 'South Korea',
+                flag: '🇰🇷',
+                embassyName: '在大韓民国日本国大使館',
+                address: '58 Yulgok-ro, Jongno-gu, Seoul 03061',
+                phone: '+82-2-739-7400',
+                url: 'https://www.kr.emb-japan.go.jp/'
+            },
+            {
+                name: '台湾',
+                nameEn: 'Taiwan',
+                flag: '🇹🇼',
+                embassyName: '日本台湾交流協会 台北事務所',
+                address: '台北市松山區慶城街28號',
+                phone: '+886-2-2713-8000',
+                url: 'https://www.koryu.or.jp/about/taipei/'
+            },
+            {
                 name: '中国',
                 nameEn: 'China',
                 flag: '🇨🇳',

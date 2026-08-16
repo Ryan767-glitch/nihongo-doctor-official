@@ -31,6 +31,10 @@ export interface Clinic {
     hoursVerifiedAt?: string;
     hoursConfidence?: HoursConfidence;
     timeZone?: string;
+    lat?: number;
+    lng?: number;
+    lastReviewedAt?: string;
+    sourceName?: string;
 }
 
 export interface OpeningHours {

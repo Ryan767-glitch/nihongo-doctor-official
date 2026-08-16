@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import clinics from '@/data/clinics.json';
 import embassies from '@/data/embassies.json';
 import { ClinicList } from '@/components/features/ClinicList';
@@ -6,11 +7,17 @@ import { ContinentHeader } from '@/components/features/ContinentHeader';
 import { Clinic, Embassy } from '@/types';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import { getClinicHref } from '@/lib/slugs';
+import { getContinentParams } from '@/lib/catalog';
 import { filterJapaneseCompatibleClinics } from '@/lib/clinic-support';
 import { enrichClinicsWithHoursSync } from '@/lib/clinic-hours';
 
 const allClinics = enrichClinicsWithHoursSync(filterJapaneseCompatibleClinics(clinics as Clinic[]));
 const allEmbassies = embassies as Embassy[];
+
+export function generateStaticParams() {
+    return getContinentParams();
+}
 
 interface PageProps {
     params: Promise<{ continent: string }>;
@@ -127,7 +134,7 @@ export default async function ContinentPage(props: PageProps) {
             '@type': 'ListItem',
             position: index + 1,
             name: clinic.nameEn || clinic.nameJa,
-            url: `${siteUrl}/${continentSlug}?highlight=${clinic.id}`,
+            url: `${siteUrl}${getClinicHref(clinic)}`,
         })),
     };
 
@@ -150,7 +157,7 @@ export default async function ContinentPage(props: PageProps) {
                             {displayName}の日本語対応医療機関
                         </h2>
                         <p className="text-xs text-muted-foreground mt-1">
-                            出典: 外務省「世界の医療事情」（2024年調査時点）ほか
+                            出典: 外務省「世界の医療事情」、各国大使館・総領事館、各医療機関の公開情報
                         </p>
                     </div>
                     <div className="flex gap-4">
@@ -165,7 +172,9 @@ export default async function ContinentPage(props: PageProps) {
                     </div>
                 </div>
 
-                <ClinicList clinics={filteredClinics} embassies={filteredEmbassies} />
+                <Suspense fallback={<div className="h-40 rounded-2xl bg-slate-50 animate-pulse" />}>
+                    <ClinicList clinics={filteredClinics} embassies={filteredEmbassies} />
+                </Suspense>
             </div>
         </>
     );

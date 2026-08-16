@@ -16,6 +16,7 @@ type ContactPayload = {
     email?: unknown;
     category?: unknown;
     message?: unknown;
+    honeypot?: unknown;
 };
 
 type RateLimitEntry = {
@@ -84,6 +85,11 @@ export async function POST(request: Request) {
     const email = toSafeString(payload.email);
     const category = toSafeString(payload.category);
     const message = toSafeString(payload.message);
+    const honeypot = toSafeString(payload.honeypot);
+
+    if (honeypot) {
+        return NextResponse.json({ ok: true });
+    }
 
     if (!name || !email || !category || !message) {
         return NextResponse.json({ error: 'missing_fields' }, { status: 400 });

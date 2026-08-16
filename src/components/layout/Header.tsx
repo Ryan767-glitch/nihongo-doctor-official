@@ -10,7 +10,7 @@ export function Header() {
 
     return (
         <header className="w-full flex flex-col">
-            <div className="fixed inset-x-0 top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/40 shadow-sm">
+            <div className="fixed inset-x-0 top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/80 border-b border-sky-100/80">
                 <div className="container mx-auto max-w-7xl flex h-16 items-center px-4">
                     <Link href="/" className="mr-6 flex items-center space-x-2">
                         <span className="font-bold text-xl tracking-tight text-foreground">
@@ -19,9 +19,11 @@ export function Header() {
                     </Link>
 
                     <div className="flex flex-1 items-center justify-end space-x-4">
-                        <nav className="hidden md:flex items-center space-x-6 lg:space-x-8 text-sm font-medium text-muted-foreground mr-4">
-                            <Link href="/embassy" className="hover:text-primary transition-colors whitespace-nowrap">大使館情報</Link>
-                            <Link href="/phrases" className="hover:text-primary transition-colors whitespace-nowrap">医療フレーズ集</Link>
+                        <nav className="hidden md:flex items-center space-x-5 lg:space-x-6 text-sm font-medium text-muted-foreground mr-4">
+                            <Link href="/nearby" className="hover:text-primary transition-colors whitespace-nowrap">現在地から探す</Link>
+                            <Link href="/emergency" className="hover:text-primary transition-colors whitespace-nowrap">緊急時</Link>
+                            <Link href="/embassy" className="hover:text-primary transition-colors whitespace-nowrap">大使館</Link>
+                            <Link href="/phrases" className="hover:text-primary transition-colors whitespace-nowrap">フレーズ集</Link>
                             <Link href="/contact" className="hover:text-primary transition-colors whitespace-nowrap">お問い合わせ</Link>
                         </nav>
 
@@ -41,28 +43,24 @@ export function Header() {
 
                 {isMenuOpen && (
                     <div className="md:hidden border-t border-border bg-background animate-in slide-in-from-top duration-200">
-                        <nav className="flex flex-col p-4 space-y-4 text-sm font-medium">
-                            <Link
-                                href="/embassy"
-                                className="hover:text-primary transition-colors py-2 border-b border-border/50"
-                                onClick={() => setIsMenuOpen(false)}
-                            >
-                                大使館情報
-                            </Link>
-                            <Link
-                                href="/phrases"
-                                className="hover:text-primary transition-colors py-2 border-b border-border/50"
-                                onClick={() => setIsMenuOpen(false)}
-                            >
-                                医療フレーズ集
-                            </Link>
-                            <Link
-                                href="/contact"
-                                className="hover:text-primary transition-colors py-2"
-                                onClick={() => setIsMenuOpen(false)}
-                            >
-                                お問い合わせ
-                            </Link>
+                        <nav className="flex flex-col p-4 space-y-2 text-sm font-medium">
+                            {[
+                                ['/nearby', '現在地から探す'],
+                                ['/emergency', '緊急時ガイド'],
+                                ['/insurance', '海外保険'],
+                                ['/embassy', '大使館情報'],
+                                ['/phrases', '医療フレーズ集'],
+                                ['/contact', 'お問い合わせ'],
+                            ].map(([href, label]) => (
+                                <Link
+                                    key={href}
+                                    href={href}
+                                    className="hover:text-primary transition-colors py-2 border-b border-border/50 last:border-b-0"
+                                    onClick={() => setIsMenuOpen(false)}
+                                >
+                                    {label}
+                                </Link>
+                            ))}
                         </nav>
                     </div>
                 )}
@@ -70,8 +68,8 @@ export function Header() {
 
             <div className="h-16 shrink-0" />
 
-            <div className="border-b border-border/20 bg-muted/20 overflow-x-auto scrollbar-hide">
-                <div className="container mx-auto max-w-7xl px-4 flex items-center justify-start h-10 gap-6 text-sm font-medium text-muted-foreground whitespace-nowrap">
+            <div className="border-b border-sky-100/70 bg-white overflow-x-auto scrollbar-hide">
+                <div className="container mx-auto max-w-7xl px-4 flex items-center justify-start h-10 gap-6 text-sm font-medium text-slate-500 whitespace-nowrap">
                     <Link href="/asia" className="hover:text-primary transition-colors">アジア</Link>
                     <Link href="/north-america" className="hover:text-primary transition-colors">北米</Link>
                     <Link href="/latin-america" className="hover:text-primary transition-colors">中南米</Link>

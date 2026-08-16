@@ -35,7 +35,10 @@ export const COUNTRY_MAP: Record<string, string> = {
     'コロンビア': 'Colombia',
     'オーストラリア': 'Australia',
     'ニュージーランド': 'New Zealand',
-    'United States': 'United States'
+    'United States': 'United States',
+    'シンガポール': 'Singapore',
+    '韓国': 'South Korea',
+    '台湾': 'Taiwan'
 };
 
 export const COUNTRY_JA_MAP: Record<string, string> = {
@@ -77,6 +80,12 @@ export const COUNTRY_JA_MAP: Record<string, string> = {
     'Cambodia': 'カンボジア',
     'Laos': 'ラオス',
     'Myanmar': 'ミャンマー',
+    'Singapore': 'シンガポール',
+    'South Korea': '韓国',
+    'Taiwan': '台湾',
+    'シンガポール': 'シンガポール',
+    '韓国': '韓国',
+    '台湾': '台湾',
 };
 
 export const SPECIALTY_MAP: Record<string, string> = {
@@ -166,6 +175,12 @@ export const SPECIALTY_MAP: Record<string, string> = {
 };
 
 export const CITY_MAP: Record<string, string> = {
+    "シンガポール": "Singapore",
+    "ソウル": "Seoul",
+    "釜山": "Busan",
+    "台北": "Taipei",
+    "高雄": "Kaohsiung",
+    "ドバイ": "Dubai",
     "バンコク": "Bangkok",
     "シラチャ": "Sriracha",
     "チェンマイ": "Chiang Mai",
@@ -248,7 +263,8 @@ export const COUNTRY_CODES: Record<string, string> = {
     'インドネシア': 'id', 'カンボジア': 'kh', 'タイ': 'th',
     'フィリピン': 'ph', 'ベトナム': 'vn', 'マレーシア': 'my',
     'ミャンマー': 'mm', 'ラオス': 'la', '中国': 'cn',
-    '中国（香港）': 'hk', 'カナダ': 'ca', 'アメリカ': 'us',
+    '中国（香港）': 'hk', 'シンガポール': 'sg', '韓国': 'kr', '台湾': 'tw',
+    'カナダ': 'ca', 'アメリカ': 'us',
     'アルゼンチン': 'ar', 'コロンビア': 'co', 'チリ': 'cl',
     'ブラジル': 'br', 'ペルー': 'pe', 'イタリア': 'it',
     'オランダ': 'nl', 'オーストリア': 'at', 'スイス': 'ch',

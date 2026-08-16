@@ -43,6 +43,7 @@ export default function ContactPage() {
                     email: formData.get('email'),
                     category: formData.get('category'),
                     message: formData.get('message'),
+                    honeypot: formData.get('bot-field'),
                 }),
             });
 

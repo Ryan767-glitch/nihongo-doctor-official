@@ -10,7 +10,8 @@ const countryCodeMap: Record<string, string> = {
     'USA': 'us', 'Canada': 'ca', 'Argentina': 'ar', 'Colombia': 'co', 'Chile': 'cl',
     'Brazil': 'br', 'Peru': 'pe', 'Italy': 'it', 'Netherlands': 'nl', 'Austria': 'at',
     'Switzerland': 'ch', 'Spain': 'es', 'Germany': 'de', 'France': 'fr', 'Belgium': 'be',
-    'UK': 'gb', 'Australia': 'au', 'New Zealand': 'nz', 'UAE': 'ae', 'Egypt': 'eg',
+    'UK': 'gb', 'Australia': 'au', 'New Zealand': 'nz', 'UAE': 'ae',
+    'Singapore': 'sg', 'South Korea': 'kr', 'Taiwan': 'tw', 'Egypt': 'eg',
     'Ethiopia': 'et', 'Kenya': 'ke', 'Tanzania': 'tz', 'Nigeria': 'ng', 'South Africa': 'za',
 };
 

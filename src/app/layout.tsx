@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Noto_Sans_JP } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Providers } from "@/components/layout/Providers";
-import clinicsData from "@/data/clinics.json";
-import { filterJapaneseCompatibleClinics } from "@/lib/clinic-support";
-import { Clinic } from "@/types";
+import { ServiceWorkerRegister } from "@/components/layout/ServiceWorkerRegister";
+import { getPublishedStats } from "@/lib/catalog";
 
-const inter = Inter({ subsets: ["latin"] });
-const publishedClinics = filterJapaneseCompatibleClinics(clinicsData as Clinic[]);
-const totalCount = publishedClinics.length;
-const totalCountries = new Set(publishedClinics.map((clinic) => clinic.country)).size;
+const notoSansJp = Noto_Sans_JP({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  display: "swap",
+});
+const { clinicCount: totalCount, countryCount: totalCountries } = getPublishedStats();
 
 const siteTitle = "にほんごドクター.com | 海外で日本語が通じる病院・クリニック検索";
 const siteDescription =
@@ -71,6 +74,11 @@ const websiteJsonLd = {
   url: siteUrl,
   description: siteDescription,
   inLanguage: "ja-JP",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${siteUrl}/nearby?q={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
 };
 
 const organizationJsonLd = {
@@ -88,7 +96,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={inter.className}>
+      <body className={notoSansJp.className}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
@@ -100,9 +108,12 @@ export default function RootLayout({
         <div className="flex min-h-screen flex-col">
           <Providers>
             <Header />
-            <main className="flex-1 bg-muted/30">{children}</main>
+            <main className="flex-1 bg-white">{children}</main>
             <Footer />
           </Providers>
+          <ServiceWorkerRegister />
+          <Analytics />
+          <SpeedInsights />
         </div>
       </body>
     </html>

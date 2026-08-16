@@ -7,6 +7,8 @@ import { CreditCard, Ambulance, Info, Clock } from 'lucide-react';
 import { checkIsOpen, stringToColor } from '@/lib/utils';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { COUNTRY_MAP, COUNTRY_JA_MAP } from '@/lib/constants';
+import { getCityHref, getCountryHref } from '@/lib/slugs';
+import Link from 'next/link';
 import { CountrySelector } from './CountrySelector';
 import { useSearchParams } from 'next/navigation';
 
@@ -204,7 +206,9 @@ export function ClinicList({ clinics, embassies }: ClinicListProps) {
                                 <div className="flex items-center gap-3 border-b border-border/60 pb-4 mb-2">
                                     <span className={`w-2 h-8 rounded-full ${stringToColor(country).split(' ')[0]}`}></span>
                                     <h2 className="text-3xl font-bold flex items-center gap-3 text-slate-800">
-                                        {translateCountry(country)}
+                                        <Link href={getCountryHref(countryClinics[0].continent, country)} className="hover:text-primary">
+                                            {translateCountry(country)}
+                                        </Link>
                                         <span className="text-sm font-medium text-muted-foreground bg-slate-100 px-3 py-1 rounded-full border">
                                             {countryClinics.length}件
                                         </span>
@@ -241,7 +245,9 @@ export function ClinicList({ clinics, embassies }: ClinicListProps) {
                                                             <div key={city} id={encodeURIComponent(`${country}-${city}`)} className="scroll-mt-48">
                                                                 <h3 className="text-xl font-bold mb-4 flex items-center gap-2 text-slate-700">
                                                                     <div className={`w-1 h-5 rounded-full ${colorTheme.split(' ')[0]}`}></div>
-                                                                    {city}
+                                                                    <Link href={getCityHref(countryClinics[0].continent, country, city)} className="hover:text-primary">
+                                                                        {city}
+                                                                    </Link>
                                                                 </h3>
                                                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
                                                                     {cityClinics.map((clinic) => (
