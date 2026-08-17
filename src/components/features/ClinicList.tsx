@@ -7,7 +7,7 @@ import { CreditCard, Ambulance, Info, Clock } from 'lucide-react';
 import { checkIsOpen, stringToColor } from '@/lib/utils';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { COUNTRY_MAP, COUNTRY_JA_MAP } from '@/lib/constants';
-import { getCityHref, getCountryHref } from '@/lib/slugs';
+import { getCityDisplayName, getCityHref, getCountryHref } from '@/lib/slugs';
 import Link from 'next/link';
 import { CountrySelector } from './CountrySelector';
 import { useSearchParams } from 'next/navigation';
@@ -246,7 +246,7 @@ export function ClinicList({ clinics, embassies }: ClinicListProps) {
                                                                 <h3 className="text-xl font-bold mb-4 flex items-center gap-2 text-slate-700">
                                                                     <div className={`w-1 h-5 rounded-full ${colorTheme.split(' ')[0]}`}></div>
                                                                     <Link href={getCityHref(countryClinics[0].continent, country, city)} className="hover:text-primary">
-                                                                        {city}
+                                                                        {getCityDisplayName(city)}
                                                                     </Link>
                                                                 </h3>
                                                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">

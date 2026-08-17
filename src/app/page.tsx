@@ -156,7 +156,7 @@ export default function Home() {
                 href={item.href}
                 className="rounded-2xl border bg-white px-4 py-4 hover:shadow-md transition-shadow"
               >
-                <p className="font-bold">{item.city}</p>
+                <p className="font-bold">{item.displayCity}</p>
                 <p className="text-xs text-muted-foreground mt-1">
                   {COUNTRY_JA_MAP[item.country] || item.country} ・ {item.count}件
                 </p>

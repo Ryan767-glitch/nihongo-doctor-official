@@ -94,6 +94,9 @@ export function getClinicCoordinates(clinic: Clinic): Coordinates | null {
     if (typeof clinic.lat === 'number' && typeof clinic.lng === 'number') {
         return { lat: clinic.lat, lng: clinic.lng };
     }
+    if (clinic.city.includes('フェーン')) {
+        return { lat: 52.308, lng: 4.849 };
+    }
     return CITY_COORDINATES[clinic.city] ?? null;
 }
 

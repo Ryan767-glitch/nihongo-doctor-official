@@ -7,6 +7,7 @@ import {
     CONTINENT_JA,
     CONTINENT_NAME_BY_SLUG,
     displayClinicName,
+    getCityDisplayName,
     getCityHref,
     getCitySlug,
     getClinicHref,
@@ -152,6 +153,7 @@ export function getPopularCities() {
         .map((item) => ({
             ...item,
             href: getCityHref(item.continent, item.country, item.city),
+            displayCity: getCityDisplayName(item.city),
             continentJa: CONTINENT_JA[item.continent] || item.continent,
         }));
 }

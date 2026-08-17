@@ -171,6 +171,46 @@ export const CITY_SLUG_BY_NAME: Record<string, string> = {
     アブダビ: 'abu-dhabi',
 };
 
+export const CITY_DISPLAY_NAME: Record<string, string> = {
+    QLD: 'ブリスベン',
+    NSW: 'シドニー',
+    VIC: 'メルボルン',
+    ACT: 'キャンベラ',
+    'Auckland Region': 'オークランド',
+    Christchurch: 'クライストチャーチ',
+    Wellington: 'ウェリントン',
+    Dubai: 'ドバイ',
+    'ワシントンDC/MD/VA': 'ワシントンDC',
+    'ハワイ（ホノルル）': 'ホノルル',
+    'サンフランシスコ/ベイエリア': 'サンフランシスコ',
+    'シカゴ/中西部': 'シカゴ',
+    'マイアミ/フロリダ': 'マイアミ',
+    'エドモントン（AB州）': 'エドモントン',
+    'オタワ（ON州）': 'オタワ',
+    'カルガリー（AB州）': 'カルガリー',
+    'トロント（ON州）': 'トロント',
+    'バンクーバー（BC州）': 'バンクーバー',
+    'モントリオール（QC州）': 'モントリオール',
+    'バルセロナ（通訳）': 'バルセロナ',
+};
+
+const CLINIC_SLUG_BY_ID: Record<string, string> = {
+    '157': 'hsuen-medicine',
+    '160': 'yamashiro-clinic',
+    '178': 'dr-ota-hiroaki',
+    '180': 'dr-kondo-takeshi',
+    '181': 'dr-mimura-teiji',
+    '184': 'dr-muller',
+    '186': 'dr-inazuma',
+    '204': 'dr-suzuki-risako',
+    '208': 'hopitaux-universitaires-geneve',
+    '247': 'ian-matras-dental',
+    '248': 'japanese-dental-support',
+    '261': 'north-canberra-hospital',
+    '262': 'city-medical-centre',
+    '264': 'auckland-city-hospital',
+};
+
 function asciiSlug(value: string) {
     return value
         .normalize('NFKD')
@@ -201,12 +241,20 @@ export function getCountrySlug(country: string) {
 }
 
 export function getCitySlug(city: string) {
-    return CITY_SLUG_BY_NAME[city] || slugifyLabel(city);
+    if (CITY_SLUG_BY_NAME[city]) return CITY_SLUG_BY_NAME[city];
+    if (city.includes('フェーン')) return 'amstelveen';
+    return slugifyLabel(city);
 }
 
 export function getClinicSlug(clinic: Pick<Clinic, 'id' | 'nameEn' | 'nameJa'>) {
+    const mapped = CLINIC_SLUG_BY_ID[clinic.id];
+    if (mapped) return `${mapped}-${clinic.id}`;
     const base = slugifyLabel(clinic.nameEn || clinic.nameJa);
-    return `${base || 'clinic'}-${clinic.id}`;
+    return `${base && base !== 'unknown' ? base : 'clinic'}-${clinic.id}`;
+}
+
+export function getCityDisplayName(city: string) {
+    return CITY_DISPLAY_NAME[city] || city;
 }
 
 export function getClinicHref(clinic: Pick<Clinic, 'id' | 'nameEn' | 'nameJa' | 'continent' | 'country' | 'city'>) {
