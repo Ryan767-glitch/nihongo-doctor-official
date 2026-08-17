@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import Link from 'next/link';
 import { NearbyClinics } from '@/components/features/NearbyClinics';
 import { JsonLd } from '@/components/features/JsonLd';
@@ -48,7 +49,7 @@ export default function NearbyPage() {
             <JsonLd data={faqJsonLd(faqs)} />
             <h1 className="text-3xl font-bold mb-3">現在地から近い日本語対応病院</h1>
             <p className="text-muted-foreground mb-4 leading-relaxed">
-                海外で「近くの病院」「現在地 病院」と探しているときに、日本語が通じる受診先だけを距離順に出します。位置情報はブラウザ内だけで距離計算に使い、サーバーには送りません。
+                いまいる場所、または都市名から、日本語が通じる病院を近い順に出します。位置情報はブラウザ内だけで距離計算に使い、サーバーには送りません。
             </p>
             <p className="text-sm text-slate-600 mb-8">
                 都市名が分かっている場合は
@@ -57,7 +58,9 @@ export default function NearbyPage() {
                 <Link href="/emergency" className="text-primary hover:underline">緊急時ガイド</Link>
                 も使えます。
             </p>
-            <NearbyClinics />
+            <Suspense fallback={<div className="h-40 rounded-2xl bg-slate-50 animate-pulse" />}>
+                <NearbyClinics />
+            </Suspense>
             <section className="mt-12 border-t pt-8">
                 <h2 className="text-xl font-bold mb-4">よくある質問</h2>
                 <div className="space-y-4">
