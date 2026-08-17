@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ClinicDirectory, continentLabel } from '@/components/features/ClinicDirectory';
+import { DirectoryFaq, DirectoryIntro } from '@/components/features/DirectoryIntro';
+import { JsonLd } from '@/components/features/JsonLd';
 import {
     findCity,
     findCountry,
@@ -9,7 +11,7 @@ import {
     getEmbassiesForCountry,
 } from '@/lib/catalog';
 import { CONTINENT_NAME_BY_SLUG, getCityDisplayName, getCityHref, getCountryHref } from '@/lib/slugs';
-import { COUNTRY_JA_MAP } from '@/lib/constants';
+import { breadcrumbJsonLd, buildCityCopy, countryLabel, faqJsonLd, itemListJsonLd, SITE_URL } from '@/lib/seo';
 
 interface PageProps {
     params: Promise<{ continent: string; country: string; city: string }>;
@@ -25,12 +27,26 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const countryName = continentName ? findCountry(continentName, country) : null;
     const cityName = continentName && countryName ? findCity(continentName, countryName, city) : null;
     if (!continentName || !countryName || !cityName) return {};
-    const countryJa = COUNTRY_JA_MAP[countryName] || countryName;
-    const cityLabel = getCityDisplayName(cityName);
+    const clinics = getCityClinics(continentName, countryName, cityName);
+    const copy = buildCityCopy({
+        continentName,
+        countryName,
+        cityName,
+        clinics,
+        embassies: getEmbassiesForCountry(countryName),
+    });
+    const path = getCityHref(continentName, countryName, cityName);
     return {
-        title: `${cityLabel}の日本語対応病院・クリニック一覧`,
-        description: `${countryJa}・${cityLabel}で日本語が通じる病院・クリニックを掲載しています。`,
-        alternates: { canonical: getCityHref(continentName, countryName, cityName) },
+        title: copy.title,
+        description: copy.description,
+        alternates: { canonical: path },
+        openGraph: {
+            title: `${copy.title} | にほんごドクター.com`,
+            description: copy.description,
+            url: `${SITE_URL}${path}`,
+            locale: 'ja_JP',
+            type: 'website',
+        },
     };
 }
 
@@ -44,23 +60,41 @@ export default async function CityPage({ params }: PageProps) {
     if (!cityName) return notFound();
 
     const clinics = getCityClinics(continentName, countryName, cityName);
-    const countryJa = COUNTRY_JA_MAP[countryName] || countryName;
+    const embassies = getEmbassiesForCountry(countryName);
+    const copy = buildCityCopy({ continentName, countryName, cityName, clinics, embassies });
+    const path = getCityHref(continentName, countryName, cityName);
     const cityLabel = getCityDisplayName(cityName);
+    const countryJa = countryLabel(countryName);
+    const countryHref = getCountryHref(continentName, countryName);
 
     return (
-        <ClinicDirectory
-            title={cityLabel}
-            description={`${countryJa}・${cityLabel}で日本語が通じる医療機関を掲載しています`}
-            clinics={clinics}
-            embassies={getEmbassiesForCountry(countryName)}
-            crumbs={[
-                { href: '/', label: 'トップ' },
-                { href: `/${continent}`, label: continentLabel(continentName) },
-                { href: getCountryHref(continentName, countryName), label: countryJa },
-                { label: cityLabel },
-            ]}
-            countryCount={1}
-            clinicCount={clinics.length}
-        />
+        <>
+            <JsonLd
+                data={breadcrumbJsonLd([
+                    { name: 'にほんごドクター.com', href: '/' },
+                    { name: continentLabel(continentName), href: `/${continent}` },
+                    { name: countryJa, href: countryHref },
+                    { name: cityLabel, href: path },
+                ])}
+            />
+            <JsonLd data={itemListJsonLd(copy.title, copy.description, path, clinics)} />
+            <JsonLd data={faqJsonLd(copy.faqs)} />
+            <ClinicDirectory
+                title={copy.h1}
+                description={`${countryJa}・${cityLabel}の日本語対応病院を、診療科・救急・連絡先つきで掲載しています`}
+                clinics={clinics}
+                embassies={embassies}
+                crumbs={[
+                    { href: '/', label: 'トップ' },
+                    { href: `/${continent}`, label: continentLabel(continentName) },
+                    { href: countryHref, label: countryJa },
+                    { label: cityLabel },
+                ]}
+                countryCount={1}
+                clinicCount={clinics.length}
+                intro={<DirectoryIntro copy={copy} />}
+                footer={<DirectoryFaq faqs={copy.faqs} />}
+            />
+        </>
     );
 }

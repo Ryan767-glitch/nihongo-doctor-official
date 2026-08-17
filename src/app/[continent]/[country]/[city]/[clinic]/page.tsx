@@ -17,7 +17,8 @@ import {
     getClinicHref,
     getCountryHref,
 } from '@/lib/slugs';
-import { COUNTRY_JA_MAP } from '@/lib/constants';
+import { breadcrumbJsonLd, clinicPageCopy, medicalClinicJsonLd, SITE_URL } from '@/lib/seo';
+import { JsonLd } from '@/components/features/JsonLd';
 import { stringToColor } from '@/lib/utils';
 
 interface PageProps {
@@ -33,11 +34,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const record = findClinicBySlugs(continent, country, city, clinic);
     if (!record) return {};
     const name = displayClinicName(record);
-    const countryJa = COUNTRY_JA_MAP[record.country] || record.country;
+    const copy = clinicPageCopy(record, name);
+    const path = getClinicHref(record);
     return {
-        title: `${name}｜${record.city}の日本語対応医療機関`,
-        description: `${countryJa}・${record.city}の${name}。日本語対応の内容、電話、住所、診療時間を確認できます。`,
-        alternates: { canonical: getClinicHref(record) },
+        title: copy.title,
+        description: copy.description,
+        alternates: { canonical: path },
+        openGraph: {
+            title: `${copy.title} | にほんごドクター.com`,
+            description: copy.description,
+            url: `${SITE_URL}${path}`,
+            locale: 'ja_JP',
+            type: 'article',
+        },
     };
 }
 
@@ -47,35 +56,36 @@ export default async function ClinicPage({ params }: PageProps) {
     if (!record) return notFound();
 
     const name = displayClinicName(record);
-    const countryJa = COUNTRY_JA_MAP[record.country] || record.country;
+    const copy = clinicPageCopy(record, name);
+    const countryJa = copy.countryJa;
+    const cityLabel = copy.city;
     const related = getRelatedClinics(record);
     const embassies = getEmbassiesForCountry(record.country);
-    const siteUrl = 'https://nihongo-doctor.com';
-
-    const jsonLd = {
-        '@context': 'https://schema.org',
-        '@type': 'MedicalClinic',
-        name,
-        alternateName: record.nameEn,
-        address: record.address,
-        telephone: record.phoneClean || record.phone,
-        url: `${siteUrl}${getClinicHref(record)}`,
-        medicalSpecialty: record.specialties,
-        availableLanguage: ['ja', 'en'],
-    };
+    const path = getClinicHref(record);
+    const cityHref = getCityHref(record.continent, record.country, record.city);
+    const countryHref = getCountryHref(record.continent, record.country);
 
     return (
         <div className="container mx-auto max-w-5xl py-10 px-4">
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+            <JsonLd
+                data={breadcrumbJsonLd([
+                    { name: 'にほんごドクター.com', href: '/' },
+                    { name: CONTINENT_JA[record.continent], href: `/${continent}` },
+                    { name: countryJa, href: countryHref },
+                    { name: cityLabel, href: cityHref },
+                    { name, href: path },
+                ])}
+            />
+            <JsonLd data={medicalClinicJsonLd(record, name, path)} />
 
             <div className="text-xs sm:text-sm text-muted-foreground mb-6 flex flex-wrap items-center gap-2 break-keep">
                 <Link href="/" className="hover:text-primary">トップ</Link>
                 <span>/</span>
                 <Link href={`/${continent}`} className="hover:text-primary">{CONTINENT_JA[record.continent]}</Link>
                 <span>/</span>
-                <Link href={getCountryHref(record.continent, record.country)} className="hover:text-primary">{countryJa}</Link>
+                <Link href={countryHref} className="hover:text-primary">{countryJa}</Link>
                 <span>/</span>
-                <Link href={getCityHref(record.continent, record.country, record.city)} className="hover:text-primary">{record.city}</Link>
+                <Link href={cityHref} className="hover:text-primary">{cityLabel}</Link>
                 <span>/</span>
                 <span className="text-foreground">{name}</span>
             </div>
@@ -98,8 +108,13 @@ export default async function ClinicPage({ params }: PageProps) {
 
                 <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2 break-keep">{name}</h1>
                 {record.nameEn && record.nameEn !== name && (
-                    <p className="text-muted-foreground mb-4">{record.nameEn}</p>
+                    <p className="text-muted-foreground mb-2">{record.nameEn}</p>
                 )}
+                <p className="text-sm text-slate-600 leading-relaxed mb-4">
+                    {countryJa}・{cityLabel}にある日本語対応の医療機関です。
+                    {record.japaneseSupportDetails ? `${record.japaneseSupportDetails}。` : ''}
+                    受診前に予約の要否と保険の使い方を、電話または公式サイトで確認してください。
+                </p>
 
                 <div className="grid gap-4 text-sm">
                     {record.japaneseSupportDetails && (
@@ -113,7 +128,7 @@ export default async function ClinicPage({ params }: PageProps) {
                         <MapPin className="w-4 h-4 mt-0.5 text-primary" />
                         <div>
                             <p>{record.address}</p>
-                            <p className="text-muted-foreground">{countryJa} / {record.city}</p>
+                            <p className="text-muted-foreground">{countryJa} / {cityLabel}</p>
                         </div>
                     </div>
 
@@ -200,7 +215,7 @@ export default async function ClinicPage({ params }: PageProps) {
 
             {related.length > 0 && (
                 <section className="mt-10">
-                    <h2 className="text-xl font-bold mb-4">{record.city}のほかの医療機関</h2>
+                    <h2 className="text-xl font-bold mb-4">{cityLabel}のほかの日本語対応医療機関</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {related.map((item) => (
                             <ClinicCard key={item.id} clinic={item} colorTheme={stringToColor(item.country)} />

@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ClinicDirectory, continentLabel } from '@/components/features/ClinicDirectory';
+import { DirectoryFaq, DirectoryIntro } from '@/components/features/DirectoryIntro';
+import { JsonLd } from '@/components/features/JsonLd';
 import {
     findCountry,
     getCountryClinics,
@@ -8,7 +10,7 @@ import {
     getEmbassiesForCountry,
 } from '@/lib/catalog';
 import { CONTINENT_NAME_BY_SLUG, getCountryHref } from '@/lib/slugs';
-import { COUNTRY_JA_MAP } from '@/lib/constants';
+import { breadcrumbJsonLd, buildCountryCopy, countryLabel, faqJsonLd, itemListJsonLd, SITE_URL } from '@/lib/seo';
 
 interface PageProps {
     params: Promise<{ continent: string; country: string }>;
@@ -23,11 +25,25 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const continentName = CONTINENT_NAME_BY_SLUG[continent];
     const countryName = continentName ? findCountry(continentName, country) : null;
     if (!continentName || !countryName) return {};
-    const countryJa = COUNTRY_JA_MAP[countryName] || countryName;
+    const clinics = getCountryClinics(continentName, countryName);
+    const copy = buildCountryCopy({
+        continentName,
+        countryName,
+        clinics,
+        embassies: getEmbassiesForCountry(countryName),
+    });
+    const path = getCountryHref(continentName, countryName);
     return {
-        title: `${countryJa}の日本語対応病院・クリニック一覧`,
-        description: `${countryJa}で日本語が通じる病院・クリニックを掲載。日本人医師・通訳の有無、24時間救急、連絡先をまとめています。`,
-        alternates: { canonical: getCountryHref(continentName, countryName) },
+        title: copy.title,
+        description: copy.description,
+        alternates: { canonical: path },
+        openGraph: {
+            title: `${copy.title} | にほんごドクター.com`,
+            description: copy.description,
+            url: `${SITE_URL}${path}`,
+            locale: 'ja_JP',
+            type: 'website',
+        },
     };
 }
 
@@ -39,21 +55,37 @@ export default async function CountryPage({ params }: PageProps) {
     if (!countryName) return notFound();
 
     const clinics = getCountryClinics(continentName, countryName);
-    const countryJa = COUNTRY_JA_MAP[countryName] || countryName;
+    const embassies = getEmbassiesForCountry(countryName);
+    const copy = buildCountryCopy({ continentName, countryName, clinics, embassies });
+    const countryJa = countryLabel(countryName);
+    const path = getCountryHref(continentName, countryName);
 
     return (
-        <ClinicDirectory
-            title={countryJa}
-            description={`${countryJa}で日本語が通じる医療機関を掲載しています`}
-            clinics={clinics}
-            embassies={getEmbassiesForCountry(countryName)}
-            crumbs={[
-                { href: '/', label: 'トップ' },
-                { href: `/${continent}`, label: continentLabel(continentName) },
-                { label: countryJa },
-            ]}
-            countryCount={1}
-            clinicCount={clinics.length}
-        />
+        <>
+            <JsonLd
+                data={breadcrumbJsonLd([
+                    { name: 'にほんごドクター.com', href: '/' },
+                    { name: continentLabel(continentName), href: `/${continent}` },
+                    { name: countryJa, href: path },
+                ])}
+            />
+            <JsonLd data={itemListJsonLd(copy.title, copy.description, path, clinics)} />
+            <JsonLd data={faqJsonLd(copy.faqs)} />
+            <ClinicDirectory
+                title={copy.h1}
+                description={`${countryJa}の日本語対応病院を都市別・診療科別に探せます`}
+                clinics={clinics}
+                embassies={embassies}
+                crumbs={[
+                    { href: '/', label: 'トップ' },
+                    { href: `/${continent}`, label: continentLabel(continentName) },
+                    { label: countryJa },
+                ]}
+                countryCount={1}
+                clinicCount={clinics.length}
+                intro={<DirectoryIntro copy={copy} />}
+                footer={<DirectoryFaq faqs={copy.faqs} />}
+            />
+        </>
     );
 }

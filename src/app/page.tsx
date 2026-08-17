@@ -5,8 +5,25 @@ import { Building2, Map, Landmark, TreePalm, Sun, Tent, LocateFixed, PhoneCall, 
 import { GlobalSearch } from "@/components/features/GlobalSearch";
 import { getPopularCities, getPublishedStats, publishedClinics } from "@/lib/catalog";
 import { COUNTRY_JA_MAP } from "@/lib/constants";
+import { JsonLd } from "@/components/features/JsonLd";
+import { faqJsonLd } from "@/lib/seo";
 
 const { clinicCount: totalCount, countryCount: totalCountries } = getPublishedStats();
+
+const homeFaqs = [
+  {
+    question: "海外で日本語が通じる病院はどう探せばいい？",
+    answer: `都市名と「日本語」「病院」で探すのがいちばん早いです。このサイトでは${totalCountries}カ国・${totalCount}件超の日本語対応医療機関を、国・都市・病院のページに分けて掲載しています。`,
+  },
+  {
+    question: "日本人の医師がいるクリニックだけ見られますか？",
+    answer: "日本語で直接診察できる施設と、通訳・日本語サポートがある施設を分けて表示しています。カードの表示で見分けられます。",
+  },
+  {
+    question: "緊急のときの連絡先は？",
+    answer: "国ごとの救急番号は緊急時ガイドにまとめています。命に関わる症状はまず現地の救急へ。日本語で相談したい場合は都市ページの病院一覧から連絡してください。",
+  },
+];
 
 export const metadata: Metadata = {
   title: "にほんごドクター.com | 海外で日本語が通じる病院・クリニック検索",
@@ -145,10 +162,13 @@ export default function Home() {
         </div>
       </section>
 
+      <JsonLd data={faqJsonLd(homeFaqs)} />
       <section className="container mx-auto px-4 mb-20">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold mb-2 text-center">よく探される都市</h2>
-          <p className="text-sm text-muted-foreground text-center mb-6">国・都市ごとの一覧ページから、病院の詳細ページへ進めます</p>
+          <p className="text-sm text-muted-foreground text-center mb-6">
+            「バンコク 日本語 病院」「シカゴ 日本人 クリニック」のように、都市名から個別ページへ進めます
+          </p>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {getPopularCities().map((item) => (
               <Link
@@ -161,6 +181,20 @@ export default function Home() {
                   {COUNTRY_JA_MAP[item.country] || item.country} ・ {item.count}件
                 </p>
               </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="container mx-auto px-4 mb-20">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-2xl font-bold mb-6 text-center">よくある質問</h2>
+          <div className="space-y-4">
+            {homeFaqs.map((faq) => (
+              <div key={faq.question} className="rounded-2xl border bg-slate-50/70 p-5">
+                <h3 className="font-semibold text-slate-800">{faq.question}</h3>
+                <p className="text-sm text-slate-600 mt-2 leading-relaxed">{faq.answer}</p>
+              </div>
             ))}
           </div>
         </div>

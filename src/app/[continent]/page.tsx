@@ -4,13 +4,15 @@ import clinics from '@/data/clinics.json';
 import embassies from '@/data/embassies.json';
 import { ClinicList } from '@/components/features/ClinicList';
 import { ContinentHeader } from '@/components/features/ContinentHeader';
+import { DirectoryFaq, DirectoryIntro } from '@/components/features/DirectoryIntro';
+import { JsonLd } from '@/components/features/JsonLd';
 import { Clinic, Embassy } from '@/types';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { getClinicHref } from '@/lib/slugs';
 import { getContinentParams } from '@/lib/catalog';
 import { filterJapaneseCompatibleClinics } from '@/lib/clinic-support';
 import { enrichClinicsWithHoursSync } from '@/lib/clinic-hours';
+import { breadcrumbJsonLd, buildContinentCopy, faqJsonLd, itemListJsonLd, SITE_URL } from '@/lib/seo';
 
 const allClinics = enrichClinicsWithHoursSync(filterJapaneseCompatibleClinics(clinics as Clinic[]));
 const allEmbassies = embassies as Embassy[];
@@ -50,23 +52,26 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     const continentName = continentNameMap[continentSlug] || continentSlug;
     const displayJa = continentDisplayMap[continentName] || continentName;
 
-    const siteUrl = 'https://nihongo-doctor.com';
-    const pageUrl = `${siteUrl}/${continentSlug}`;
+    const filtered = allClinics.filter(
+        (clinic) => clinic.continent.toLowerCase() === continentName.toLowerCase()
+    );
+    const copy = buildContinentCopy({ continentName, clinics: filtered });
+    const pageUrl = `${SITE_URL}/${continentSlug}`;
 
     return {
-        title: `${displayJa}の日本語対応病院・クリニック一覧`,
-        description: `${displayJa}で日本語が通じる病院、歯科、クリニックの情報を掲載。日本人医師・通訳の有無や24時間救急対応など、受診前に確認したい情報をまとめています。`,
+        title: copy.title,
+        description: copy.description,
         alternates: {
             canonical: pageUrl,
         },
         openGraph: {
             type: 'website',
             url: pageUrl,
-            title: `${displayJa}の日本語対応病院一覧 | にほんごドクター.com`,
-            description: `${displayJa}で日本語が通じる医療機関を検索できます。`,
+            title: `${copy.title} | にほんごドクター.com`,
+            description: copy.description,
             images: [
                 {
-                    url: `${siteUrl}/og-image.png`,
+                    url: `${SITE_URL}/og-image.png`,
                     width: 1200,
                     height: 630,
                     alt: `にほんごドクター.com - ${displayJa}`,
@@ -75,9 +80,9 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
         },
         twitter: {
             card: 'summary_large_image',
-            title: `${displayJa}の日本語対応病院一覧 | にほんごドクター.com`,
-            description: `${displayJa}で日本語が通じる医療機関を検索できます。`,
-            images: [`${siteUrl}/og-image.png`],
+            title: `${copy.title} | にほんごドクター.com`,
+            description: copy.description,
+            images: [`${SITE_URL}/og-image.png`],
         },
     };
 }
@@ -102,46 +107,17 @@ export default async function ContinentPage(props: PageProps) {
     const countryCount = new Set(filteredClinics.map((clinic) => clinic.country)).size;
     const clinicCount = filteredClinics.length;
 
-    const siteUrl = 'https://nihongo-doctor.com';
-
-    const breadcrumbJsonLd = {
-        '@context': 'https://schema.org',
-        '@type': 'BreadcrumbList',
-        itemListElement: [
-            {
-                '@type': 'ListItem',
-                position: 1,
-                name: 'にほんごドクター.com',
-                item: siteUrl,
-            },
-            {
-                '@type': 'ListItem',
-                position: 2,
-                name: displayName,
-                item: `${siteUrl}/${continentSlug}`,
-            },
-        ],
-    };
-
-    const directoryJsonLd = {
-        '@context': 'https://schema.org',
-        '@type': 'ItemList',
-        name: `${displayName}の日本語対応病院・クリニック一覧`,
-        description: `${displayName}で日本語が通じる病院、歯科、クリニックの情報一覧。`,
-        url: `${siteUrl}/${continentSlug}`,
-        numberOfItems: clinicCount,
-        itemListElement: filteredClinics.slice(0, 10).map((clinic, index) => ({
-            '@type': 'ListItem',
-            position: index + 1,
-            name: clinic.nameEn || clinic.nameJa,
-            url: `${siteUrl}${getClinicHref(clinic)}`,
-        })),
-    };
+    const copy = buildContinentCopy({ continentName, clinics: filteredClinics });
+    const path = `/${continentSlug}`;
 
     return (
         <>
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(directoryJsonLd) }} />
+            <JsonLd data={breadcrumbJsonLd([
+                { name: 'にほんごドクター.com', href: '/' },
+                { name: displayName, href: path },
+            ])} />
+            <JsonLd data={itemListJsonLd(copy.title, copy.description, path, filteredClinics)} />
+            <JsonLd data={faqJsonLd(copy.faqs)} />
             <div className="container mx-auto max-w-7xl py-10 px-4 min-h-[100dvh]">
                 <div className="text-sm text-muted-foreground mb-6 flex items-center gap-2">
                     <Link href="/" className="hover:text-primary transition-colors">トップ</Link>
@@ -149,7 +125,8 @@ export default async function ContinentPage(props: PageProps) {
                     <span className="text-foreground">{displayName}</span>
                 </div>
 
-                <ContinentHeader displayName={displayName} />
+                <ContinentHeader displayName={copy.h1} description={`${displayName}の日本語対応病院を国・都市から探せます`} />
+                <DirectoryIntro copy={copy} />
 
                 <div className="mb-8 p-4 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between flex-wrap gap-4">
                     <div>
@@ -175,6 +152,7 @@ export default async function ContinentPage(props: PageProps) {
                 <Suspense fallback={<div className="h-40 rounded-2xl bg-slate-50 animate-pulse" />}>
                     <ClinicList clinics={filteredClinics} embassies={filteredEmbassies} />
                 </Suspense>
+                <DirectoryFaq faqs={copy.faqs} />
             </div>
         </>
     );

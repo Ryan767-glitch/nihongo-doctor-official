@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { Suspense, type ReactNode } from 'react';
 import Link from 'next/link';
 import { Clinic, Embassy } from '@/types';
 import { ClinicList } from '@/components/features/ClinicList';
@@ -16,6 +16,8 @@ export function ClinicDirectory({
     crumbs,
     countryCount,
     clinicCount,
+    intro,
+    footer,
 }: {
     title: string;
     description: string;
@@ -25,6 +27,8 @@ export function ClinicDirectory({
     crumbs: Crumb[];
     countryCount: number;
     clinicCount: number;
+    intro?: ReactNode;
+    footer?: ReactNode;
 }) {
     return (
         <div className="container mx-auto max-w-7xl py-10 px-4 min-h-[100dvh]">
@@ -44,6 +48,7 @@ export function ClinicDirectory({
             </div>
 
             <ContinentHeader displayName={title} description={description} />
+            {intro}
 
             <div className="mb-8 p-4 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between flex-wrap gap-4">
                 <div>
@@ -71,6 +76,7 @@ export function ClinicDirectory({
             <Suspense fallback={<div className="h-40 rounded-2xl bg-slate-50 animate-pulse" />}>
                 <ClinicList clinics={clinics} embassies={embassies} />
             </Suspense>
+            {footer}
         </div>
     );
 }

@@ -15,6 +15,18 @@ const groups = [
         ],
     },
     {
+        title: "よく探される都市",
+        links: [
+            ["/asia/thailand/bangkok", "バンコク"],
+            ["/asia/singapore/singapore", "シンガポール"],
+            ["/europe/germany/dusseldorf", "デュッセルドルフ"],
+            ["/north-america/united-states/chicago", "シカゴ"],
+            ["/north-america/united-states/honolulu", "ホノルル"],
+            ["/europe/switzerland/geneva", "ジュネーブ"],
+            ["/oceania/australia/sydney", "シドニー"],
+        ],
+    },
+    {
         title: "いざという時",
         links: [
             ["/emergency", "緊急時ガイド"],
@@ -39,7 +51,7 @@ export function Footer() {
         <footer className="w-full flex flex-col">
             <Disclaimer />
             <div className="border-t bg-white">
-                <div className="container mx-auto max-w-7xl px-4 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-sm">
+                <div className="container mx-auto max-w-7xl px-4 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 text-sm">
                     <div>
                         <p className="font-bold text-foreground mb-2">
                             にほんごドクター<span className="text-primary">.com</span>
