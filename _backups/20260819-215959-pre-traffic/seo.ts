@@ -1,5 +1,4 @@
 import { emergencies } from '@/app/emergency/data';
-import { CITY_GUIDES, CONTINENT_GUIDES, COUNTRY_GUIDES } from '@/data/city-guides';
 import { COUNTRY_JA_MAP } from '@/lib/constants';
 import {
     CONTINENT_JA,
@@ -25,6 +24,44 @@ const COUNTRY_EMERGENCY_ALIASES: Record<string, string> = {
     英国: '英国',
     UAE: 'UAE',
     アラブ首長国連邦: 'UAE',
+};
+
+const CITY_NOTES: Record<string, string> = {
+    bangkok:
+        '大型のインターナショナル病院に日本語窓口がある一方、日本人クリニックも点在します。観光・長期滞在どちらでも、受診前に予約と保険の使い方を確認してください。',
+    pattaya: '観光客向けの総合病院が中心です。夜間や休日は救急外来の有無を先に見てください。',
+    phuket: '島内の総合病院が受け皿になります。重傷時はバンコクへの移送が必要になることがあります。',
+    chiangmai: '長期滞在者向けのクリニックと総合病院が混在します。予約制の施設が多いです。',
+    'ho-chi-minh': '日本人クリニックとインターナショナル病院の両方があります。初診は予約が確実です。',
+    hanoi: '日本語対応のクリニックが複数あります。救急は115、事前に病院名を現地語でも控えておくと安心です。',
+    'kuala-lumpur': '日本人クリニックと民間総合病院がそろっています。キャッシュレス対応は施設ごとに違います。',
+    jakarta: 'ジャカルタは交通渋滞の影響が大きいので、夜間救急と自宅・ホテルからの所要時間をセットで見てください。',
+    bali: '観光客向け病院が中心です。保険のキャッシュレス提携があるかを出発前に確認するとスムーズです。',
+    singapore: '英語診療が基本で、日本語サポートがある病院・クリニックを掲載しています。救急は995です。',
+    seoul: '日本語対応のある病院・クリニックを掲載しています。救急・消防は119です。',
+    taipei: '日本語対応のある病院を掲載しています。救急・消防は119です。',
+    'hong-kong': '緊急時は999です。予約が必要な専門科と、当日受診できる一般診療を分けて探してください。',
+    'new-york': 'マンハッタン周辺の日本人向けクリニックが中心です。予約必須の施設が多いので、渡航前に連絡を。',
+    'los-angeles': '日系クリニックが複数あります。保険の種類によって窓口が変わるため、事前確認が必要です。',
+    'san-francisco': 'ベイエリアの日本語対応医療機関をまとめています。専門科は予約が取りにくいことがあります。',
+    chicago: '「日本クリニック シカゴ」のように、都市名で探す人が多い地域です。予約の空きは公式サイトで確認してください。',
+    honolulu: '観光客向けの日本語クリニックがあります。ホテルドクターや夜間対応の有無もあわせて見てください。',
+    london: 'NHSとプライベートクリニックが混在します。旅行者はプライベート側の日本語対応施設を先に確認するのが一般的です。',
+    paris: '日本人医師の個人クリニックと総合病院が混在します。救急は15、EU共通は112です。',
+    dusseldorf:
+        '日本人コミュニティが大きく、皮膚科・内科を中心に日本語で診られる開業医があります。「デュッセルドルフ 皮膚科 日本語」での検索が多い都市です。',
+    frankfurt: '日本人医師・日本語サポートのある一般診療所が中心です。救急・消防は112です。',
+    munich: '日本語対応のクリニックがあります。専門科は予約制と考えてください。',
+    berlin: '耳鼻科など専門クリニックを中心に掲載しています。救急は112です。',
+    amsterdam: 'アムステルダム本体と近郊アムステルフェーンの日本人向けクリニックを分けて確認してください。',
+    amstelveen: '在留邦人向けクリニックと、日本語デスクのある病院があります。',
+    geneva: '日本人医師の個人クリニックがあります。「スイス 病院 日本人」で探している人向けの受け皿です。',
+    sydney: '州の救急は000です。通訳サービス（131 450）も使えます。',
+    melbourne: '総合病院と一般診療所が中心です。緊急時は000です。',
+    brisbane: 'QLD（クイーンズランド）エリアの日本語対応医療機関を掲載しています。緊急時は000です。',
+    auckland: '緊急時は111です。初診は予約が基本です。',
+    dubai: '民間病院が中心です。救急は998、保険カードを必ず持参してください。',
+    'sao-paulo': '日系社会向けの病院があります。ポルトガル語環境なので、日本語対応の有無を先に見てください。',
 };
 
 export interface DirectoryLink {
@@ -152,14 +189,13 @@ export function buildCityCopy(opts: {
     const stats = summarizeClinics(opts.clinics);
     const emergencyLine = emergencySummary(opts.countryName);
     const specialties = specialtyPhrase(stats.specialtyLabels);
-    const guide = CITY_GUIDES[getCitySlug(opts.cityName)];
+    const cityNote = CITY_NOTES[getCitySlug(opts.cityName)];
     const embassyName = opts.embassies[0]?.name;
 
-    const title =
-        guide?.title ||
-        (specialties
-            ? `${city}で日本語が通じる病院・${stats.specialtyLabels[0]}・クリニック`
-            : `${city}で日本語が通じる病院・クリニック`);
+    const titleCore = specialties
+        ? `${city}で日本語が通じる病院・${stats.specialtyLabels[0]}`
+        : `${city}で日本語が通じる病院`;
+    const title = `${titleCore}・クリニック`;
 
     const description = [
         `${countryJa}・${city}で日本語が通じる病院・クリニックを${opts.clinics.length}件掲載。`,
@@ -179,13 +215,13 @@ export function buildCityCopy(opts: {
         emergencyLine
             ? `${countryJa}の主な緊急番号は${emergencyLine}です。命に関わる症状は、まず現地の救急に連絡してください。`
             : `${city}で受診する前に、予約の要否と保険の使い方を各施設へ確認してください。`,
-        ...(guide?.notes || []),
+        cityNote,
         embassyName
             ? `パスポート紛失や入院時の支援は${embassyName}にも相談できます。連絡先はこのページ下部と大使館ページにあります。`
             : '',
     ].filter(Boolean) as string[];
 
-    const defaultFaqs: DirectoryFaq[] = [
+    const faqs: DirectoryFaq[] = [
         {
             question: `${city}で日本語が通じる病院はありますか？`,
             answer: `はい。このページでは${city}の日本語対応病院・クリニックを${opts.clinics.length}件掲載しています。${supportPhrase(stats.medicalCount, stats.supportCount) || '対応の度合いは施設によって異なります'}。`,
@@ -201,13 +237,10 @@ export function buildCityCopy(opts: {
                 : `命に関わる症状は現地の救急へ。緊急でない場合は、このページの日本語対応病院から連絡してください。`,
         },
     ];
-    const faqs = [...(guide?.faqs || []), ...defaultFaqs].filter(
-        (faq, index, list) => list.findIndex((item) => item.question === faq.question) === index
-    ).slice(0, 6);
 
     return {
         title,
-        h1: guide?.h1 || `${city}で日本語が通じる病院・クリニック`,
+        h1: `${city}で日本語が通じる病院・クリニック`,
         description,
         intro,
         faqs,
@@ -234,7 +267,6 @@ export function buildCountryCopy(opts: {
     const specialties = specialtyPhrase(stats.specialtyLabels);
     const cityNames = cities.slice(0, 6).map((item) => item.name).join('、');
 
-    const guide = COUNTRY_GUIDES[opts.countryName] || COUNTRY_GUIDES[countryJa];
     const title = `${countryJa}で日本語が通じる病院・日本人クリニック`;
     const description = [
         `${countryJa}の日本語対応病院・クリニックを${opts.clinics.length}件掲載。`,
@@ -252,13 +284,12 @@ export function buildCountryCopy(opts: {
         emergencyLine
             ? `${countryJa}の主な緊急番号は${emergencyLine}です。救急と通常診療は分けて考えてください。`
             : '',
-        ...(guide?.notes || []),
         opts.embassies[0]
             ? `現地の公的な相談先として${opts.embassies[0].name}の連絡先も掲載しています。`
             : '',
     ].filter(Boolean) as string[];
 
-    const defaultFaqs: DirectoryFaq[] = [
+    const faqs: DirectoryFaq[] = [
         {
             question: `${countryJa}に日本人の病院はありますか？`,
             answer: `${countryJa}では日本語対応の病院・クリニックを${opts.clinics.length}件確認できます。日本人医師がいる施設と、通訳が付く施設があります。`,
@@ -276,9 +307,6 @@ export function buildCountryCopy(opts: {
                 : `${countryJa}の掲載施設はこのページにまとめています。`,
         },
     ];
-    const faqs = [...(guide?.faqs || []), ...defaultFaqs].filter(
-        (faq, index, list) => list.findIndex((item) => item.question === faq.question) === index
-    );
 
     return {
         title,
@@ -302,15 +330,13 @@ export function buildContinentCopy(opts: { continentName: string; clinics: Clini
     const countries = countryGroups(opts.clinics);
     const countryNames = countries.slice(0, 8).map((item) => item.name).join('、');
 
-    const guide = CONTINENT_GUIDES[opts.continentName];
-    const title = `${continentJa}で日本語が通じる病院・クリニック（${countries.length}カ国・${opts.clinics.length}件）`;
+    const title = `${continentJa}で日本語が通じる病院・クリニック`;
     const description = `${continentJa}で日本語が通じる病院・歯科・クリニックを${opts.clinics.length}件掲載。${countryNames}など${countries.length}カ国から、日本人医師・通訳の有無や24時間救急を確認できます。`;
 
     const intro = [
         `${continentJa}の日本語対応医療機関を${countries.length}カ国・${opts.clinics.length}件掲載しています。`,
         countryNames ? `国別では${countryNames}などから探せます。実際の検索では「都市名＋日本語＋病院」で来る人が多いので、都市ページも用意しています。` : '',
         `${supportPhrase(stats.medicalCount, stats.supportCount) || '日本語対応の内容は施設ごとに異なります'}。緊急時は国ごとの番号が違うため、国ページか緊急時ガイドもあわせて見てください。`,
-        ...(guide?.notes || []),
     ].filter(Boolean) as string[];
 
     const faqs: DirectoryFaq[] = [
@@ -386,10 +412,9 @@ export function faqJsonLd(faqs: DirectoryFaq[]) {
 }
 
 export function medicalClinicJsonLd(clinic: Clinic, name: string, path: string) {
-    const isHospital = (clinic.specialties || []).some((item) => item.includes('総合病院') || item.includes('救急'));
     return {
         '@context': 'https://schema.org',
-        '@type': isHospital ? 'Hospital' : 'MedicalClinic',
+        '@type': 'MedicalClinic',
         name,
         alternateName: clinic.nameEn && clinic.nameEn !== name ? clinic.nameEn : undefined,
         url: `${SITE_URL}${path}`,
@@ -405,10 +430,9 @@ export function medicalClinicJsonLd(clinic: Clinic, name: string, path: string) 
                 ? { '@type': 'GeoCoordinates', latitude: clinic.lat, longitude: clinic.lng }
                 : undefined,
         medicalSpecialty: clinic.specialties?.length ? clinic.specialties : undefined,
-        availableLanguage: ['Japanese', 'ja'],
+        availableLanguage: ['ja', 'en'],
         openingHours: clinic.hoursDescription || undefined,
         sameAs: clinic.website || undefined,
-        isAcceptingNewPatients: true,
     };
 }
 

@@ -147,8 +147,21 @@ export function getPopularCities() {
         }
     }
 
+    const demandCities = new Set([
+        'ソウル',
+        'シンガポール',
+        '台北',
+        'ハワイ（ホノルル）',
+        'バンコク',
+        'ロサンゼルス',
+    ]);
+
     return [...counts.values()]
-        .sort((a, b) => b.count - a.count)
+        .sort((a, b) => {
+            const demand = Number(demandCities.has(b.city)) - Number(demandCities.has(a.city));
+            if (demand !== 0) return demand;
+            return b.count - a.count;
+        })
         .slice(0, 12)
         .map((item) => ({
             ...item,

@@ -120,58 +120,6 @@ export default function InsuranceGuidePage() {
                     </div>
                 </section>
 
-                <section className="mb-10">
-                    <h2 className="text-xl font-bold text-gray-800 mb-4">出発前に保険を確認する</h2>
-                    <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-                        クレジットカード付帯だけでは治療費の上限が足りないことがあります。渡航前に海外旅行保険の補償範囲を確認してください。
-                        各社の公式ページで最新の条件を見てください。
-                    </p>
-                    <ul className="space-y-2 text-sm">
-                        <li>
-                            <a href="https://tabiho.jp/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                                t@biho たびほ（海外旅行保険）
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.zurich.co.jp/kaigai/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                                チューリッヒ 海外旅行保険
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.aig.co.jp/sonpo/personal/product/travel" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                                AIG 海外旅行保険
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.sompo-japan.co.jp/kinsurance/leisure/oversea/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                                損保ジャパン 海外旅行保険
-                            </a>
-                        </li>
-                    </ul>
-                    <p className="text-xs text-gray-500 mt-3">
-                        リンク先は各社の公式案内です。補償内容は契約条件により異なります。
-                    </p>
-                </section>
-
-                <section className="mb-10">
-                    <h2 className="text-xl font-bold text-gray-800 mb-4">都市別の日本語対応病院</h2>
-                    <p className="text-sm text-gray-600 mb-4">保険の確認とあわせて、行き先の病院一覧を開いておくと安心です。</p>
-                    <div className="flex flex-wrap gap-2 text-sm">
-                        {[
-                            ['/asia/south-korea/seoul', 'ソウル'],
-                            ['/asia/thailand/bangkok', 'バンコク'],
-                            ['/asia/singapore/singapore', 'シンガポール'],
-                            ['/north-america/united-states/honolulu', 'ホノルル'],
-                            ['/north-america/united-states/los-angeles', 'ロサンゼルス'],
-                            ['/asia/taiwan/taipei', '台北'],
-                        ].map(([href, label]) => (
-                            <Link key={href} href={href} className="rounded-full border bg-white px-3 py-1.5 hover:border-primary hover:text-primary">
-                                {label}
-                            </Link>
-                        ))}
-                    </div>
-                </section>
-
                 <div className="grid sm:grid-cols-2 gap-4 mt-12 pt-8 border-t border-gray-100">
                     <Link href="/emergency" className="flex items-center justify-between p-4 bg-gray-50 hover:bg-red-50 hover:text-red-700 hover:border-red-200 rounded-lg border border-gray-200 transition-colors group">
                         <div className="flex items-center gap-3">

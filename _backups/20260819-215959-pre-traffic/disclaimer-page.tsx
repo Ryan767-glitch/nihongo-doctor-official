@@ -2,8 +2,8 @@ import React from 'react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: '免責事項・運営について',
-    description: 'にほんごドクター.com の運営方針、データ出典、免責事項。外務省「世界の医療事情」など公開情報をもとに日本語対応病院を掲載しています。',
+    title: '免責事項',
+    description: 'にほんごドクター.com の免責事項',
 };
 
 export default function DisclaimerPage() {
@@ -16,14 +16,6 @@ export default function DisclaimerPage() {
 
                 <div className="prose prose-gray max-w-none prose-headings:text-gray-800 prose-p:text-gray-600 prose-li:text-gray-600">
                     <p className="font-bold text-gray-800 mb-8">にほんごドクター.com 免責事項</p>
-
-                    <h2 className="text-xl font-bold mt-8 mb-4">運営について</h2>
-                    <p>
-                        にほんごドクター.com は、海外在住・旅行中の日本人が日本語の通じる医療機関を探すための情報サイトです。
-                        掲載データは外務省「世界の医療事情」、各国大使館・総領事館、日本人会、各医療機関の公式サイトなど公開情報を照合して作成しています。
-                        可能な範囲で電話番号・公式URL・最終確認日を付与し、確認できた日から時間が経った情報は再確認対象として扱います。
-                        当サイトは医療行為を行わず、特定の医療機関を推奨するものでもありません。
-                    </p>
 
                     <h2 className="text-xl font-bold mt-8 mb-4">1. 掲載情報について</h2>
                     <p>
@@ -72,7 +64,7 @@ export default function DisclaimerPage() {
                     </p>
 
                     <div className="mt-12 pt-6 border-t text-sm text-gray-500 text-right">
-                        最終更新日: 2026年8月19日
+                        最終更新日: 2026年3月16日
                     </div>
                 </div>
             </div>

@@ -16,9 +16,9 @@ const notoSansJp = Noto_Sans_JP({
 });
 const { clinicCount: totalCount, countryCount: totalCountries } = getPublishedStats();
 
-const siteTitle = `海外で日本語が通じる病院を探す｜${totalCountries}カ国${totalCount}件`;
+const siteTitle = "にほんごドクター.com | 海外で日本語が通じる病院・クリニック検索";
 const siteDescription =
-  `海外旅行・駐在・留学先で日本語が通じる病院・クリニックを検索。ソウル、バンコク、ハワイ、ロサンゼルス、台北など${totalCountries}カ国・${totalCount}件超を、都市・診療科・緊急番号つきで掲載。`;
+  `海外在住・旅行中の日本人のための、世界各国の日本語対応病院・クリニック検索サイト。アジア・北米・ヨーロッパ・オセアニアなど${totalCountries}カ国以上、${totalCount}件超の医療機関を掲載。`;
 const siteUrl = "https://nihongo-doctor.com";
 
 export const viewport = {
@@ -35,16 +35,6 @@ export const metadata: Metadata = {
   },
   description: siteDescription,
   applicationName: "にほんごドクター.com",
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
   manifest: "/manifest.json",
   alternates: {
     canonical: "/",
@@ -102,13 +92,8 @@ const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "にほんごドクター.com",
-  alternateName: "にほんごドクター",
   url: siteUrl,
   logo: `${siteUrl}/icon-512.png`,
-  description: siteDescription,
-  inLanguage: "ja-JP",
-  areaServed: "Worldwide",
-  knowsAbout: ["海外の日本語対応病院", "日本人クリニック", "海外旅行時の受診"],
 };
 
 export default function RootLayout({

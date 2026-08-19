@@ -17,13 +17,13 @@ const groups = [
     {
         title: "よく探される都市",
         links: [
-            ["/asia/south-korea/seoul", "ソウル"],
             ["/asia/thailand/bangkok", "バンコク"],
             ["/asia/singapore/singapore", "シンガポール"],
-            ["/north-america/united-states/honolulu", "ホノルル"],
-            ["/north-america/united-states/los-angeles", "ロサンゼルス"],
-            ["/asia/taiwan/taipei", "台北"],
             ["/europe/germany/dusseldorf", "デュッセルドルフ"],
+            ["/north-america/united-states/chicago", "シカゴ"],
+            ["/north-america/united-states/honolulu", "ホノルル"],
+            ["/europe/switzerland/geneva", "ジュネーブ"],
+            ["/oceania/australia/sydney", "シドニー"],
         ],
     },
     {
@@ -57,7 +57,7 @@ export function Footer() {
                             にほんごドクター<span className="text-primary">.com</span>
                         </p>
                         <p className="text-muted-foreground leading-relaxed">
-                            海外で日本語が通じる病院・クリニックを探すサイトです。外務省「世界の医療事情」、各国大使館、各医療機関の公開情報をもとに掲載しています。受診前は必ず各医療機関へご確認ください。
+                            海外で日本語が通じる病院・クリニックを探すサイトです。受診前は必ず各医療機関へご確認ください。
                         </p>
                     </div>
                     {groups.map((group) => (
@@ -78,7 +78,7 @@ export function Footer() {
                 <div className="border-t">
                     <div className="container mx-auto max-w-7xl px-4 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
                         <p>© 2026 にほんごドクター.com</p>
-                        <p>最終更新: 2026年8月19日</p>
+                        <p>最終更新: 2026年8月17日</p>
                     </div>
                 </div>
             </div>

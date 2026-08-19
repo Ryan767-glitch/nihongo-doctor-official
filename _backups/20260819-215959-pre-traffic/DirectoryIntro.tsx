@@ -86,9 +86,6 @@ export function DirectoryIntro({
                 <Link href={embassyHref} className="text-primary hover:underline">
                     大使館・領事館
                 </Link>
-                <Link href="/insurance" className="text-primary hover:underline">
-                    海外保険の使い方
-                </Link>
             </div>
         </div>
     );
