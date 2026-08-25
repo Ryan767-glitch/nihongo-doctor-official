@@ -10,10 +10,18 @@ import {
     getEmbassiesForCountry,
 } from '@/lib/catalog';
 import { CONTINENT_NAME_BY_SLUG, getCountryHref } from '@/lib/slugs';
-import { breadcrumbJsonLd, buildCountryCopy, countryLabel, faqJsonLd, itemListJsonLd, SITE_URL } from '@/lib/seo';
+import {
+    breadcrumbJsonLd,
+    buildCountryCopy,
+    countryLabel,
+    faqJsonLd,
+    itemListJsonLd,
+    pageSocialMeta,
+} from '@/lib/seo';
 
 interface PageProps {
     params: Promise<{ continent: string; country: string }>;
+    searchParams: Promise<{ highlight?: string }>;
 }
 
 export function generateStaticParams() {
@@ -24,7 +32,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const { continent, country } = await params;
     const continentName = CONTINENT_NAME_BY_SLUG[continent];
     const countryName = continentName ? findCountry(continentName, country) : null;
-    if (!continentName || !countryName) return {};
+    if (!continentName || !countryName) return { robots: { index: false, follow: false } };
     const clinics = getCountryClinics(continentName, countryName);
     const copy = buildCountryCopy({
         continentName,
@@ -33,22 +41,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         embassies: getEmbassiesForCountry(countryName),
     });
     const path = getCountryHref(continentName, countryName);
+    const social = pageSocialMeta(copy.title, copy.description, path);
     return {
         title: copy.title,
         description: copy.description,
         alternates: { canonical: path },
-        openGraph: {
-            title: `${copy.title} | にほんごドクター.com`,
-            description: copy.description,
-            url: `${SITE_URL}${path}`,
-            locale: 'ja_JP',
-            type: 'website',
-        },
+        ...social,
     };
 }
 
-export default async function CountryPage({ params }: PageProps) {
+export default async function CountryPage({ params, searchParams }: PageProps) {
     const { continent, country } = await params;
+    const { highlight } = await searchParams;
     const continentName = CONTINENT_NAME_BY_SLUG[continent];
     if (!continentName) return notFound();
     const countryName = findCountry(continentName, country);
@@ -83,6 +87,9 @@ export default async function CountryPage({ params }: PageProps) {
                 ]}
                 countryCount={1}
                 clinicCount={clinics.length}
+                listHeading={`${countryJa}の日本語対応医療機関`}
+                showCountryCount={false}
+                highlightId={highlight || null}
                 intro={<DirectoryIntro copy={copy} />}
                 footer={<DirectoryFaq faqs={copy.faqs} />}
             />

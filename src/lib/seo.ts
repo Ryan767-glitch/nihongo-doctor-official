@@ -43,6 +43,7 @@ export interface DirectoryCopy {
     h1: string;
     description: string;
     intro: string[];
+    decisions: { when: string; then: string }[];
     faqs: DirectoryFaq[];
     specialtyLabels: string[];
     emergencyLine: string | null;
@@ -51,6 +52,7 @@ export interface DirectoryCopy {
     emergencyClinicCount: number;
     cityLinks: DirectoryLink[];
     countryLinks: DirectoryLink[];
+    relatedCityLinks: DirectoryLink[];
 }
 
 export function countryLabel(country: string) {
@@ -140,12 +142,109 @@ function supportPhrase(medicalCount: number, supportCount: number) {
     return parts.join('、');
 }
 
+function facilityMixPhrase(clinics: Clinic[], specialties: string) {
+    const hasClinicOrDental = clinics.some((clinic) => {
+        const label = `${clinic.nameJa} ${clinic.nameEn}`;
+        return (
+            /クリニック|Clinic|Dental|歯科/.test(label) ||
+            (clinic.specialties || []).some((item) => item.includes('歯科'))
+        );
+    });
+    const hasHospital = clinics.some(
+        (clinic) =>
+            clinic.emergencyAvailable ||
+            (clinic.specialties || []).some((item) => item.includes('総合') || item.includes('救急'))
+    );
+
+    if (!specialties) {
+        return null;
+    }
+    if (hasHospital && hasClinicOrDental) {
+        return `掲載施設から${specialties}を探せます。大きな総合病院だけでなく、開業医・歯科も含まれます。`;
+    }
+    if (hasHospital && !hasClinicOrDental) {
+        return `掲載は国際診療のある総合病院が中心です。${specialties}の窓口を一覧から確認できます。`;
+    }
+    if (!hasHospital && hasClinicOrDental) {
+        return `掲載はクリニック・開業医が中心です。${specialties}の受診先を一覧から確認できます。`;
+    }
+    return `掲載施設から${specialties}を探せます。`;
+}
+
+/** Same-country city links for Thailand hubs etc. */
+const RELATED_CITY_SLUGS: Record<string, string[]> = {
+    bangkok: ['pattaya', 'phuket', 'chiang-mai', 'samui', 'sriracha'],
+    pattaya: ['bangkok', 'sriracha'],
+    phuket: ['bangkok', 'samui'],
+    'chiang-mai': ['bangkok'],
+    samui: ['bangkok', 'phuket'],
+    sriracha: ['bangkok', 'pattaya'],
+    honolulu: ['los-angeles'],
+    'los-angeles': ['honolulu'],
+    seoul: ['busan'],
+    singapore: ['kuala-lumpur'],
+    taipei: ['kaohsiung', 'taichung'],
+};
+
+export function relatedCitiesFor(
+    continentName: string,
+    countryName: string,
+    cityName: string,
+    countryClinics: Clinic[]
+): DirectoryLink[] {
+    const currentSlug = getCitySlug(cityName);
+    const wanted = RELATED_CITY_SLUGS[currentSlug] || [];
+    if (wanted.length === 0) return [];
+
+    const bySlug = new Map<string, DirectoryLink>();
+    for (const clinic of countryClinics) {
+        if (clinic.continent !== continentName || clinic.country !== countryName) continue;
+        const slug = getCitySlug(clinic.city);
+        if (!wanted.includes(slug)) continue;
+        const href = getCityHref(clinic.continent, clinic.country, clinic.city);
+        const current = bySlug.get(slug);
+        if (current) current.count += 1;
+        else bySlug.set(slug, { name: getCityDisplayName(clinic.city), href, count: 1 });
+    }
+
+    return wanted.map((slug) => bySlug.get(slug)).filter(Boolean) as DirectoryLink[];
+}
+
+export function pageSocialMeta(title: string, description: string, path: string) {
+    const url = `${SITE_URL}${path}`;
+    const fullTitle = `${title} | にほんごドクター.com`;
+    return {
+        openGraph: {
+            title: fullTitle,
+            description,
+            url,
+            locale: 'ja_JP' as const,
+            type: 'website' as const,
+            images: [
+                {
+                    url: `${SITE_URL}/og-image.png`,
+                    width: 1200,
+                    height: 630,
+                    alt: fullTitle,
+                },
+            ],
+        },
+        twitter: {
+            card: 'summary_large_image' as const,
+            title: fullTitle,
+            description,
+            images: [`${SITE_URL}/og-image.png`],
+        },
+    };
+}
+
 export function buildCityCopy(opts: {
     continentName: string;
     countryName: string;
     cityName: string;
     clinics: Clinic[];
     embassies: Embassy[];
+    countryClinics?: Clinic[];
 }): DirectoryCopy {
     const city = getCityDisplayName(opts.cityName);
     const countryJa = countryLabel(opts.countryName);
@@ -154,6 +253,7 @@ export function buildCityCopy(opts: {
     const specialties = specialtyPhrase(stats.specialtyLabels);
     const guide = CITY_GUIDES[getCitySlug(opts.cityName)];
     const embassyName = opts.embassies[0]?.name;
+    const mixLine = facilityMixPhrase(opts.clinics, specialties);
 
     const title =
         guide?.title ||
@@ -173,9 +273,7 @@ export function buildCityCopy(opts: {
 
     const intro = [
         `${city}には、日本語が通じる医療機関を${opts.clinics.length}件掲載しています。${supportPhrase(stats.medicalCount, stats.supportCount) || '日本語サポートの内容は施設ごとに異なります'}。`,
-        specialties
-            ? `掲載施設から${specialties}を探せます。大きな総合病院だけでなく、開業医・歯科も含まれます。`
-            : `${city}の日本語対応病院・クリニックの連絡先と対応内容を一覧にしています。`,
+        mixLine || `${city}の日本語対応病院・クリニックの連絡先と対応内容を一覧にしています。`,
         emergencyLine
             ? `${countryJa}の主な緊急番号は${emergencyLine}です。命に関わる症状は、まず現地の救急に連絡してください。`
             : `${city}で受診する前に、予約の要否と保険の使い方を各施設へ確認してください。`,
@@ -205,11 +303,19 @@ export function buildCityCopy(opts: {
         (faq, index, list) => list.findIndex((item) => item.question === faq.question) === index
     ).slice(0, 6);
 
+    const relatedCityLinks = relatedCitiesFor(
+        opts.continentName,
+        opts.countryName,
+        opts.cityName,
+        opts.countryClinics || opts.clinics
+    );
+
     return {
         title,
         h1: guide?.h1 || `${city}で日本語が通じる病院・クリニック`,
         description,
         intro,
+        decisions: guide?.decisions || [],
         faqs,
         specialtyLabels: stats.specialtyLabels,
         emergencyLine,
@@ -218,6 +324,7 @@ export function buildCityCopy(opts: {
         emergencyClinicCount: stats.emergencyClinicCount,
         cityLinks: [],
         countryLinks: [],
+        relatedCityLinks,
     };
 }
 
@@ -285,6 +392,7 @@ export function buildCountryCopy(opts: {
         h1: `${countryJa}で日本語が通じる病院・クリニック`,
         description,
         intro,
+        decisions: [],
         faqs,
         specialtyLabels: stats.specialtyLabels,
         emergencyLine,
@@ -293,6 +401,7 @@ export function buildCountryCopy(opts: {
         emergencyClinicCount: stats.emergencyClinicCount,
         cityLinks: cities,
         countryLinks: [],
+        relatedCityLinks: [],
     };
 }
 
@@ -329,6 +438,7 @@ export function buildContinentCopy(opts: { continentName: string; clinics: Clini
         h1: `${continentJa}で日本語が通じる病院・クリニック`,
         description,
         intro,
+        decisions: [],
         faqs,
         specialtyLabels: stats.specialtyLabels,
         emergencyLine: null,
@@ -337,6 +447,7 @@ export function buildContinentCopy(opts: { continentName: string; clinics: Clini
         emergencyClinicCount: stats.emergencyClinicCount,
         cityLinks: cityGroups(opts.clinics).slice(0, 12),
         countryLinks: countries,
+        relatedCityLinks: [],
     };
 }
 

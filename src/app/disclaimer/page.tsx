@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
     title: '免責事項・運営について',
     description: 'にほんごドクター.com の運営方針、データ出典、免責事項。外務省「世界の医療事情」など公開情報をもとに日本語対応病院を掲載しています。',
+    alternates: { canonical: '/disclaimer' },
 };
 
 export default function DisclaimerPage() {

@@ -2,10 +2,24 @@
   "generatedAt": "2026-03-27T03:51:26.019Z",
   "clinics": {
     "1": {
-      "phone": "02-310-3000",
-      "phoneClean": "+6623103000",
-      "sourceUrl": "http://www.bangkokhospital.com",
-      "verifiedAt": "2026-03-27",
+      "phone": "02-310-3257（JMS日本語・24時間） / 02-310-3000（代表）",
+      "phoneClean": "+6623103257",
+      "sourceUrl": "https://www.bangkokhospital.com/ja/bangkok/center-clinic/international-medical-service/japanese-medical-services/overview",
+      "verifiedAt": "2026-08-25",
+      "confidence": "high"
+    },
+    "3": {
+      "phone": "02-011-3388（日本語・24時間） / 02-011-3000（代表）",
+      "phoneClean": "+6620113388",
+      "sourceUrl": "https://www.bumrungrad.com/jp/international-patient-center",
+      "verifiedAt": "2026-08-25",
+      "confidence": "high"
+    },
+    "4": {
+      "phone": "02-022-2122（日本人相談窓口） / 02-022-2222（コールセンター）",
+      "phoneClean": "+6620222122",
+      "sourceUrl": "https://samitivej-jp.com/sukhumvit/inquiry.html",
+      "verifiedAt": "2026-08-25",
       "confidence": "high"
     },
     "5": {
@@ -1226,6 +1240,13 @@
       "website": "https://info.health.nz/hospitals-services/hospitals/canterbury/christchurch-hospital",
       "sourceUrl": "https://info.health.nz/hospitals-services/hospitals/canterbury/christchurch-hospital",
       "verifiedAt": "2026-03-27",
+      "confidence": "high"
+    },
+    "286": {
+      "phone": "02-2258-5747（日本語直通） / 02-2258-5745（国際診療・英語）",
+      "phoneClean": "+82222585747",
+      "sourceUrl": "https://www.cmcseoul.or.kr/jp.ourservices.for_outpatient.sp",
+      "verifiedAt": "2026-08-25",
       "confidence": "high"
     }
   }

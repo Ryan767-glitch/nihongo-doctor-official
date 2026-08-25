@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
     title: '利用規約',
     description: 'にほんごドクター.com の利用規約',
+    alternates: { canonical: '/terms' },
 };
 
 export default function TermsPage() {

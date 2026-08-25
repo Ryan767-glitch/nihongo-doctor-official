@@ -10,17 +10,16 @@ import { COUNTRY_MAP, COUNTRY_JA_MAP } from '@/lib/constants';
 import { getCityDisplayName, getCityHref, getCountryHref } from '@/lib/slugs';
 import Link from 'next/link';
 import { CountrySelector } from './CountrySelector';
-import { useSearchParams } from 'next/navigation';
 
 interface ClinicListProps {
     clinics: Clinic[];
     embassies: Embassy[];
+    /** Passed from the server page so we do not bail out of SSR via useSearchParams. */
+    highlightId?: string | null;
 }
 
-export function ClinicList({ clinics, embassies }: ClinicListProps) {
+export function ClinicList({ clinics, embassies, highlightId = null }: ClinicListProps) {
     const { t, language } = useLanguage();
-    const searchParams = useSearchParams();
-    const highlightId = searchParams.get('highlight');
 
     const translateCountry = (c: string) => {
         if (language === 'ja') {

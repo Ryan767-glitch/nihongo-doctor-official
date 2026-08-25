@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Suspense } from 'react';
 import clinics from '@/data/clinics.json';
 import embassies from '@/data/embassies.json';
 import { ClinicList } from '@/components/features/ClinicList';
@@ -12,7 +11,14 @@ import Link from 'next/link';
 import { getContinentParams } from '@/lib/catalog';
 import { filterJapaneseCompatibleClinics } from '@/lib/clinic-support';
 import { enrichClinicsWithHoursSync } from '@/lib/clinic-hours';
-import { breadcrumbJsonLd, buildContinentCopy, faqJsonLd, itemListJsonLd, SITE_URL } from '@/lib/seo';
+import {
+    breadcrumbJsonLd,
+    buildContinentCopy,
+    faqJsonLd,
+    itemListJsonLd,
+    pageSocialMeta,
+    SITE_URL,
+} from '@/lib/seo';
 
 const allClinics = enrichClinicsWithHoursSync(filterJapaneseCompatibleClinics(clinics as Clinic[]));
 const allEmbassies = embassies as Embassy[];
@@ -23,14 +29,15 @@ export function generateStaticParams() {
 
 interface PageProps {
     params: Promise<{ continent: string }>;
+    searchParams: Promise<{ highlight?: string }>;
 }
 
 const continentNameMap: Record<string, string> = {
-    'asia': 'Asia',
+    asia: 'Asia',
     'north-america': 'North America',
-    'europe': 'Europe',
-    'oceania': 'Oceania',
-    'africa': 'Africa & Middle East',
+    europe: 'Europe',
+    oceania: 'Oceania',
+    africa: 'Africa & Middle East',
     'middle-east': 'Africa & Middle East',
     'africa-middle-east': 'Africa & Middle East',
     'south-america': 'Latin America',
@@ -38,10 +45,10 @@ const continentNameMap: Record<string, string> = {
 };
 
 const continentDisplayMap: Record<string, string> = {
-    'Asia': 'アジア',
+    Asia: 'アジア',
     'North America': '北米',
-    'Europe': 'ヨーロッパ',
-    'Oceania': 'オセアニア',
+    Europe: 'ヨーロッパ',
+    Oceania: 'オセアニア',
     'Africa & Middle East': 'アフリカ・中東',
     'Latin America': '中南米',
 };
@@ -49,26 +56,31 @@ const continentDisplayMap: Record<string, string> = {
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
     const params = await props.params;
     const continentSlug = params.continent.toLowerCase();
-    const continentName = continentNameMap[continentSlug] || continentSlug;
+    const continentName = continentNameMap[continentSlug];
+    if (!continentName) {
+        return {
+            title: 'ページが見つかりません',
+            robots: { index: false, follow: false },
+        };
+    }
     const displayJa = continentDisplayMap[continentName] || continentName;
 
     const filtered = allClinics.filter(
         (clinic) => clinic.continent.toLowerCase() === continentName.toLowerCase()
     );
     const copy = buildContinentCopy({ continentName, clinics: filtered });
-    const pageUrl = `${SITE_URL}/${continentSlug}`;
+    const path = `/${continentSlug}`;
+    const social = pageSocialMeta(copy.title, copy.description, path);
 
     return {
         title: copy.title,
         description: copy.description,
         alternates: {
-            canonical: pageUrl,
+            canonical: `${SITE_URL}${path}`,
         },
+        ...social,
         openGraph: {
-            type: 'website',
-            url: pageUrl,
-            title: `${copy.title} | にほんごドクター.com`,
-            description: copy.description,
+            ...social.openGraph,
             images: [
                 {
                     url: `${SITE_URL}/og-image.png`,
@@ -78,17 +90,12 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
                 },
             ],
         },
-        twitter: {
-            card: 'summary_large_image',
-            title: `${copy.title} | にほんごドクター.com`,
-            description: copy.description,
-            images: [`${SITE_URL}/og-image.png`],
-        },
     };
 }
 
 export default async function ContinentPage(props: PageProps) {
     const params = await props.params;
+    const { highlight } = await props.searchParams;
     const continentSlug = params.continent.toLowerCase();
 
     const continentName = continentNameMap[continentSlug];
@@ -112,20 +119,27 @@ export default async function ContinentPage(props: PageProps) {
 
     return (
         <>
-            <JsonLd data={breadcrumbJsonLd([
-                { name: 'にほんごドクター.com', href: '/' },
-                { name: displayName, href: path },
-            ])} />
+            <JsonLd
+                data={breadcrumbJsonLd([
+                    { name: 'にほんごドクター.com', href: '/' },
+                    { name: displayName, href: path },
+                ])}
+            />
             <JsonLd data={itemListJsonLd(copy.title, copy.description, path, filteredClinics)} />
             <JsonLd data={faqJsonLd(copy.faqs)} />
             <div className="container mx-auto max-w-7xl py-10 px-4 min-h-[100dvh]">
                 <div className="text-sm text-muted-foreground mb-6 flex items-center gap-2">
-                    <Link href="/" className="hover:text-primary transition-colors">トップ</Link>
+                    <Link href="/" className="hover:text-primary transition-colors">
+                        トップ
+                    </Link>
                     <span>/</span>
                     <span className="text-foreground">{displayName}</span>
                 </div>
 
-                <ContinentHeader displayName={copy.h1} description={`${displayName}の日本語対応病院を国・都市から探せます`} />
+                <ContinentHeader
+                    displayName={copy.h1}
+                    description={`${displayName}の日本語対応病院を国・都市から探せます`}
+                />
                 <DirectoryIntro copy={copy} />
 
                 <div className="mb-8 p-4 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between flex-wrap gap-4">
@@ -140,18 +154,26 @@ export default async function ContinentPage(props: PageProps) {
                     <div className="flex gap-4">
                         <div className="text-center">
                             <span className="block text-xs text-muted-foreground">掲載国数</span>
-                            <span className="text-xl font-bold text-primary">{countryCount}<span className="text-xs font-normal">カ国</span></span>
+                            <span className="text-xl font-bold text-primary">
+                                {countryCount}
+                                <span className="text-xs font-normal">カ国</span>
+                            </span>
                         </div>
                         <div className="text-center pl-4 border-l border-slate-200">
                             <span className="block text-xs text-muted-foreground">掲載機関数</span>
-                            <span className="text-xl font-bold text-primary">{clinicCount}<span className="text-xs font-normal">件</span></span>
+                            <span className="text-xl font-bold text-primary">
+                                {clinicCount}
+                                <span className="text-xs font-normal">件</span>
+                            </span>
                         </div>
                     </div>
                 </div>
 
-                <Suspense fallback={<div className="h-40 rounded-2xl bg-slate-50 animate-pulse" />}>
-                    <ClinicList clinics={filteredClinics} embassies={filteredEmbassies} />
-                </Suspense>
+                <ClinicList
+                    clinics={filteredClinics}
+                    embassies={filteredEmbassies}
+                    highlightId={highlight || null}
+                />
                 <DirectoryFaq faqs={copy.faqs} />
             </div>
         </>
