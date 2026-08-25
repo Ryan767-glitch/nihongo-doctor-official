@@ -2,16 +2,25 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ClinicDirectory, continentLabel } from '@/components/features/ClinicDirectory';
 import { DirectoryFaq, DirectoryIntro } from '@/components/features/DirectoryIntro';
+import { AffiliateStrip } from '@/components/features/AffiliateStrip';
 import { JsonLd } from '@/components/features/JsonLd';
 import {
     findCity,
     findCountry,
     getCityClinics,
     getCityParams,
+    getCountryClinics,
     getEmbassiesForCountry,
 } from '@/lib/catalog';
 import { CONTINENT_NAME_BY_SLUG, getCityDisplayName, getCityHref, getCountryHref } from '@/lib/slugs';
-import { breadcrumbJsonLd, buildCityCopy, countryLabel, faqJsonLd, itemListJsonLd, SITE_URL } from '@/lib/seo';
+import {
+    breadcrumbJsonLd,
+    buildCityCopy,
+    countryLabel,
+    faqJsonLd,
+    itemListJsonLd,
+    pageSocialMeta,
+} from '@/lib/seo';
 
 interface PageProps {
     params: Promise<{ continent: string; country: string; city: string }>;
@@ -26,7 +35,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const continentName = CONTINENT_NAME_BY_SLUG[continent];
     const countryName = continentName ? findCountry(continentName, country) : null;
     const cityName = continentName && countryName ? findCity(continentName, countryName, city) : null;
-    if (!continentName || !countryName || !cityName) return {};
+    if (!continentName || !countryName || !cityName) return { robots: { index: false, follow: false } };
     const clinics = getCityClinics(continentName, countryName, cityName);
     const copy = buildCityCopy({
         continentName,
@@ -34,19 +43,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         cityName,
         clinics,
         embassies: getEmbassiesForCountry(countryName),
+        countryClinics: getCountryClinics(continentName, countryName),
     });
     const path = getCityHref(continentName, countryName, cityName);
+    const social = pageSocialMeta(copy.title, copy.description, path);
     return {
         title: copy.title,
         description: copy.description,
         alternates: { canonical: path },
-        openGraph: {
-            title: `${copy.title} | にほんごドクター.com`,
-            description: copy.description,
-            url: `${SITE_URL}${path}`,
-            locale: 'ja_JP',
-            type: 'website',
-        },
+        ...social,
     };
 }
 
@@ -60,8 +65,16 @@ export default async function CityPage({ params }: PageProps) {
     if (!cityName) return notFound();
 
     const clinics = getCityClinics(continentName, countryName, cityName);
+    const countryClinics = getCountryClinics(continentName, countryName);
     const embassies = getEmbassiesForCountry(countryName);
-    const copy = buildCityCopy({ continentName, countryName, cityName, clinics, embassies });
+    const copy = buildCityCopy({
+        continentName,
+        countryName,
+        cityName,
+        clinics,
+        embassies,
+        countryClinics,
+    });
     const path = getCityHref(continentName, countryName, cityName);
     const cityLabel = getCityDisplayName(cityName);
     const countryJa = countryLabel(countryName);
@@ -92,7 +105,10 @@ export default async function CityPage({ params }: PageProps) {
                 ]}
                 countryCount={1}
                 clinicCount={clinics.length}
+                listHeading={`${cityLabel}の日本語対応医療機関`}
+                showCountryCount={false}
                 intro={<DirectoryIntro copy={copy} />}
+                afterList={<AffiliateStrip compact title="渡航先で病院を探す前の通信手段" />}
                 footer={<DirectoryFaq faqs={copy.faqs} />}
             />
         </>

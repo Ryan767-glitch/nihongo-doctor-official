@@ -19,6 +19,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/phrases',
         '/embassy',
         '/insurance',
+        '/travel-prep',
+        '/about',
         '/contact',
         '/privacy',
         '/terms',

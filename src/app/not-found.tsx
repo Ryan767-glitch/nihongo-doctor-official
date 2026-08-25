@@ -3,6 +3,17 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
     title: 'ページが見つかりません',
+    robots: {
+        index: false,
+        follow: false,
+        googleBot: {
+            index: false,
+            follow: false,
+        },
+    },
+    alternates: {
+        canonical: undefined,
+    },
 };
 
 export default function NotFound() {
@@ -14,9 +25,15 @@ export default function NotFound() {
                 アドレスが変わったか、削除された可能性があります。トップから病院を探してください。
             </p>
             <div className="flex flex-wrap justify-center gap-3">
-                <Link href="/" className="bg-primary text-white px-5 py-3 rounded-xl font-semibold">トップへ</Link>
-                <Link href="/nearby" className="border px-5 py-3 rounded-xl font-semibold">現在地から探す</Link>
-                <Link href="/emergency" className="border px-5 py-3 rounded-xl font-semibold">緊急時ガイド</Link>
+                <Link href="/" className="bg-primary text-white px-5 py-3 rounded-xl font-semibold">
+                    トップへ
+                </Link>
+                <Link href="/nearby" className="border px-5 py-3 rounded-xl font-semibold">
+                    現在地から探す
+                </Link>
+                <Link href="/emergency" className="border px-5 py-3 rounded-xl font-semibold">
+                    緊急時ガイド
+                </Link>
             </div>
         </div>
     );

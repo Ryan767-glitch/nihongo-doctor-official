@@ -39,6 +39,7 @@ export const metadata: Metadata = {
   },
   description:
     `海外旅行・駐在・留学先で日本語が通じる病院を検索。ソウル、バンコク、ハワイ、ロサンゼルス、台北など${totalCountries}カ国・${totalCount}件超。日本人医師・通訳の有無、緊急番号、保険の確認ポイントつき。`,
+  alternates: { canonical: '/' },
 };
 
 function getContinentStats(continentName: string) {

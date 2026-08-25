@@ -1,0 +1,10 @@
+# User-agent: *
+# にほんごドクター.com — overseas Japanese-speaking hospital directory
+# Sitemap: https://nihongo-doctor.com/sitemap.xml
+# About: https://nihongo-doctor.com/about
+
+Site: https://nihongo-doctor.com
+Name: にほんごドクター.com
+Description: Directory of Japanese-speaking hospitals and clinics for travelers and residents abroad. Educational only; not medical advice and not an insurance agency.
+Primary language: Japanese
+Contact: https://nihongo-doctor.com/contact

@@ -17,7 +17,7 @@ import {
     getClinicHref,
     getCountryHref,
 } from '@/lib/slugs';
-import { breadcrumbJsonLd, clinicPageCopy, medicalClinicJsonLd, SITE_URL } from '@/lib/seo';
+import { breadcrumbJsonLd, clinicPageCopy, medicalClinicJsonLd, pageSocialMeta } from '@/lib/seo';
 import { JsonLd } from '@/components/features/JsonLd';
 import { stringToColor } from '@/lib/utils';
 
@@ -36,15 +36,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const name = displayClinicName(record);
     const copy = clinicPageCopy(record, name);
     const path = getClinicHref(record);
+    const social = pageSocialMeta(copy.title, copy.description, path);
     return {
         title: copy.title,
         description: copy.description,
         alternates: { canonical: path },
+        ...social,
         openGraph: {
-            title: `${copy.title} | にほんごドクター.com`,
-            description: copy.description,
-            url: `${SITE_URL}${path}`,
-            locale: 'ja_JP',
+            ...social.openGraph,
             type: 'article',
         },
     };
@@ -64,6 +63,14 @@ export default async function ClinicPage({ params }: PageProps) {
     const path = getClinicHref(record);
     const cityHref = getCityHref(record.continent, record.country, record.city);
     const countryHref = getCountryHref(record.continent, record.country);
+    const englishName = (record.nameEn || '')
+        .replace(/[（(][^）)]*[）)]/g, '')
+        .trim();
+    const showEnglish =
+        !!englishName &&
+        englishName !== name &&
+        !name.includes(englishName) &&
+        /[A-Za-z]/.test(englishName);
 
     return (
         <div className="container mx-auto max-w-5xl py-10 px-4">
@@ -107,7 +114,10 @@ export default async function ClinicPage({ params }: PageProps) {
                 </div>
 
                 <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2 break-keep">{name}</h1>
-                {record.nameEn && record.nameEn !== name && (
+                {showEnglish && (
+                    <p className="text-muted-foreground mb-2">{englishName}</p>
+                )}
+                {!showEnglish && record.nameEn && record.nameEn !== name && (
                     <p className="text-muted-foreground mb-2">{record.nameEn}</p>
                 )}
                 <p className="text-sm text-slate-600 leading-relaxed mb-4">

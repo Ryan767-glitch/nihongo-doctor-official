@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { ShieldCheck, CreditCard, FileText, AlertTriangle, CheckCircle2 } from 'lucide-react';
+import { AffiliateStrip } from '@/components/features/AffiliateStrip';
 
 export default function InsuranceGuidePage() {
     return (
@@ -151,6 +152,19 @@ export default function InsuranceGuidePage() {
                     <p className="text-xs text-gray-500 mt-3">
                         リンク先は各社の公式案内です。補償内容は契約条件により異なります。
                     </p>
+                </section>
+
+                <section className="mb-10">
+                    <h2 className="text-xl font-bold text-gray-800 mb-4">渡航前に通信手段を整える</h2>
+                    <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+                        保険会社や病院へ電話するには、現地で使える回線が必要です。eSIMや海外WiFiは補償そのものではなく、連絡のための手段です。
+                        詳しい手順は
+                        <Link href="/travel-prep" className="text-primary hover:underline mx-1">
+                            渡航前の通信準備
+                        </Link>
+                        も参照してください。
+                    </p>
+                    <AffiliateStrip compact title="eSIM・海外WiFi（通信手段）" />
                 </section>
 
                 <section className="mb-10">

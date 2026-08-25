@@ -22,6 +22,7 @@ export function Header() {
                         <nav className="hidden md:flex items-center space-x-5 lg:space-x-6 text-sm font-medium text-muted-foreground mr-4">
                             <Link href="/nearby" className="hover:text-primary transition-colors whitespace-nowrap">現在地から探す</Link>
                             <Link href="/emergency" className="hover:text-primary transition-colors whitespace-nowrap">緊急時</Link>
+                            <Link href="/insurance" className="hover:text-primary transition-colors whitespace-nowrap">海外保険</Link>
                             <Link href="/embassy" className="hover:text-primary transition-colors whitespace-nowrap">大使館</Link>
                             <Link href="/phrases" className="hover:text-primary transition-colors whitespace-nowrap">フレーズ集</Link>
                             <Link href="/contact" className="hover:text-primary transition-colors whitespace-nowrap">お問い合わせ</Link>
