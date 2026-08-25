@@ -21,7 +21,6 @@ import {
 
 interface PageProps {
     params: Promise<{ continent: string; country: string }>;
-    searchParams: Promise<{ highlight?: string }>;
 }
 
 export function generateStaticParams() {
@@ -50,9 +49,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
 }
 
-export default async function CountryPage({ params, searchParams }: PageProps) {
+export default async function CountryPage({ params }: PageProps) {
     const { continent, country } = await params;
-    const { highlight } = await searchParams;
     const continentName = CONTINENT_NAME_BY_SLUG[continent];
     if (!continentName) return notFound();
     const countryName = findCountry(continentName, country);
@@ -89,7 +87,6 @@ export default async function CountryPage({ params, searchParams }: PageProps) {
                 clinicCount={clinics.length}
                 listHeading={`${countryJa}の日本語対応医療機関`}
                 showCountryCount={false}
-                highlightId={highlight || null}
                 intro={<DirectoryIntro copy={copy} />}
                 footer={<DirectoryFaq faqs={copy.faqs} />}
             />

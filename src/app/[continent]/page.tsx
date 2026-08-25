@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import clinics from '@/data/clinics.json';
 import embassies from '@/data/embassies.json';
 import { ClinicList } from '@/components/features/ClinicList';
 import { ContinentHeader } from '@/components/features/ContinentHeader';
 import { DirectoryFaq, DirectoryIntro } from '@/components/features/DirectoryIntro';
+import { HighlightScroller } from '@/components/features/HighlightScroller';
 import { JsonLd } from '@/components/features/JsonLd';
 import { Clinic, Embassy } from '@/types';
 import { notFound } from 'next/navigation';
@@ -29,7 +31,6 @@ export function generateStaticParams() {
 
 interface PageProps {
     params: Promise<{ continent: string }>;
-    searchParams: Promise<{ highlight?: string }>;
 }
 
 const continentNameMap: Record<string, string> = {
@@ -95,7 +96,6 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 
 export default async function ContinentPage(props: PageProps) {
     const params = await props.params;
-    const { highlight } = await props.searchParams;
     const continentSlug = params.continent.toLowerCase();
 
     const continentName = continentNameMap[continentSlug];
@@ -169,11 +169,10 @@ export default async function ContinentPage(props: PageProps) {
                     </div>
                 </div>
 
-                <ClinicList
-                    clinics={filteredClinics}
-                    embassies={filteredEmbassies}
-                    highlightId={highlight || null}
-                />
+                <Suspense fallback={null}>
+                    <HighlightScroller />
+                </Suspense>
+                <ClinicList clinics={filteredClinics} embassies={filteredEmbassies} />
                 <DirectoryFaq faqs={copy.faqs} />
             </div>
         </>

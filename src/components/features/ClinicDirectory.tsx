@@ -1,8 +1,9 @@
-import { type ReactNode } from 'react';
+import { Suspense, type ReactNode } from 'react';
 import Link from 'next/link';
 import { Clinic, Embassy } from '@/types';
 import { ClinicList } from '@/components/features/ClinicList';
 import { ContinentHeader } from '@/components/features/ContinentHeader';
+import { HighlightScroller } from '@/components/features/HighlightScroller';
 import { CONTINENT_JA } from '@/lib/slugs';
 
 type Crumb = { href?: string; label: string };
@@ -18,7 +19,6 @@ export function ClinicDirectory({
     clinicCount,
     listHeading,
     showCountryCount = true,
-    highlightId,
     intro,
     afterList,
     footer,
@@ -34,7 +34,6 @@ export function ClinicDirectory({
     /** City pages pass a short H2; default appends 「の日本語対応医療機関」 which breaks long titles. */
     listHeading?: string;
     showCountryCount?: boolean;
-    highlightId?: string | null;
     intro?: ReactNode;
     afterList?: ReactNode;
     footer?: ReactNode;
@@ -86,7 +85,11 @@ export function ClinicDirectory({
                 </div>
             </div>
 
-            <ClinicList clinics={clinics} embassies={embassies} highlightId={highlightId} />
+            {/* Isolated Suspense: keeps ClinicList in prerendered HTML (no useSearchParams bailout). */}
+            <Suspense fallback={null}>
+                <HighlightScroller />
+            </Suspense>
+            <ClinicList clinics={clinics} embassies={embassies} />
             {afterList}
             {footer}
         </div>

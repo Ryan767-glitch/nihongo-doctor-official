@@ -14,11 +14,9 @@ import { CountrySelector } from './CountrySelector';
 interface ClinicListProps {
     clinics: Clinic[];
     embassies: Embassy[];
-    /** Passed from the server page so we do not bail out of SSR via useSearchParams. */
-    highlightId?: string | null;
 }
 
-export function ClinicList({ clinics, embassies, highlightId = null }: ClinicListProps) {
+export function ClinicList({ clinics, embassies }: ClinicListProps) {
     const { t, language } = useLanguage();
 
     const translateCountry = (c: string) => {
@@ -97,23 +95,6 @@ export function ClinicList({ clinics, embassies, highlightId = null }: ClinicLis
             });
         }
     };
-
-    React.useEffect(() => {
-        if (highlightId) {
-            const element = document.getElementById(`clinic-${highlightId}`);
-            if (element) {
-                setTimeout(() => {
-                    const headerOffset = 150;
-                    const elementPosition = element.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: "smooth"
-                    });
-                }, 100); // slight delay to ensure render
-            }
-        }
-    }, [highlightId, filteredClinics]);
 
     return (
         <div className="space-y-8">
@@ -250,7 +231,7 @@ export function ClinicList({ clinics, embassies, highlightId = null }: ClinicLis
                                                                 </h3>
                                                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
                                                                     {cityClinics.map((clinic) => (
-                                                                        <ClinicCard key={clinic.id} clinic={clinic} colorTheme={colorTheme} isHighlighted={clinic.id === highlightId} />
+                                                                        <ClinicCard key={clinic.id} clinic={clinic} colorTheme={colorTheme} />
                                                                     ))}
                                                                 </div>
                                                             </div>
@@ -265,7 +246,7 @@ export function ClinicList({ clinics, embassies, highlightId = null }: ClinicLis
                                                             </h3>
                                                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
                                                                 {countryClinics.filter(c => !c.city).map((clinic) => (
-                                                                    <ClinicCard key={clinic.id} clinic={clinic} colorTheme={colorTheme} isHighlighted={clinic.id === highlightId} />
+                                                                    <ClinicCard key={clinic.id} clinic={clinic} colorTheme={colorTheme} />
                                                                 ))}
                                                             </div>
                                                         </div>
@@ -274,7 +255,7 @@ export function ClinicList({ clinics, embassies, highlightId = null }: ClinicLis
                                             ) : (
                                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
                                                     {countryClinics.map((clinic) => (
-                                                        <ClinicCard key={clinic.id} clinic={clinic} colorTheme={colorTheme} isHighlighted={clinic.id === highlightId} />
+                                                        <ClinicCard key={clinic.id} clinic={clinic} colorTheme={colorTheme} />
                                                     ))}
                                                 </div>
                                             )}
