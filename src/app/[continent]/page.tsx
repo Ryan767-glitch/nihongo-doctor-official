@@ -13,6 +13,7 @@ import { getContinentParams } from '@/lib/catalog';
 import { filterJapaneseCompatibleClinics } from '@/lib/clinic-support';
 import { enrichClinicsWithHoursSync } from '@/lib/clinic-hours';
 import { breadcrumbJsonLd, buildContinentCopy, faqJsonLd, itemListJsonLd, SITE_URL } from '@/lib/seo';
+import { EsimCta } from '@/components/features/EsimCta';
 
 const allClinics = enrichClinicsWithHoursSync(filterJapaneseCompatibleClinics(clinics as Clinic[]));
 const allEmbassies = embassies as Embassy[];
@@ -127,6 +128,7 @@ export default async function ContinentPage(props: PageProps) {
 
                 <ContinentHeader displayName={copy.h1} description={`${displayName}の日本語対応病院を国・都市から探せます`} />
                 <DirectoryIntro copy={copy} />
+                {continentSlug === 'africa-middle-east' && <EsimCta destination="africa" />}
 
                 <div className="mb-8 p-4 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between flex-wrap gap-4">
                     <div>

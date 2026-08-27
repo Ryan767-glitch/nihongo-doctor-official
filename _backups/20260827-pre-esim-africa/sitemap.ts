@@ -19,7 +19,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/phrases',
         '/embassy',
         '/insurance',
-        '/esim/africa',
         '/contact',
         '/privacy',
         '/terms',

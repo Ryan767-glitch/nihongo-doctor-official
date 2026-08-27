@@ -48,7 +48,6 @@ export function Header() {
                                 ['/nearby', '現在地から探す'],
                                 ['/emergency', '緊急時ガイド'],
                                 ['/insurance', '海外保険'],
-                                ['/esim/africa', 'アフリカ向けeSIM'],
                                 ['/embassy', '大使館情報'],
                                 ['/phrases', '医療フレーズ集'],
                                 ['/contact', 'お問い合わせ'],

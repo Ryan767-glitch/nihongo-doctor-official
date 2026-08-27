@@ -11,6 +11,8 @@ import {
 } from '@/lib/catalog';
 import { CONTINENT_NAME_BY_SLUG, getCountryHref } from '@/lib/slugs';
 import { breadcrumbJsonLd, buildCountryCopy, countryLabel, faqJsonLd, itemListJsonLd, SITE_URL } from '@/lib/seo';
+import { EsimCta } from '@/components/features/EsimCta';
+import { esimDestinationFromCountry } from '@/lib/affiliates';
 
 interface PageProps {
     params: Promise<{ continent: string; country: string }>;
@@ -83,7 +85,14 @@ export default async function CountryPage({ params }: PageProps) {
                 ]}
                 countryCount={1}
                 clinicCount={clinics.length}
-                intro={<DirectoryIntro copy={copy} />}
+                intro={
+                    <>
+                        <DirectoryIntro copy={copy} />
+                        {continent === 'africa-middle-east' && (
+                            <EsimCta destination={esimDestinationFromCountry(country)} />
+                        )}
+                    </>
+                }
                 footer={<DirectoryFaq faqs={copy.faqs} />}
             />
         </>

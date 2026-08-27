@@ -39,7 +39,6 @@ export default function PrivacyPage() {
                     <h2 className="text-xl font-bold mt-8 mb-4">4. Cookie の利用</h2>
                     <p>
                         当サイトでは、利便性向上やアクセス解析のため Cookie を利用する場合があります。
-                        アフィリエイト広告（A8.net等）の成果計測のため、外部サービスが Cookie を発行する場合があります。
                         ブラウザの設定により Cookie を無効化することも可能ですが、一部機能が正しく動作しない場合があります。
                     </p>
 
@@ -60,7 +59,7 @@ export default function PrivacyPage() {
                     </p>
 
                     <div className="mt-12 pt-6 border-t text-sm text-gray-500 text-right">
-                        最終更新日: 2026年8月27日
+                        最終更新日: 2026年3月16日
                     </div>
                 </div>
             </div>

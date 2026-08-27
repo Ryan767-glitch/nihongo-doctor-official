@@ -33,7 +33,6 @@ const groups = [
             ["/embassy", "大使館・領事館"],
             ["/phrases", "医療フレーズ集"],
             ["/insurance", "海外保険ガイド"],
-            ["/esim/africa", "アフリカ向けeSIM"],
         ],
     },
     {
@@ -79,7 +78,7 @@ export function Footer() {
                 <div className="border-t">
                     <div className="container mx-auto max-w-7xl px-4 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
                         <p>© 2026 にほんごドクター.com</p>
-                        <p>最終更新: 2026年8月27日</p>
+                        <p>最終更新: 2026年8月19日</p>
                     </div>
                 </div>
             </div>
