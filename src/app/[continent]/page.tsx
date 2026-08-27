@@ -128,7 +128,7 @@ export default async function ContinentPage(props: PageProps) {
 
                 <ContinentHeader displayName={copy.h1} description={`${displayName}の日本語対応病院を国・都市から探せます`} />
                 <DirectoryIntro copy={copy} />
-                {continentSlug === 'africa-middle-east' && <EsimCta destination="africa" />}
+                <EsimCta continentSlug={continentSlug} />
 
                 <div className="mb-8 p-4 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between flex-wrap gap-4">
                     <div>

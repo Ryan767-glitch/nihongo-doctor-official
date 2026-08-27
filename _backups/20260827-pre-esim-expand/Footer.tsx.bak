@@ -33,7 +33,7 @@ const groups = [
             ["/embassy", "大使館・領事館"],
             ["/phrases", "医療フレーズ集"],
             ["/insurance", "海外保険ガイド"],
-            ["/esim", "海外eSIM"],
+            ["/esim/africa", "アフリカ向けeSIM"],
         ],
     },
     {

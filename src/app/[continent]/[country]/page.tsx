@@ -88,8 +88,10 @@ export default async function CountryPage({ params }: PageProps) {
                 intro={
                     <>
                         <DirectoryIntro copy={copy} />
-                        {continent === 'africa-middle-east' && (
+                        {continent === 'africa-middle-east' ? (
                             <EsimCta destination={esimDestinationFromCountry(country)} />
+                        ) : (
+                            <EsimCta continentSlug={continent} />
                         )}
                     </>
                 }

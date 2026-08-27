@@ -3,13 +3,15 @@ import { Smartphone } from 'lucide-react';
 import {
     ESIM_OFFERS,
     type EsimDestination,
-    type EsimRegion,
-    esimRegionFromContinent,
     japanGlobalHref,
 } from '@/lib/affiliates';
-import { ESIM_REGIONS } from '@/lib/esim-regions';
 
-const COUNTRY_COPY: Partial<Record<EsimDestination, { title: string; body: string; cta: string }>> = {
+const COPY: Record<EsimDestination, { title: string; body: string; cta: string }> = {
+    africa: {
+        title: 'アフリカ渡航前に、eSIMで通信を確保',
+        body: '病院検索・地図・保険デスク連絡は、到着直後の通信がないと止まります。アフリカ周遊プランなら国をまたいでも同じeSIMで使えます。',
+        cta: 'アフリカ周遊eSIMを見る',
+    },
     egypt: {
         title: 'エジプト渡航前に、eSIMで通信を確保',
         body: 'カイロ到着後に地図や日本語対応病院を探すには、先にデータ通信が必要です。出発前にeSIMを入れておくと空港でもつながります。',
@@ -27,31 +29,8 @@ const COUNTRY_COPY: Partial<Record<EsimDestination, { title: string; body: strin
     },
 };
 
-function regionCopy(region: EsimRegion) {
-    const config = ESIM_REGIONS[region];
-    return {
-        title: `${config.continentLabel}渡航前に、eSIMで通信を確保`,
-        body: `病院検索・地図・保険デスク連絡は、到着直後の通信がないと止まります。${config.label}の比較ページで、周遊プランと日本語サポート付きを確認できます。`,
-        cta: `${config.label}を見る`,
-        compareHref: `/esim/${region}`,
-    };
-}
-
-export function EsimCta({
-    destination,
-    continentSlug,
-}: {
-    destination?: EsimDestination;
-    continentSlug?: string;
-}) {
-    const region = destination && destination in ESIM_REGIONS
-        ? (destination as EsimRegion)
-        : esimRegionFromContinent(continentSlug);
-    const country = destination && COUNTRY_COPY[destination];
-    const copy = country
-        ? { ...country, compareHref: `/esim/${region}` }
-        : regionCopy(region);
-
+export function EsimCta({ destination = 'africa' }: { destination?: EsimDestination }) {
+    const copy = COPY[destination];
     return (
         <aside className="relative mb-8 rounded-2xl border border-cyan-100 bg-gradient-to-br from-cyan-50/80 to-white p-5 sm:p-6">
             <p className="mb-2">
@@ -66,7 +45,7 @@ export function EsimCta({
                     <p className="mt-1 text-sm leading-relaxed text-slate-600">{copy.body}</p>
                     <div className="mt-4 flex flex-wrap gap-2">
                         <a
-                            href={japanGlobalHref(destination ?? region)}
+                            href={japanGlobalHref(destination)}
                             target="_blank"
                             rel="nofollow sponsored noopener noreferrer"
                             className="inline-flex items-center rounded-full bg-[#1aa3c7] px-5 py-3 text-sm font-semibold text-white shadow-sm"
@@ -74,7 +53,7 @@ export function EsimCta({
                             {copy.cta}
                         </a>
                         <Link
-                            href={copy.compareHref}
+                            href="/esim/africa"
                             className="inline-flex items-center rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700"
                         >
                             比較と使い方
