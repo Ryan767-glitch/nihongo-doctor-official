@@ -103,7 +103,8 @@ function getNowInTimeZone(timeZone?: string) {
 
     const parts = formatter.formatToParts(now);
     const weekday = parts.find((part) => part.type === 'weekday')?.value.toLowerCase() ?? 'mon';
-    const hour = Number(parts.find((part) => part.type === 'hour')?.value ?? '0');
+    const rawHour = Number(parts.find((part) => part.type === 'hour')?.value ?? '0');
+    const hour = rawHour % 24;
     const minute = Number(parts.find((part) => part.type === 'minute')?.value ?? '0');
 
     return { day: weekday, hour, minute };
@@ -176,4 +177,27 @@ export function stringToColor(str: string): string {
     }
     const index = Math.abs(hash % colors.length);
     return colors[index];
+}
+
+const TOP_BORDER_BY_BG: Record<string, string> = {
+    "bg-red-100": "border-t-red-200",
+    "bg-orange-100": "border-t-orange-200",
+    "bg-amber-100": "border-t-amber-200",
+    "bg-green-100": "border-t-green-200",
+    "bg-emerald-100": "border-t-emerald-200",
+    "bg-teal-100": "border-t-teal-200",
+    "bg-cyan-100": "border-t-cyan-200",
+    "bg-sky-100": "border-t-sky-200",
+    "bg-blue-100": "border-t-blue-200",
+    "bg-indigo-100": "border-t-indigo-200",
+    "bg-violet-100": "border-t-violet-200",
+    "bg-purple-100": "border-t-purple-200",
+    "bg-fuchsia-100": "border-t-fuchsia-200",
+    "bg-pink-100": "border-t-pink-200",
+    "bg-rose-100": "border-t-rose-200",
+};
+
+export function themeTopBorder(theme?: string): string {
+    const base = theme?.split(' ')[0];
+    return (base && TOP_BORDER_BY_BG[base]) || '';
 }

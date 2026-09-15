@@ -2,11 +2,11 @@
 
 import { Clinic } from '@/types';
 import { MapPin, Phone, Clock, CreditCard, Ambulance, Info, Map } from 'lucide-react';
-import { checkIsOpen } from '@/lib/utils';
+import { checkIsOpen, themeTopBorder } from '@/lib/utils';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { COUNTRY_MAP, COUNTRY_JA_MAP, SPECIALTY_MAP, CITY_MAP } from '@/lib/constants';
 import { getHoursReviewState, hasVerifiedOfficialHours } from '@/lib/clinic-hours';
-import { getClinicHref } from '@/lib/slugs';
+import { getCityDisplayName, getClinicHref } from '@/lib/slugs';
 import { OpenStatusDot } from '@/components/features/OpenStatusDot';
 import Link from 'next/link';
 
@@ -31,7 +31,7 @@ export function ClinicCard({ clinic, colorTheme, isHighlighted }: ClinicCardProp
     };
 
     const translateCity = (c: string) => {
-        if (language === 'ja') return c;
+        if (language === 'ja') return getCityDisplayName(c);
         // Handle composite like "マイアミ/フロリダ"
         if (CITY_MAP[c]) return CITY_MAP[c];
         const parts = c.split(/[\/\uff0f]/);
@@ -152,7 +152,7 @@ export function ClinicCard({ clinic, colorTheme, isHighlighted }: ClinicCardProp
 
     const normalizedSpecialties = normalizeSpecialties(clinic.specialties);
 
-    const borderColorClass = colorTheme ? colorTheme.split(' ')[0].replace('bg-', 'border-t-') : '';
+    const borderColorClass = themeTopBorder(colorTheme);
     const highlightClass = isHighlighted ? 'ring-4 ring-primary bg-primary/5 transition-all duration-1000' : 'ring-1 ring-slate-100 bg-card';
 
     return (
@@ -259,14 +259,18 @@ export function ClinicCard({ clinic, colorTheme, isHighlighted }: ClinicCardProp
 
                 <div className="flex items-start gap-2.5 text-muted-foreground">
                     <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-primary/70" />
-                    <a
-                        href={clinic.googleMapsUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="break-words hover:text-primary hover:underline"
-                    >
-                        {displayAddress}
-                    </a>
+                    {clinic.googleMapsUrl ? (
+                        <a
+                            href={clinic.googleMapsUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="break-words hover:text-primary hover:underline"
+                        >
+                            {displayAddress}
+                        </a>
+                    ) : (
+                        <span className="break-words">{displayAddress}</span>
+                    )}
                 </div>
 
                 {clinic.phone && (

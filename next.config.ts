@@ -7,6 +7,15 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   async redirects() {
     return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: '(.*\\.vercel\\.app)' }],
+        destination: 'https://nihongo-doctor.com/:path*',
+        permanent: true,
+      },
+      { source: '/africa/:path*', destination: '/africa-middle-east/:path*', permanent: true },
+      { source: '/middle-east/:path*', destination: '/africa-middle-east/:path*', permanent: true },
+      { source: '/south-america/:path*', destination: '/latin-america/:path*', permanent: true },
       { source: '/europe/netherlands/unknown', destination: '/europe/netherlands/amstelveen', permanent: true },
       { source: '/europe/netherlands/unknown/:path*', destination: '/europe/netherlands/amstelveen/:path*', permanent: true },
       { source: '/north-america/canada/toronto/unknown-157', destination: '/north-america/canada/toronto/hsuen-medicine-157', permanent: true },
@@ -28,6 +37,7 @@ const nextConfig: NextConfig = {
           { key: "X-Frame-Options", value: "SAMEORIGIN" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "Permissions-Policy", value: "geolocation=(self), microphone=(), camera=()" },
+          { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains" },
         ],
       },
     ];

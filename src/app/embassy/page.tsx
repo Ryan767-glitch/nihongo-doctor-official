@@ -34,10 +34,13 @@ export default function EmbassyPage() {
                 </p>
 
                 <div className="flex overflow-x-auto hide-scrollbar border-b border-gray-200 mb-8 pb-[1px]">
-                    <div className="flex space-x-6 px-2">
+                    <div className="flex space-x-6 px-2" role="tablist" aria-label="地域別の大使館・領事館">
                         {embassies.map((region) => (
                             <button
                                 key={region.region}
+                                role="tab"
+                                aria-selected={activeTab === region.region}
+                                aria-controls={`embassy-panel-${region.region}`}
                                 onClick={() => setActiveTab(region.region)}
                                 className={`
                   whitespace-nowrap py-3 px-2 border-b-2 font-medium text-sm transition-colors
@@ -53,7 +56,7 @@ export default function EmbassyPage() {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6" role="tabpanel" id={`embassy-panel-${activeTab}`}>
                     {embassies.find((region) => region.region === activeTab)?.countries.map((country) => (
                         <div key={country.name} className="border border-gray-200 rounded-xl p-5 hover:shadow-md transition-shadow bg-gradient-to-br from-white to-gray-50/50">
                             <div className="flex items-center gap-3 mb-5 border-b pb-3">

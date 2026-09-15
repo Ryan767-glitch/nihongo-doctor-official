@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const continentName = CONTINENT_NAME_BY_SLUG[continent];
     const countryName = continentName ? findCountry(continentName, country) : null;
     const cityName = continentName && countryName ? findCity(continentName, countryName, city) : null;
-    if (!continentName || !countryName || !cityName) return {};
+    if (!continentName || !countryName || !cityName) return { title: 'ページが見つかりません' };
     const clinics = getCityClinics(continentName, countryName, cityName);
     const copy = buildCityCopy({
         continentName,

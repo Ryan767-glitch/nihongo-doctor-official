@@ -58,10 +58,13 @@ export default function EmergencyPage() {
                     </h2>
 
                     <div className="flex overflow-x-auto hide-scrollbar border-b border-gray-200 mb-6 pb-[1px]">
-                        <div className="flex space-x-8 px-2">
+                        <div className="flex space-x-8 px-2" role="tablist" aria-label="地域別の緊急連絡先">
                             {emergencies.map((region) => (
                                 <button
                                     key={region.region}
+                                    role="tab"
+                                    aria-selected={activeTab === region.region}
+                                    aria-controls={`emergency-panel-${region.region}`}
                                     onClick={() => setActiveTab(region.region)}
                                     className={`
                     whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm transition-colors
@@ -77,7 +80,7 @@ export default function EmergencyPage() {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4" role="tabpanel" id={`emergency-panel-${activeTab}`}>
                         {emergencies.find((region) => region.region === activeTab)?.countries.map((country) => (
                             <div key={country.name} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow bg-white">
                                 <div className="flex items-center gap-2 mb-4 border-b pb-2">

@@ -10,6 +10,7 @@ import { Clinic, Embassy } from '@/types';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getContinentParams } from '@/lib/catalog';
+import { getContinentSlug } from '@/lib/slugs';
 import { filterJapaneseCompatibleClinics } from '@/lib/clinic-support';
 import { enrichClinicsWithHoursSync } from '@/lib/clinic-hours';
 import { breadcrumbJsonLd, buildContinentCopy, faqJsonLd, itemListJsonLd, SITE_URL } from '@/lib/seo';
@@ -50,14 +51,15 @@ const continentDisplayMap: Record<string, string> = {
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
     const params = await props.params;
     const continentSlug = params.continent.toLowerCase();
-    const continentName = continentNameMap[continentSlug] || continentSlug;
+    const continentName = continentNameMap[continentSlug];
+    if (!continentName) return { title: 'ページが見つかりません' };
     const displayJa = continentDisplayMap[continentName] || continentName;
 
     const filtered = allClinics.filter(
         (clinic) => clinic.continent.toLowerCase() === continentName.toLowerCase()
     );
     const copy = buildContinentCopy({ continentName, clinics: filtered });
-    const pageUrl = `${SITE_URL}/${continentSlug}`;
+    const pageUrl = `${SITE_URL}/${getContinentSlug(continentName)}`;
 
     return {
         title: copy.title,

@@ -1,12 +1,21 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { GlobalSearch } from '@/components/features/GlobalSearch';
 
 export function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    useEffect(() => {
+        if (!isMenuOpen) return;
+        const onKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') setIsMenuOpen(false);
+        };
+        document.addEventListener('keydown', onKeyDown);
+        return () => document.removeEventListener('keydown', onKeyDown);
+    }, [isMenuOpen]);
 
     return (
         <header className="w-full flex flex-col">
@@ -35,6 +44,8 @@ export function Header() {
                                 className="md:hidden p-2 rounded-md hover:bg-muted transition-colors"
                                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                                 aria-label={isMenuOpen ? 'メニューを閉じる' : 'メニューを開く'}
+                                aria-expanded={isMenuOpen}
+                                aria-controls="mobile-nav"
                             >
                                 {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                             </button>
@@ -43,7 +54,7 @@ export function Header() {
                 </div>
 
                 {isMenuOpen && (
-                    <div className="md:hidden border-t border-border bg-background animate-in slide-in-from-top duration-200">
+                    <div id="mobile-nav" className="md:hidden border-t border-border bg-background animate-in slide-in-from-top duration-200">
                         <nav className="flex flex-col p-4 space-y-2 text-sm font-medium">
                             {[
                                 ['/nearby', '現在地から探す'],

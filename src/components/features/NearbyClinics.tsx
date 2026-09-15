@@ -38,11 +38,15 @@ function readStoredOrigin(): NearbyOrigin | null {
 
 function storeOrigin(origin: NearbyOrigin | null) {
     if (typeof window === 'undefined') return;
-    if (!origin) {
-        sessionStorage.removeItem(SESSION_KEY);
-        return;
+    try {
+        if (!origin) {
+            sessionStorage.removeItem(SESSION_KEY);
+            return;
+        }
+        sessionStorage.setItem(SESSION_KEY, JSON.stringify(origin));
+    } catch {
+        // sessionStorage may be unavailable (private browsing etc.)
     }
-    sessionStorage.setItem(SESSION_KEY, JSON.stringify(origin));
 }
 
 function getCurrentPosition(options: PositionOptions) {
@@ -108,24 +112,27 @@ export function NearbyClinics() {
     }, [setAndStoreOrigin]);
 
     useEffect(() => {
-        const stored = readStoredOrigin();
-        const cityFromQuery = resolveCityOrigin(initialQuery);
-        if (cityFromQuery) {
-            setOrigin(cityFromQuery);
-        } else if (stored) {
-            setOrigin(stored);
-            if (stored.source === 'gps') setStatus('ready');
-        }
-        setHydrated(true);
+        const timer = window.setTimeout(() => {
+            const stored = readStoredOrigin();
+            const cityFromQuery = resolveCityOrigin(initialQuery);
+            if (cityFromQuery) {
+                setOrigin(cityFromQuery);
+            } else if (stored) {
+                setOrigin(stored);
+                if (stored.source === 'gps') setStatus('ready');
+            }
+            setHydrated(true);
 
-        if (cityFromQuery || stored?.source === 'gps') return;
-        if (!navigator.geolocation || !navigator.permissions?.query) return;
-        navigator.permissions
-            .query({ name: 'geolocation' })
-            .then((permission) => {
-                if (permission.state === 'granted') void locate();
-            })
-            .catch(() => undefined);
+            if (cityFromQuery || stored?.source === 'gps') return;
+            if (!navigator.geolocation || !navigator.permissions?.query) return;
+            navigator.permissions
+                .query({ name: 'geolocation' })
+                .then((permission) => {
+                    if (permission.state === 'granted') void locate();
+                })
+                .catch(() => undefined);
+        }, 0);
+        return () => window.clearTimeout(timer);
     }, [initialQuery, locate]);
 
     const applyCity = (label: string) => {

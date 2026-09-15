@@ -12,7 +12,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { region } = await params;
-    if (!isEsimRegion(region)) return {};
+    if (!isEsimRegion(region)) return { title: 'ページが見つかりません' };
     const config = ESIM_REGIONS[region];
     return {
         title: config.title,

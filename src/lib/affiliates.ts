@@ -59,7 +59,7 @@ export const ESIM_OFFERS = {
         id: 's00000027266001',
         name: 'トリファ（trifa）',
         short: '24時間日本語チャット',
-        href: 'https://px.a8.net/svt/ejp?a8mat=4BAFPF+BJKL0Y+5UDW+5YJRM',
+        href: 'https://px.a8.net/svt/ejp?a8mat=4BAFPF+BJKL0Y+5UDW+5YJRM&a8ejpredirect=https%3A%2F%2Ftrifa.jp%2F',
         pixel: 'https://www15.a8.net/0.gif?a8mat=4BAFPF+BJKL0Y+5UDW+5YJRM',
         rate: '初回購入7.5%',
         note: '国内eSIMアプリ利用者数No.1。国別プラン中心。現地で繋がらないときの日本語チャット向き。',

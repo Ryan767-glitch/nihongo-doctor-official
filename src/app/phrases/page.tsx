@@ -24,10 +24,13 @@ export default function PhrasesPage() {
                 </h1>
 
                 <div className="flex overflow-x-auto hide-scrollbar border-b border-gray-200 mb-8 pb-[1px]">
-                    <div className="flex space-x-2 px-1">
+                    <div className="flex space-x-2 px-1" role="tablist" aria-label="言語を選択">
                         {languages.map((lang) => (
                             <button
                                 key={lang.id}
+                                role="tab"
+                                aria-selected={activeLang === lang.id}
+                                aria-controls="phrases-panel"
                                 onClick={() => setActiveLang(lang.id)}
                                 className={`
                                   whitespace-nowrap py-2 px-4 rounded-t-lg font-medium text-sm transition-colors border border-b-0
@@ -43,7 +46,7 @@ export default function PhrasesPage() {
                     </div>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-4" role="tabpanel" id="phrases-panel">
                     {phraseCategories.map((category) => {
                         const isOpen = openCategories.includes(category.id);
 
@@ -51,6 +54,8 @@ export default function PhrasesPage() {
                             <div key={category.id} className="border border-gray-200 rounded-lg overflow-hidden bg-white shadow-sm">
                                 <button
                                     onClick={() => toggleCategory(category.id)}
+                                    aria-expanded={isOpen}
+                                    aria-controls={`phrase-panel-${category.id}`}
                                     className="w-full flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 transition-colors text-left"
                                 >
                                     <h2 className="text-lg font-bold text-gray-800">
@@ -64,7 +69,7 @@ export default function PhrasesPage() {
                                 </button>
 
                                 {isOpen && (
-                                    <div className="p-0 sm:p-4 border-t border-gray-200">
+                                    <div id={`phrase-panel-${category.id}`} className="p-0 sm:p-4 border-t border-gray-200">
                                         <div className="hidden sm:grid sm:grid-cols-12 gap-4 px-4 py-2 bg-gray-50 text-xs font-bold text-gray-500 uppercase rounded-md mb-2">
                                             <div className="col-span-4">日本語</div>
                                             <div className="col-span-4">現地語</div>

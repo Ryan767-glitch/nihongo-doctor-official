@@ -11,7 +11,7 @@ import clinicsData from "@/data/clinics.json";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { filterJapaneseCompatibleClinics } from "@/lib/clinic-support";
 import { enrichClinicsWithHoursSync } from "@/lib/clinic-hours";
-import { getClinicHref } from "@/lib/slugs";
+import { getCityDisplayName, getClinicHref } from "@/lib/slugs";
 import { OpenStatusDot } from "@/components/features/OpenStatusDot";
 
 interface GlobalSearchProps {
@@ -33,7 +33,11 @@ export function GlobalSearch({ variant = 'default' }: GlobalSearchProps) {
 
     React.useEffect(() => {
         setMounted(true);
-        const handleOpen = () => setOpen(true);
+        const handleOpen = (event: Event) => {
+            const detail = (event as CustomEvent<{ query?: string }>).detail;
+            setOpen(true);
+            if (detail?.query) setSearchQuery(detail.query);
+        };
         window.addEventListener('open-global-search', handleOpen);
 
         const down = (e: KeyboardEvent) => {
@@ -49,8 +53,13 @@ export function GlobalSearch({ variant = 'default' }: GlobalSearchProps) {
         };
     }, []);
 
-    const triggerOpen = () => {
-        window.dispatchEvent(new CustomEvent('open-global-search'));
+    const triggerOpen = (query?: string) => {
+        window.dispatchEvent(new CustomEvent('open-global-search', { detail: { query } }));
+    };
+
+    const handleOpenChange = (nextOpen: boolean) => {
+        setOpen(nextOpen);
+        if (!nextOpen) setSearchQuery('');
     };
 
     const runCommand = React.useCallback((command: () => unknown) => {
@@ -63,7 +72,7 @@ export function GlobalSearch({ variant = 'default' }: GlobalSearchProps) {
         return (
             <Command.Dialog
                 open={open}
-                onOpenChange={setOpen}
+                onOpenChange={handleOpenChange}
                 label={t('サイト内検索', 'Site search')}
                 className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm flex items-start justify-center pt-[12vh] px-3 sm:px-4"
                 shouldFilter={true}
@@ -103,7 +112,7 @@ export function GlobalSearch({ variant = 'default' }: GlobalSearchProps) {
                             {clinics.map((clinic) => (
                                 <Command.Item
                                     key={clinic.id}
-                                    value={`${clinic.nameJa} ${clinic.nameEn} ${clinic.city} ${clinic.country} ${clinic.address || ''} ${clinic.specialties?.join(' ') ?? ''}`}
+                                    value={`${clinic.nameJa} ${clinic.nameEn} ${clinic.city} ${getCityDisplayName(clinic.city)} ${clinic.country} ${clinic.address || ''} ${clinic.specialties?.join(' ') ?? ''} ${clinic.hoursDescription || ''} ${clinic.emergencyAvailable ? '24時間 救急' : ''} ${clinic.id}`}
                                     onSelect={() => {
                                         runCommand(() => router.push(getClinicHref(clinic)));
                                         setOpen(false);
@@ -122,7 +131,7 @@ export function GlobalSearch({ variant = 'default' }: GlobalSearchProps) {
                                         <span className="text-xs text-muted-foreground truncate w-full">{clinic.nameEn}</span>
                                         <div className="flex items-center gap-3 text-xs text-muted-foreground mt-0.5 flex-wrap">
                                             <span className="flex items-center gap-1 shrink-0">
-                                                <MapPin className="w-3 h-3" /> {clinic.city}
+                                                <MapPin className="w-3 h-3" /> {getCityDisplayName(clinic.city)}
                                             </span>
                                             {clinic.specialties[0] && (
                                                 <span className="flex items-center gap-1 bg-slate-100 px-1.5 py-0.5 rounded text-slate-600 truncate max-w-full">
@@ -152,7 +161,7 @@ export function GlobalSearch({ variant = 'default' }: GlobalSearchProps) {
             {variant === 'hero' ? (
                 <div className="w-full max-w-3xl mx-auto flex flex-col items-center">
                     <button
-                        onClick={triggerOpen}
+                        onClick={() => triggerOpen()}
                         className="flex items-center w-full bg-white h-12 sm:h-16 rounded-full shadow-lg border border-border/50 hover:shadow-xl transition-all duration-300 pr-1.5 pl-4 sm:pr-2 sm:pl-6 group overflow-hidden"
                     >
                         <Search className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
@@ -165,23 +174,23 @@ export function GlobalSearch({ variant = 'default' }: GlobalSearchProps) {
                         </div>
                     </button>
                     <div className="flex flex-wrap justify-center gap-2 mt-4 text-xs sm:text-sm">
-                        <button onClick={triggerOpen} className="px-3 py-1.5 bg-white/60 hover:bg-white backdrop-blur-sm border border-slate-200/50 rounded-full text-slate-600 transition-colors shadow-sm">
+                        <button onClick={() => triggerOpen('内科')} className="px-3 py-1.5 bg-white/60 hover:bg-white backdrop-blur-sm border border-slate-200/50 rounded-full text-slate-600 transition-colors shadow-sm">
                             #内科
                         </button>
-                        <button onClick={triggerOpen} className="px-3 py-1.5 bg-white/60 hover:bg-white backdrop-blur-sm border border-slate-200/50 rounded-full text-slate-600 transition-colors shadow-sm">
+                        <button onClick={() => triggerOpen('小児科')} className="px-3 py-1.5 bg-white/60 hover:bg-white backdrop-blur-sm border border-slate-200/50 rounded-full text-slate-600 transition-colors shadow-sm">
                             #小児科
                         </button>
-                        <button onClick={triggerOpen} className="px-3 py-1.5 bg-white/60 hover:bg-white backdrop-blur-sm border border-slate-200/50 rounded-full text-slate-600 transition-colors shadow-sm">
+                        <button onClick={() => triggerOpen('歯科')} className="px-3 py-1.5 bg-white/60 hover:bg-white backdrop-blur-sm border border-slate-200/50 rounded-full text-slate-600 transition-colors shadow-sm">
                             #歯科
                         </button>
-                        <button onClick={triggerOpen} className="px-3 py-1.5 bg-white/60 hover:bg-white backdrop-blur-sm border border-slate-200/50 rounded-full text-slate-600 transition-colors shadow-sm">
+                        <button onClick={() => triggerOpen('24時間')} className="px-3 py-1.5 bg-white/60 hover:bg-white backdrop-blur-sm border border-slate-200/50 rounded-full text-slate-600 transition-colors shadow-sm">
                             #24時間
                         </button>
                     </div>
                 </div>
             ) : variant === 'icon' ? (
                 <button
-                    onClick={triggerOpen}
+                    onClick={() => triggerOpen()}
                     className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-full transition-colors"
                     aria-label={t('病院を検索', 'Search clinics')}
                 >
@@ -189,7 +198,7 @@ export function GlobalSearch({ variant = 'default' }: GlobalSearchProps) {
                 </button>
             ) : (
                 <button
-                    onClick={triggerOpen}
+                    onClick={() => triggerOpen()}
                     className="flex items-center gap-2 px-4 py-2 text-sm text-muted-foreground bg-muted/50 border border-border rounded-full hover:bg-muted hover:text-foreground transition-colors w-full md:w-64 lg:w-80 group"
                 >
                     <Search className="w-4 h-4" />

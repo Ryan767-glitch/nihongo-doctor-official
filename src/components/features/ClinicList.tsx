@@ -231,7 +231,7 @@ export function ClinicList({ clinics, embassies }: ClinicListProps) {
                                                             onClick={() => scrollToCity(country, city)}
                                                             className="text-xs bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 shadow-sm px-3 py-1.5 rounded-full text-slate-700 transition-all active:scale-95"
                                                         >
-                                                            {city}
+                                                            {getCityDisplayName(city)}
                                                         </button>
                                                     ))}
                                                 </div>

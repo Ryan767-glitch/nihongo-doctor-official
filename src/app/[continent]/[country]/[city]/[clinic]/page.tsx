@@ -32,7 +32,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const { continent, country, city, clinic } = await params;
     const record = findClinicBySlugs(continent, country, city, clinic);
-    if (!record) return {};
+    if (!record) return { title: 'ページが見つかりません' };
     const name = displayClinicName(record);
     const copy = clinicPageCopy(record, name);
     const path = getClinicHref(record);
