@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { ShieldCheck, CreditCard, FileText, AlertTriangle, CheckCircle2 } from 'lucide-react';
+import { EposCardCta } from '@/components/features/EposCardCta';
 
 export default function InsuranceGuidePage() {
     return (
@@ -126,6 +127,9 @@ export default function InsuranceGuidePage() {
                         クレジットカード付帯だけでは治療費の上限が足りないことがあります。渡航前に海外旅行保険の補償範囲を確認してください。
                         各社の公式ページで最新の条件を見てください。
                     </p>
+                    <div className="mb-6">
+                        <EposCardCta body="年会費無料で、持っているだけで海外旅行傷害保険が自動付帯します。保険に未加入のまま出発するより、1枚持っておくだけで病気・ケガの治療費の備えになります。" />
+                    </div>
                     <ul className="space-y-2 text-sm">
                         <li>
                             <a href="https://tabiho.jp/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
@@ -169,6 +173,21 @@ export default function InsuranceGuidePage() {
                                 {label}
                             </Link>
                         ))}
+                    </div>
+                </section>
+
+                <section className="mb-10">
+                    <h2 className="text-xl font-bold text-gray-800 mb-4">関連ガイド</h2>
+                    <div className="flex flex-wrap gap-2 text-sm">
+                        <Link href="/guide/sick-abroad" className="rounded-full border bg-white px-3 py-1.5 hover:border-primary hover:text-primary">
+                            海外で病気・ケガをしたときの対処法
+                        </Link>
+                        <Link href="/guide/prepare" className="rounded-full border bg-white px-3 py-1.5 hover:border-primary hover:text-primary">
+                            出発前の準備チェックリスト
+                        </Link>
+                        <Link href="/symptom" className="rounded-full border bg-white px-3 py-1.5 hover:border-primary hover:text-primary">
+                            症状から病院を探す
+                        </Link>
                     </div>
                 </section>
 

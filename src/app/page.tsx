@@ -4,6 +4,8 @@ import Link from "next/link";
 import { Building2, Map, Landmark, TreePalm, Sun, Tent, LocateFixed, PhoneCall, BookOpen } from "lucide-react";
 import { GlobalSearch } from "@/components/features/GlobalSearch";
 import { getPopularCities, getPublishedStats, publishedClinics } from "@/lib/catalog";
+import { getSymptomLinksForCity } from "@/lib/symptoms";
+import { getCitySlug } from "@/lib/slugs";
 import { COUNTRY_JA_MAP } from "@/lib/constants";
 import { JsonLd } from "@/components/features/JsonLd";
 import { faqJsonLd } from "@/lib/seo";
@@ -167,6 +169,68 @@ export default function Home() {
               <span className="inline-block bg-white/80 text-amber-700 text-xs px-2 py-1 rounded-full font-medium shadow-sm backdrop-blur-sm">
                 {africaMiddleEast.countryCount}カ国・{africaMiddleEast.count}件
               </span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="container mx-auto px-4 mb-20">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold mb-2 text-center">症状から探す</h2>
+          <p className="text-sm text-muted-foreground text-center mb-6">
+            「バンコクで発熱」「ソウルで歯痛」のように、症状別の受診先を都市ごとに見られます
+          </p>
+          <div className="flex flex-wrap justify-center gap-2">
+            {getPopularCities()
+              .slice(0, 8)
+              .flatMap((item) =>
+                getSymptomLinksForCity(getCitySlug(item.city))
+                  .slice(0, 3)
+                  .map((link) => ({
+                    href: link.href,
+                    label: `${item.displayCity}で${link.def.shortTitle}`,
+                    count: link.count,
+                  }))
+              )
+              .slice(0, 16)
+              .map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="rounded-full border bg-white px-3 py-1.5 text-sm hover:border-primary hover:text-primary transition-colors"
+                >
+                  {link.label}
+                  <span className="text-muted-foreground ml-1">{link.count}</span>
+                </Link>
+              ))}
+            <Link
+              href="/symptom"
+              className="rounded-full border border-primary/40 bg-primary/5 px-3 py-1.5 text-sm font-semibold text-primary hover:bg-primary/10 transition-colors"
+            >
+              全ての症状を見る →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="container mx-auto px-4 mb-20">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold mb-2 text-center">病気・ケガ対策ガイド</h2>
+          <p className="text-sm text-muted-foreground text-center mb-6">
+            出発前の準備から、旅先での受診の流れまで
+          </p>
+          <div className="grid sm:grid-cols-3 gap-4">
+            <Link href="/guide/sick-abroad" className="rounded-2xl border bg-white p-5 hover:shadow-md hover:border-primary transition-all">
+              <h3 className="font-bold text-slate-800">海外で病気・ケガをしたら</h3>
+              <p className="text-xs text-muted-foreground mt-2 leading-relaxed">保険会社への連絡順序・受診先の選び方・支払いと請求の流れを手順で解説。</p>
+            </Link>
+            <Link href="/guide/prepare" className="rounded-2xl border bg-white p-5 hover:shadow-md hover:border-primary transition-all">
+              <h3 className="font-bold text-slate-800">出発前の準備チェックリスト</h3>
+              <p className="text-xs text-muted-foreground mt-2 leading-relaxed">海外旅行保険・eSIM・クレカ・常備薬。病気やケガへの備えを30分で。</p>
+            </Link>
+            <Link href="/insurance" className="rounded-2xl border bg-white p-5 hover:shadow-md hover:border-primary transition-all">
+              <h3 className="font-bold text-slate-800">海外保険の使い方</h3>
+              <p className="text-xs text-muted-foreground mt-2 leading-relaxed">キャッシュレス受診の条件・保険会社への連絡・必要書類のまとめ。</p>
             </Link>
           </div>
         </div>

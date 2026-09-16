@@ -82,6 +82,15 @@ export const ESIM_OFFERS = {
         rate: '購入15%',
         note: '現地SIM不要。料金が分かりやすいプランから選べる。',
     },
+    glocal: {
+        id: 's00000023372004',
+        name: 'Glocal eSIM（グローカル）',
+        short: '世界190+の国と地域',
+        href: 'https://px.a8.net/svt/ejp?a8mat=4BAFPF+BIDPTE+50C8+NTRMQ',
+        pixel: 'https://www19.a8.net/0.gif?a8mat=4BAFPF+BIDPTE+50C8+NTRMQ',
+        rate: '購入30%',
+        note: '短期旅行から長期滞在まで容量別プラン。アプリ不要でQRコードを読むだけ。',
+    },
 } as const;
 
 export const ESIM_PIXELS = [
@@ -90,7 +99,21 @@ export const ESIM_PIXELS = [
     ESIM_OFFERS.trifa.pixel,
     ESIM_OFFERS.saily.pixel,
     ESIM_OFFERS.tora.pixel,
+    ESIM_OFFERS.glocal.pixel,
 ] as const;
+
+export const TRAVEL_OFFERS = {
+    eposCard: {
+        id: 's00000015110002',
+        name: 'エポスカード',
+        short: '海外旅行保険が自動付帯',
+        href: 'https://px.a8.net/svt/ejp?a8mat=4BCCJI+G2PCS2+38L8+BXQOH',
+        pixel: 'https://www10.a8.net/0.gif?a8mat=4BCCJI+G2PCS2+38L8+BXQOH',
+        rate: '新規入会',
+        note: '年会費無料で海外旅行傷害保険が自動付帯（利用条件なし）。持っているだけで病気・ケガの治療費をカバーできる、旅の保険代わりの定番カード。',
+        coverage: '傷害治療費用 最高200万円 / 疾病治療費用 最高270万円（1回の病気・ケガあたり）',
+    },
+} as const;
 
 export function japanGlobalHref(destination: EsimDestination = 'africa') {
     const offer = ESIM_OFFERS.japanGlobal;

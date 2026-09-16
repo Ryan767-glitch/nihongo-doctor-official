@@ -173,6 +173,12 @@ export function EsimRegionPage({ region }: { region: EsimRegion }) {
                             note={ESIM_OFFERS.tora.note}
                             href={ESIM_OFFERS.tora.href}
                         />
+                        <OfferCard
+                            name={ESIM_OFFERS.glocal.name}
+                            short={ESIM_OFFERS.glocal.short}
+                            note={ESIM_OFFERS.glocal.note}
+                            href={ESIM_OFFERS.glocal.href}
+                        />
                     </div>
                     <p className="mt-4 text-xs text-slate-500">
                         料金・対応国・速度制限は変更されます。購入前に各公式ページで渡航国が含まれているか確認してください。

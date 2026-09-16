@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { ClinicDirectory, continentLabel } from '@/components/features/ClinicDirectory';
 import { DirectoryFaq, DirectoryIntro } from '@/components/features/DirectoryIntro';
 import { JsonLd } from '@/components/features/JsonLd';
+import { SymptomLinks } from '@/components/features/SymptomLinks';
 import {
     findCity,
     findCountry,
@@ -92,7 +93,14 @@ export default async function CityPage({ params }: PageProps) {
                 ]}
                 countryCount={1}
                 clinicCount={clinics.length}
-                intro={<DirectoryIntro copy={copy} />}
+                intro={
+                    <>
+                        <DirectoryIntro copy={copy} />
+                        <div className="mb-8">
+                            <SymptomLinks citySlug={city} cityName={cityLabel} />
+                        </div>
+                    </>
+                }
                 footer={<DirectoryFaq faqs={copy.faqs} />}
             />
         </>

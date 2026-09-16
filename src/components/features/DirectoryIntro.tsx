@@ -80,6 +80,9 @@ export function DirectoryIntro({
                 <Link href={nearbyHref} className="text-primary hover:underline">
                     現在地から近い病院
                 </Link>
+                <Link href="/symptom" className="text-primary hover:underline">
+                    症状から探す
+                </Link>
                 <Link href={emergencyHref} className="text-primary hover:underline">
                     緊急番号を見る
                 </Link>

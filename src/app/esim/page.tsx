@@ -24,6 +24,7 @@ const OFFERS = [
     { offer: ESIM_OFFERS.japanGlobal, recommended: true },
     { offer: ESIM_OFFERS.trifa, recommended: false },
     { offer: ESIM_OFFERS.tora, recommended: false },
+    { offer: ESIM_OFFERS.glocal, recommended: false },
 ] as const;
 
 export default function EsimIndexPage() {

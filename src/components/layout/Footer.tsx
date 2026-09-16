@@ -29,11 +29,13 @@ const groups = [
     {
         title: "いざという時",
         links: [
+            ["/symptom", "症状から探す"],
             ["/emergency", "緊急時ガイド"],
             ["/embassy", "大使館・領事館"],
             ["/phrases", "医療フレーズ集"],
             ["/insurance", "海外保険ガイド"],
             ["/esim", "海外eSIM"],
+            ["/guide", "病気・ケガ対策ガイド"],
         ],
     },
     {

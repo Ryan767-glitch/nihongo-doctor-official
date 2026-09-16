@@ -1,5 +1,7 @@
 import { MetadataRoute } from 'next';
 import { publishedClinics } from '@/lib/catalog';
+import { getRankingParams } from '@/lib/ranking';
+import { getSymptomParams } from '@/lib/symptoms';
 import { getCityHref, getClinicHref, getCountryHref } from '@/lib/slugs';
 
 const SITE_URL = 'https://nihongo-doctor.com';
@@ -26,6 +28,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/esim/north-america',
         '/esim/oceania',
         '/esim/latin-america',
+        '/symptom',
+        '/ranking',
+        '/guide',
+        '/guide/sick-abroad',
+        '/guide/prepare',
         '/contact',
         '/privacy',
         '/terms',
@@ -72,5 +79,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.7,
     }));
 
-    return [...staticRoutes, ...countryRoutes, ...cityRoutes, ...clinicRoutes];
+    const symptomRoutes: MetadataRoute.Sitemap = getSymptomParams().map(({ slug }) => ({
+        url: `${SITE_URL}/symptom/${slug}`,
+        lastModified: now,
+        changeFrequency: 'monthly',
+        priority: 0.6,
+    }));
+
+    const rankingRoutes: MetadataRoute.Sitemap = getRankingParams().map(({ city }) => ({
+        url: `${SITE_URL}/ranking/${city}`,
+        lastModified: now,
+        changeFrequency: 'monthly',
+        priority: 0.65,
+    }));
+
+    return [...staticRoutes, ...countryRoutes, ...cityRoutes, ...clinicRoutes, ...symptomRoutes, ...rankingRoutes];
 }

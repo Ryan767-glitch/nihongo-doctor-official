@@ -30,6 +30,7 @@ export function Header() {
                     <div className="flex flex-1 items-center justify-end space-x-4">
                         <nav className="hidden md:flex items-center space-x-5 lg:space-x-6 text-sm font-medium text-muted-foreground mr-4">
                             <Link href="/nearby" className="hover:text-primary transition-colors whitespace-nowrap">現在地から探す</Link>
+                            <Link href="/symptom" className="hover:text-primary transition-colors whitespace-nowrap">症状から探す</Link>
                             <Link href="/emergency" className="hover:text-primary transition-colors whitespace-nowrap">緊急時</Link>
                             <Link href="/embassy" className="hover:text-primary transition-colors whitespace-nowrap">大使館</Link>
                             <Link href="/phrases" className="hover:text-primary transition-colors whitespace-nowrap">フレーズ集</Link>
@@ -58,12 +59,14 @@ export function Header() {
                         <nav className="flex flex-col p-4 space-y-2 text-sm font-medium">
                             {[
                                 ['/nearby', '現在地から探す'],
+                                ['/symptom', '症状から探す'],
                                 ['/emergency', '緊急時'],
                                 ['/embassy', '大使館'],
                                 ['/phrases', 'フレーズ集'],
                                 ['/esim', 'eSIM'],
-                                ['/contact', 'お問い合わせ'],
                                 ['/insurance', '海外保険'],
+                                ['/guide', '病気・ケガ対策ガイド'],
+                                ['/contact', 'お問い合わせ'],
                             ].map(([href, label]) => (
                                 <Link
                                     key={href}
