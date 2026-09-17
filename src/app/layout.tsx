@@ -7,6 +7,8 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Providers } from "@/components/layout/Providers";
 import { ServiceWorkerRegister } from "@/components/layout/ServiceWorkerRegister";
+import { AdSenseScript } from "@/components/ads/AdSenseScript";
+import { ADSENSE_CLIENT_ID, isAdSenseEnabled } from "@/lib/adsense";
 import { getPublishedStats } from "@/lib/catalog";
 
 const notoSansJp = Noto_Sans_JP({
@@ -81,6 +83,13 @@ export const metadata: Metadata = {
     shortcut: ["/favicon.ico"],
     apple: [{ url: "/apple-touch-icon.png" }],
   },
+  ...(isAdSenseEnabled()
+    ? {
+        other: {
+          "google-adsense-account": ADSENSE_CLIENT_ID,
+        },
+      }
+    : {}),
 };
 
 const websiteJsonLd = {
@@ -119,6 +128,7 @@ export default function RootLayout({
   return (
     <html lang="ja" className="overflow-x-hidden">
       <body className={notoSansJp.className}>
+        <AdSenseScript />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}

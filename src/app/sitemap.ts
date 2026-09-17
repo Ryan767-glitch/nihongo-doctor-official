@@ -34,6 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/guide/sick-abroad',
         '/guide/prepare',
         '/contact',
+        '/about',
         '/privacy',
         '/terms',
         '/disclaimer',

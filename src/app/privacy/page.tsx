@@ -33,7 +33,7 @@ export default function PrivacyPage() {
                     <h2 className="text-xl font-bold mt-8 mb-4">3. 第三者提供</h2>
                     <p>
                         取得した個人情報は、法令に基づく場合を除き、本人の同意なく第三者に提供することはありません。
-                        ただし、サービス運営上必要な範囲で外部サービスを利用する場合があります。
+                        ただし、サービス運営上必要な範囲で外部サービス（アクセス解析、広告配信など）を利用する場合があります。
                     </p>
 
                     <h2 className="text-xl font-bold mt-8 mb-4">4. Cookie の利用</h2>
@@ -43,24 +43,68 @@ export default function PrivacyPage() {
                         ブラウザの設定により Cookie を無効化することも可能ですが、一部機能が正しく動作しない場合があります。
                     </p>
 
-                    <h2 className="text-xl font-bold mt-8 mb-4">5. 安全管理</h2>
+                    <h2 className="text-xl font-bold mt-8 mb-4">5. 広告配信（Google AdSense）について</h2>
+                    <p>
+                        当サイトでは、第三者配信の広告サービス「Google AdSense」を利用することがあります。
+                        広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。
+                    </p>
+                    <ul className="list-disc pl-5 space-y-2 mt-3">
+                        <li>
+                            Google を含む第三者配信事業者は Cookie を使用して、当サイトや他サイトへの過去のアクセス情報に基づいて広告を配信します。
+                        </li>
+                        <li>
+                            Google による Cookie を使った広告配信は、
+                            <a
+                                href="https://adssettings.google.com/"
+                                className="text-blue-600 hover:underline"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Google の広告設定
+                            </a>
+                            から無効にできます。また、
+                            <a
+                                href="https://optout.aboutads.info/"
+                                className="text-blue-600 hover:underline"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                www.aboutads.info
+                            </a>
+                            のオプトアウトページでも、第三者配信事業者の Cookie を無効化できます。
+                        </li>
+                        <li>
+                            詳しくは
+                            <a
+                                href="https://policies.google.com/technologies/ads"
+                                className="text-blue-600 hover:underline"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Google の広告に関するポリシー
+                            </a>
+                            をご確認ください。
+                        </li>
+                    </ul>
+
+                    <h2 className="text-xl font-bold mt-8 mb-4">6. 安全管理</h2>
                     <p>
                         取得した情報の漏えい、滅失、毀損等を防ぐため、合理的な範囲で安全管理措置を講じます。
                     </p>
 
-                    <h2 className="text-xl font-bold mt-8 mb-4">6. ポリシーの変更</h2>
+                    <h2 className="text-xl font-bold mt-8 mb-4">7. ポリシーの変更</h2>
                     <p>
                         本ポリシーは、必要に応じて内容を変更する場合があります。
                         変更後の内容は、本ページへ掲載した時点で効力を生じます。
                     </p>
 
-                    <h2 className="text-xl font-bold mt-8 mb-4">7. お問い合わせ</h2>
+                    <h2 className="text-xl font-bold mt-8 mb-4">8. お問い合わせ</h2>
                     <p>
                         本ポリシーに関するお問い合わせは、お問い合わせページよりご連絡ください。
                     </p>
 
                     <div className="mt-12 pt-6 border-t text-sm text-gray-500 text-right">
-                        最終更新日: 2026年8月27日
+                        最終更新日: 2026年9月17日
                     </div>
                 </div>
             </div>

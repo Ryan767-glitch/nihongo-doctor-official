@@ -41,6 +41,7 @@ const groups = [
     {
         title: "このサイトについて",
         links: [
+            ["/about", "運営者情報"],
             ["/contact", "お問い合わせ"],
             ["/privacy", "プライバシーポリシー"],
             ["/terms", "利用規約"],
